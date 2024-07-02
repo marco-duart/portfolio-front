@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import "@fontsource/poppins";
 
 export default createGlobalStyle`
   :root {
@@ -10,7 +9,7 @@ export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: ${(props) => props.theme.fonts.poppins};
     box-sizing: border-box;
   }
 
@@ -19,7 +18,7 @@ export default createGlobalStyle`
   }
 
  body {    
-    background-color: ${(props) => props.theme.colors.};
+    background-color: ${(props) => props.theme.colors.background};
     margin: 0;
     padding: 0;
     

@@ -1,11 +1,19 @@
 import { DefaultTheme } from "styled-components";
 
 export const light: DefaultTheme = {
-  name: "Default",
+  name: "light",
   colors: {
-    primary: "#161616",
-    secundary: "#8AFF00",
+    primary: "#12F6D6",
+    secundary: "#161616",
     background: "#161616",
+    close: "",
+    edit: "",
+    delete: "",
+    cancel: "",
+    create: "",
+    save: "",
+    black: "#000000",
+    white: "#FFFFFF",
   },
   fonts: {
     playWrite: "'Playwrite IT Moderna', cursive",

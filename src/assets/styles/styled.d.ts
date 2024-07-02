@@ -7,6 +7,14 @@ declare module "styled-components" {
       primary: string;
       secundary: string;
       background: string;
+      close: string;
+      edit: string;
+      delete: string;
+      cancel: string;
+      create: string;
+      save: string;
+      black: string;
+      white: string;
     };
     fonts: {
       playWrite: string;

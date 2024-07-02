@@ -37,6 +37,7 @@ export const Login = async (params: LoginDTO.IParams) => {
       message: SUCCESSFUL_MESSAGE.LOGIN,
       code: "CODIGO",
       token: response.data.token,
+      user: response.data.user,
     };
   } catch (error) {
     if (isAxiosError(error)) {

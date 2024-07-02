@@ -8,6 +8,7 @@ export namespace LoginDTO {
   };
   export type IResponse = {
     token: string;
+    user: User;
   };
 }
 
