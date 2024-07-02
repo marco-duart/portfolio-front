@@ -51,7 +51,7 @@ export const TextInput = styled("input")<{ error: boolean }>`
 
   &:focus {
   border: none;
-  box-shadow: 0px 1.5px 0px 0px #72E985;
+  box-shadow: 0px 1.5px 0px 0px ${ props => props.theme.colors.primary };
   outline: none;
   }
 

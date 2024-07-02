@@ -1,15 +1,40 @@
 import styled from "styled-components";
 
 export const BaseButton = styled.button`
-  border: none;
-  color: ${(props) => props.theme.colors.black};
-  font-family: ${(props) => props.theme.fonts.candal};
+  display: inline-block;
+  padding: 0.5rem 0.5rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: ${ props => props.theme.colors.secundary };
+  border: 3px solid ${ props => props.theme.colors.primary };
   cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
 
-  :hover {
-    color: ${(props) => props.theme.colors.white};
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${ props => props.theme.colors.primary };
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    transform: translateX(0);
   }
 `;
+
+
+
+
 
 export const FormButton = styled.button`
   border: none;
