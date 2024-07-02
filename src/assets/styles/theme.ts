@@ -13,7 +13,7 @@ export const light: DefaultTheme = {
     create: "",
     save: "",
     black: "#000000",
-    white: "#FFFFFF",
+    white: "#e8e8e8",
   },
   fonts: {
     playWrite: "'Playwrite IT Moderna', cursive",

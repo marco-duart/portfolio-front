@@ -5,9 +5,12 @@ const Login = () => {
   return (
     <S.Container>
     <S.Section side="left">
-      <div>
-        Hello Marco Aurélio!
-      </div>
+      <S.SectionText>
+        Olá Marco Aurélio!
+      </S.SectionText>
+      <S.SectionText>
+        Entre com suas credenciais para ter acesso ao painel de controle.
+      </S.SectionText>
     </S.Section>
     <S.Section side="right">
       <LoginForm />

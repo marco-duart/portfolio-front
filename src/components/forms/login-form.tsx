@@ -77,7 +77,7 @@ const LoginForm = () => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit(handleLogin)}>
+    <S.LoginForm onSubmit={handleSubmit(handleLogin)}>
       <div>
         <label htmlFor="email" hidden>
           E-mail
@@ -92,7 +92,7 @@ const LoginForm = () => {
           <small>{errors.email.message}</small>
         )}
       </div>
-      <div>
+      <S.PasswordSection>
         <label htmlFor="password" hidden>
           Senha
         </label>
@@ -102,19 +102,19 @@ const LoginForm = () => {
           placeholder="Senha"
           error={errors.password ? true : false}
         />
-        <div onClick={() => handlePassword()}>
+        <S.HandlePassword onClick={() => handlePassword()}>
           {passwordIsOpen ? <EyeFill /> : <EyeSlashFill />}
-        </div>
+        </S.HandlePassword>
         {errors.password && (
           <small>{errors.password.message}</small>
         )}
-      </div>
+      </S.PasswordSection>
       <div>
         <label htmlFor="remember">Lembrar</label>
         <input {...register("remember")} type="checkbox" />
       </div>
       <BaseButton type="submit">ENTRAR</BaseButton>
-    </form>
+    </S.LoginForm>
   );
 };
 
