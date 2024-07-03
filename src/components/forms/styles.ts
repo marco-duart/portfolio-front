@@ -37,7 +37,7 @@ export const PasswordSection = styled.div`
 // -- INPUTS --
 
 export const TextInput = styled("input")<{ error: boolean }>`
-  width: 255px;
+  width: 250px;
   border: none;
   box-shadow: 0px 1.5px 0px 0px #858585;
   padding: .5rem;

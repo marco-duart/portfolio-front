@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const BaseButton = styled.button`
   display: inline-block;
-  padding: 0.5rem 0.5rem;
+  width: 250px;
+  height: 50px;
   font-size: 16px;
   font-weight: 700;
   color: ${ props => props.theme.colors.secundary };
