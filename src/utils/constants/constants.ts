@@ -1,8 +1,8 @@
 import backgroundEffect1 from "../../assets/images/background-effect-1.png"
 import backgroundEffect2 from "../../assets/images/background-effect-2.png"
-import logoColors from "../../assets/images/logo-colors.svg"
-import logoWhite from "../../assets/images/logo-white.svg"
-import logoBlack from "../../assets/images/logo-black.svg"
+import logoColors from "../../assets/images/logo-colors.png"
+import logoWhite from "../../assets/images/logo-white.png"
+import logoBlack from "../../assets/images/logo-black.png"
 import logoBackgroundColors from "../../assets/images/logo-background-white.svg"
 import logoBackgroundBlack from "../../assets/images/logo-background-black.svg"
 

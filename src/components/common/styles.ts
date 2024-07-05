@@ -1,19 +1,54 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 // HEADER
 export const Header = styled.header`
-  position: sticky;
-  top: 0;
+  /* position: sticky; */
+  /* top: 0; */
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
   height: 100px;
+  padding: 0 4rem;
   background-color: ${ props => props.theme.colors.background };
-  z-index: 1;
+  /* z-index: 1; */
 `;
 
+export const Navbar = styled.header`
+  display: flex;
+`
 
+export const Link = styled(NavLink)`
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  gap: 25px;
+  color: ${(props) => props.theme.colors.white};
+  border-radius: 10px;
+  :hover {
+    background-color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.black};
+  }
+  &.active {
+    color: ${(props) => props.theme.colors.black};
+    background-color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+// LOGO
+export const Logo = styled.div`
+  width: 130px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`
 
 // FOOTER
 export const Footer = styled.footer`
@@ -74,15 +109,5 @@ export const FooterEnd = styled.div`
   }
   a{
     color: ${ props => props.theme.colors.white };
-  }
-`
-
-// LOGO
-export const Logo = styled.div`
-  
-
-  img {
-    width: 130px;
-    height: 130px;
   }
 `

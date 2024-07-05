@@ -8,14 +8,27 @@ import Logo from "./logo";
 import * as S from "./styles";
 //UTILS
 
-const Header = () => {
+const Header: React.FC = () => {
 
   return (
     <S.Header>
       <div>
         <Logo />
       </div>
-      <div></div>
+      <S.Navbar>
+        <S.Link to={"/admin/dashboard"}>
+          Home
+        </S.Link>
+        <S.Link to={"/admin/dashboard"}>
+          Portfolio
+        </S.Link>
+        <S.Link to={"/admin/dashboard"}>
+          About
+        </S.Link>
+        <S.Link to={"/admin/dashboard"}>
+          Contact
+        </S.Link>
+      </S.Navbar>
     </S.Header>
   );
 };
