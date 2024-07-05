@@ -1,5 +1,10 @@
 import backgroundEffect1 from "../../assets/images/background-effect-1.png"
 import backgroundEffect2 from "../../assets/images/background-effect-2.png"
+import logoColors from "../../assets/images/logo-colors.svg"
+import logoWhite from "../../assets/images/logo-white.svg"
+import logoBlack from "../../assets/images/logo-black.svg"
+import logoBackgroundColors from "../../assets/images/logo-background-white.svg"
+import logoBackgroundBlack from "../../assets/images/logo-background-black.svg"
 
 export const LOCALSTORAGE_TOKEN_KEY = "portfolio-token";
 export const LOCALSTORAGE_SEARCH_KEY = "searches";
@@ -26,5 +31,10 @@ export const DEVICE = {
 
 export const IMAGES = {
   backgroundEffect1,
-  backgroundEffect2
+  backgroundEffect2,
+  logoColors,
+  logoWhite,
+  logoBlack,
+  logoBackgroundColors,
+  logoBackgroundBlack,
 }
