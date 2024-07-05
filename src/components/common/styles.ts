@@ -76,3 +76,13 @@ export const FooterEnd = styled.div`
     color: ${ props => props.theme.colors.white };
   }
 `
+
+// LOGO
+export const Logo = styled.div`
+  
+
+  img {
+    width: 130px;
+    height: 130px;
+  }
+`
