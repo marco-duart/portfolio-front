@@ -39,8 +39,8 @@ export const BaseButton = styled.button`
 
 export const FormButton = styled.button`
   border: none;
-  color: ${(props) => props.theme.colors.white};
-  font-family: ${(props) => props.theme.fonts.candal};
+  color: ${ (props) => props.theme.colors.white };
+  font-family: ${ (props) => props.theme.fonts.candal };
   cursor: pointer;
 `;
 
@@ -64,7 +64,7 @@ export const CrudButton = styled("button")<{ action: "close" | "edit" | "delete"
   }};
 
   border: none;
-  color: ${(props) => props.theme.colors.white};
-  font-family: ${(props) => props.theme.fonts.candal};
+  color: ${ (props) => props.theme.colors.white };
+  font-family: ${ (props) => props.theme.fonts.candal };
   cursor: pointer;
 `;

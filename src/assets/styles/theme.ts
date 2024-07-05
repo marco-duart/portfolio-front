@@ -5,6 +5,7 @@ export const light: DefaultTheme = {
   colors: {
     primary: "#12F6D6",
     secundary: "#161616",
+    tertiary: "#098776",
     background: "#161616",
     close: "",
     edit: "",
@@ -13,6 +14,7 @@ export const light: DefaultTheme = {
     create: "",
     save: "",
     black: "#000000",
+    lightGray: "#d3d3d3",
     white: "#e8e8e8",
   },
   fonts: {
