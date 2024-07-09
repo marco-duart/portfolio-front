@@ -1,7 +1,7 @@
 import LoginForm from "../../components/forms/login-form"
 import * as S from "./styles"
 
-const Login = () => {
+export const Login = () => {
   return (
     <S.Container>
     <S.Section side="left">
@@ -18,5 +18,3 @@ const Login = () => {
     </S.Container>
   )
 }
-
-export default Login

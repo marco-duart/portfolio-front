@@ -2,6 +2,7 @@
 
 //LIBRARIES
 import styled from "styled-components";
+import {StyledIconBase} from '@styled-icons/styled-icon'
 
 //COMPONENTS
 
@@ -10,10 +11,6 @@ import styled from "styled-components";
 //UTILS
 
 export const IconContainer = styled.div`
-  cursor: pointer;
-  position: absolute;
-  top: 15px;
-  left: 10px;
   width: 40px;
   height: 40px;
   
@@ -22,3 +19,9 @@ export const IconContainer = styled.div`
     color: ${ props => props.theme.colors.black };
   }
 `;
+
+export const Icon = styled.div`
+  ${StyledIconBase} {
+    color: red;
+  }
+`

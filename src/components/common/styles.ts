@@ -49,6 +49,50 @@ export const Logo = styled.div`
   }
 `
 
+// SIDEBAR
+export const Sidebar = styled("div")<{ expanded: boolean }>`
+  width: ${(props) => (props.expanded ? "320px" : "80px")};
+  height: 100%;
+  position: relative;
+  background-color: ${ props => props.theme.colors.primary};
+`
+
+export const SidebarStick = styled.div`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0px;
+  padding-bottom: 40px;
+`;
+
+export const IconsContainer = styled.div`
+  width: 100%;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+`;
+
+export const Menu = styled.div`
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+`;
+
+
+export const Navigation = styled.div`
+
+`;
+
+
 // FOOTER
 export const Footer = styled.footer`
   width: 100%;

@@ -1,16 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "../pages/login";
 import BaseLayout from "../components/base-layout";
-import Home from "../pages/home";
+import AdminLayout from "../components/admin-layout"
+import { Home, Login, Profile, Portfolio } from "../pages";
 
 
 const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" Component={Login}/>
+        <Route path="/login" Component={Login}/>
         <Route Component={BaseLayout}>
-          <Route path="/home" Component={Home} />
+          <Route path="/" Component={Home} />
+        </Route>
+        <Route path="/admin" Component={AdminLayout}>
+          <Route path="/admin" Component={Profile} />
+          <Route path="/admin/portfolio" Component={Portfolio} />
         </Route>
       </Routes>
     </BrowserRouter>
