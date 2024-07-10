@@ -8,13 +8,12 @@ import { StyledIcon } from "@styled-icons/styled-icon";
 
 //STYLES
 import * as S from "./styles";
-import { Link } from "react-router-dom";
 
 //UTILS
 
 type Props = {
   icon: StyledIcon;
-  link?: string;
+  link: string;
   handleClick?: () => void;
   expanded: boolean;
   text: string;
@@ -22,21 +21,25 @@ type Props = {
 
 const BaseIcon: React.FC<Props> = (props) => {
   const { link, handleClick, expanded, text, ...rest } = props;
-  console.log(link);
+
   return (
     <S.IconContainer>
-      {link && (
-        <Link to={link}>
-          <S.Icon><rest.icon /></S.Icon>
-          {expanded && <div>{text}</div>}
-        </Link>
-      )}
-      {handleClick && (
+      {handleClick ? (
         <div>
-          <S.Icon><rest.icon onClick={() => handleClick()} /></S.Icon>
-          
+          <S.Icon>
+            <rest.icon onClick={() => handleClick()} />
+          </S.Icon>
+
           {expanded && <div>{text}</div>}
-        </div>
+          </div>
+      ) : (
+          <S.Link to={link}>
+            <S.Icon>
+              <rest.icon />
+            </S.Icon>
+          {expanded && <h3>{text}</h3>}
+          </S.Link>
+        
       )}
     </S.IconContainer>
   );

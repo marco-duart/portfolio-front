@@ -22,22 +22,45 @@ const Sidebar = () => {
   return (
     <S.Sidebar expanded={expanded}>
       <S.SidebarStick>
-        {/* <S.IconsContainer> */}
+        <S.IconsContainer>
           <S.Menu>
-              {!expanded && (
-                <BaseIcon icon={MenuAltLeft} handleClick={handleExpanded} expanded={expanded} text="" />
-              )}
-              {expanded && (
-                <BaseIcon icon={Menu} handleClick={handleExpanded} expanded={expanded} text=""/>
-              )}
+            {!expanded && (
+              <BaseIcon
+                icon={MenuAltLeft}
+                link=""
+                handleClick={handleExpanded}
+                expanded={expanded}
+                text=""
+              />
+            )}
+            {expanded && (
+              <BaseIcon
+                icon={Menu}
+                link=""
+                handleClick={handleExpanded}
+                expanded={expanded}
+                text=""
+              />
+            )}
           </S.Menu>
 
           <S.Navigation>
-              <BaseIcon icon={Profile} link="/admin/profile" expanded={expanded} text="Currículo"/>
-              <BaseIcon icon={Portfolio} link="/admin/portfolio" expanded={expanded} text="Portfolio"/>
-              <BaseIcon icon={Exit} link="/" expanded={expanded} text="Sair"/>
+            <BaseIcon
+              icon={Profile}
+              link="/admin/profile"
+              expanded={expanded}
+              text="Currículo"
+            />
+            <BaseIcon
+              icon={Portfolio}
+              link="/admin/portfolio"
+              expanded={expanded}
+              text="Portfolio"
+            />
           </S.Navigation>
-        {/* </S.IconsContainer> */}
+
+          <BaseIcon icon={Exit} link="/" expanded={expanded} text="Sair" />
+        </S.IconsContainer>
       </S.SidebarStick>
     </S.Sidebar>
   );

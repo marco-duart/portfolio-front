@@ -11,13 +11,13 @@ export const Header = styled.header`
   width: 100%;
   height: 100px;
   padding: 0 4rem;
-  background-color: ${ props => props.theme.colors.background };
+  background-color: ${(props) => props.theme.colors.background};
   /* z-index: 1; */
 `;
 
 export const Navbar = styled.header`
   display: flex;
-`
+`;
 
 export const Link = styled(NavLink)`
   text-decoration: none;
@@ -47,66 +47,60 @@ export const Logo = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
 // SIDEBAR
 export const Sidebar = styled("div")<{ expanded: boolean }>`
-  width: ${(props) => (props.expanded ? "320px" : "80px")};
+  width: ${(props) => (props.expanded ? "280px" : "80px")};
   height: 100%;
   position: relative;
-  background-color: ${ props => props.theme.colors.primary};
-`
+  background-color: ${(props) => props.theme.colors.primary};
+`;
 
 export const SidebarStick = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
   padding: 20px 0px;
   padding-bottom: 40px;
 `;
 
 export const IconsContainer = styled.div`
-  width: 100%;
-  background-color: blue;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  padding: 1.5rem 10px;
 `;
 
 export const Menu = styled.div`
   height: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 10px;
+  /* display: flex;
+  align-items: center; */
 `;
-
 
 export const Navigation = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
-
 
 // FOOTER
 export const Footer = styled.footer`
   width: 100%;
   height: 400px;
-`
+`;
 
 export const FooterContent = styled.div`
   width: 100%;
   height: 83%;
   padding: 50px 30px 0 30px;
-  background-color: ${ props => props.theme.colors.tertiary };
+  background-color: ${(props) => props.theme.colors.tertiary};
   display: flex;
   justify-content: space-around;
-`
+`;
 
 export const FooterList = styled.ul`
   list-style-type: none;
@@ -119,20 +113,20 @@ export const FooterList = styled.ul`
     gap: 10px;
   }
   h4 {
-    font-family: ${ props => props.theme.fonts.openSans };
-    color: ${ props => props.theme.colors.white };
+    font-family: ${(props) => props.theme.fonts.openSans};
+    color: ${(props) => props.theme.colors.white};
   }
   a {
     text-decoration: none;
-    font-family: ${ props => props.theme.fonts.openSans };
-    color: ${ props => props.theme.colors.white };
+    font-family: ${(props) => props.theme.fonts.openSans};
+    color: ${(props) => props.theme.colors.white};
   }
   div {
     width: 40px;
     height: 40px;
     margin-bottom: 25px;
   }
-`
+`;
 
 export const FooterEnd = styled.div`
   width: 100%;
@@ -142,15 +136,15 @@ export const FooterEnd = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  background-color: ${ props => props.theme.colors.background };
-  font-family: ${ props => props.theme.fonts.openSans };
-  color: ${ props => props.theme.colors.lightGray };
+  background-color: ${(props) => props.theme.colors.background};
+  font-family: ${(props) => props.theme.fonts.openSans};
+  color: ${(props) => props.theme.colors.lightGray};
 
   span {
     display: flex;
     gap: 20px;
   }
-  a{
-    color: ${ props => props.theme.colors.white };
+  a {
+    color: ${(props) => props.theme.colors.white};
   }
-`
+`;
