@@ -17,6 +17,7 @@ export const Header = styled.header`
 
 export const Navbar = styled.header`
   display: flex;
+  gap: 25px;
 `;
 
 export const Link = styled(NavLink)`
@@ -26,7 +27,6 @@ export const Link = styled(NavLink)`
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  gap: 25px;
   color: ${(props) => props.theme.colors.white};
   border-radius: 10px;
   :hover {
@@ -83,6 +83,7 @@ export const Menu = styled.div`
 
 export const Navigation = styled.div`
   display: flex;
+  height: 60%;
   flex-direction: column;
   gap: 1rem;
 `;

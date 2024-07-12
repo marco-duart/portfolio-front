@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 //STYLES
 
 //UTILS
+//HOOKS
 
 export const IconContainer = styled.div`
   display: flex;
@@ -50,6 +51,6 @@ export const Link = styled(NavLink)`
   }
   &.active {
     color: ${(props) => props.theme.colors.black};
-    background-color: ${(props) => props.theme.colors.tertiary};
+    background-color: ${(props) => props.theme.colors.white};
   }
 `;

@@ -11,6 +11,7 @@ import BaseIcon from "../shared/icons/base-icon";
 import * as S from "./styles";
 
 //UTILS
+//HOOKS
 
 const Sidebar = () => {
   const [expanded, setExpanded] = useState<boolean>(true);

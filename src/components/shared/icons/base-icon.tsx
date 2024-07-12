@@ -31,15 +31,14 @@ const BaseIcon: React.FC<Props> = (props) => {
           </S.Icon>
 
           {expanded && <div>{text}</div>}
-          </div>
+        </div>
       ) : (
-          <S.Link to={link}>
-            <S.Icon>
-              <rest.icon />
-            </S.Icon>
+        <S.Link to={link}>
+          <S.Icon>
+            <rest.icon />
+          </S.Icon>
           {expanded && <h3>{text}</h3>}
-          </S.Link>
-        
+        </S.Link>
       )}
     </S.IconContainer>
   );

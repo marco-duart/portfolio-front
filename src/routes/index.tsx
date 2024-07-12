@@ -12,8 +12,8 @@ const Router: React.FC = () => {
         <Route Component={BaseLayout}>
           <Route path="/" Component={Home} />
         </Route>
-        <Route path="/admin" Component={AdminLayout}>
-          <Route path="/admin" Component={Profile} />
+        <Route Component={AdminLayout}>
+          <Route path="/admin/profile" Component={Profile} />
           <Route path="/admin/portfolio" Component={Portfolio} />
         </Route>
       </Routes>
