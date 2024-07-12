@@ -1,9 +1,11 @@
 import { Skill } from "../../models/skill";
+import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 
 export namespace CreateSkillDTO {
   export type IParams = {
     resumeId: number;
-
+    name: string;
+    level: SkillLevelEnum;
     token: string;
   };
   export type IResponse = {
@@ -39,7 +41,8 @@ export namespace GetSkillDTO {
 export namespace UpdateSkillDTO {
   export type IParams = {
     skillId: number;
-
+    name?: string;
+    level?: SkillLevelEnum;
     token: string;
   };
   export type IResponse = {

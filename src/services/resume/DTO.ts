@@ -2,7 +2,9 @@ import { Resume } from "../../models/resume";
 
 export namespace CreateResumeDTO {
   export type IParams = {
-
+    userId: number;
+    title: string;
+    summary: string;
     token: string;
   };
   export type IResponse = {
@@ -27,7 +29,8 @@ export namespace GetResumeDTO {
 export namespace UpdateResumeDTO {
   export type IParams = {
     resumeId: number;
-
+    title: string;
+    summary: string;
     token: string;
   };
   export type IResponse = {

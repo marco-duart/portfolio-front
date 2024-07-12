@@ -3,7 +3,11 @@ import { Experience } from "../../models/experience";
 export namespace CreateExperienceDTO {
   export type IParams = {
     resumeId: number;
-
+    companyName: string;
+    role: string;
+    startDate: Date;
+    endDate: Date;
+    description: string;
     token: string;
   };
   export type IResponse = {
@@ -39,7 +43,11 @@ export namespace GetExperienceDTO {
 export namespace UpdateExperienceDTO {
   export type IParams = {
     experienceId: number;
-
+    companyName?: string;
+    role?: string;
+    startDate?: Date;
+    endDate?: Date;
+    description?: string;
     token: string;
   };
   export type IResponse = {
