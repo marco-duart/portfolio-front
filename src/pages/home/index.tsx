@@ -1,11 +1,13 @@
 import * as S from "./styles";
 import * as CONSTANTS from "../../utils/constants/constants";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export const Home: React.FC = () => {
-  const [hoveredSection, setHoveredSection] = useState<null | 'front' | 'back'>(null);
+  const [hoveredSection, setHoveredSection] = useState<null | "front" | "back">(
+    null
+  );
 
-  const handleMouseEnter = (section: 'front' | 'back') => {
+  const handleMouseEnter = (section: "front" | "back") => {
     setHoveredSection(section);
   };
 
@@ -13,16 +15,21 @@ export const Home: React.FC = () => {
     setHoveredSection(null);
   };
 
-  const bgColor = hoveredSection === 'front' ? '#ff4d4d' : hoveredSection === 'back' ? '#007bff' : '#f0f0f0';
+  const bgColor =
+    hoveredSection === "front"
+      ? "#ff4d4d"
+      : hoveredSection === "back"
+      ? "#007bff"
+      : "#f0f0f0";
 
   return (
     <S.Container bgColor={bgColor}>
       <S.ImageContainer>
         <S.ImageWrapper
           side="left"
-          onMouseEnter={() => handleMouseEnter('front')}
+          onMouseEnter={() => handleMouseEnter("front")}
           onMouseLeave={handleMouseLeave}
-          hovered={hoveredSection === 'front'}
+          hovered={hoveredSection === "front"}
         >
           <S.Image src={CONSTANTS.IMAGES.frontEnd} alt="Front-end" />
           <S.Info>
@@ -37,9 +44,9 @@ export const Home: React.FC = () => {
         </S.ImageWrapper>
         <S.ImageWrapper
           side="right"
-          onMouseEnter={() => handleMouseEnter('back')}
+          onMouseEnter={() => handleMouseEnter("back")}
           onMouseLeave={handleMouseLeave}
-          hovered={hoveredSection === 'back'}
+          hovered={hoveredSection === "back"}
         >
           <S.Image src={CONSTANTS.IMAGES.backEnd} alt="Back-end" />
           <S.Info>

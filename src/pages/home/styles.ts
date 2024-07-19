@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { motion } from 'framer-motion';
+import styled, {css} from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.div<{ bgColor: string }>`
   display: flex;
@@ -20,19 +20,27 @@ export const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export const ImageWrapper = styled(motion.div)<{ side: 'left' | 'right'; hovered: boolean }>`
+export const ImageWrapper = styled(motion.div)<{
+  side: "left" | "right";
+  hovered: boolean;
+}>`
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-  ${(props) => (props.side === 'left' ? 'left: 0;' : 'right: 0;')}
+  ${(props) => (props.side === "left" ? "left: 0;" : "right: 0;")}
   clip-path: ${(props) =>
     props.hovered
-      ? 'inset(0 0 0 0)'
-      : (props.side === 'left' ? 'inset(0 50% 0 0)' : 'inset(0 0 0 50%)')};
-  transform: ${(props) => (props.hovered ? 'scale(1)' : 'scale(1.1)')};
-  transition: clip-path 0.3s ease, transform 0.3s ease;
+      ? "inset(0 0 0 0)"
+      : props.side === "left"
+      ? "inset(0 50% 0 0)"
+      : "inset(0 0 0 50%)"};
+  transform: ${(props) =>
+    props.hovered
+      ? `translateX(${props.side === "left" ? "-30%" : "30%"}) scale(1)`
+      : "translateX(0%) scale(0.9)"};
+  transition: transform 0.3s ease, clip-path 0.3s ease;
   z-index: ${(props) => (props.hovered ? 2 : 1)};
 `;
 
