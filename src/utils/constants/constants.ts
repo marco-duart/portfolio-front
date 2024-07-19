@@ -5,6 +5,8 @@ import logoWhite from "../../assets/images/logo-white.png"
 import logoBlack from "../../assets/images/logo-black.png"
 import logoBackgroundColors from "../../assets/images/logo-background-white.svg"
 import logoBackgroundBlack from "../../assets/images/logo-background-black.svg"
+import frontEnd from "../../assets/images/front-end.png"
+import backEnd from "../../assets/images/back-end.png"
 
 export const LOCALSTORAGE_TOKEN_KEY = "portfolio-token";
 export const LOCALSTORAGE_SEARCH_KEY = "searches";
@@ -37,4 +39,6 @@ export const IMAGES = {
   logoBlack,
   logoBackgroundColors,
   logoBackgroundBlack,
+  frontEnd,
+  backEnd,
 }

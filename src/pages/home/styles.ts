@@ -1,37 +1,45 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { motion } from 'framer-motion';
-import * as CONSTANTS from "../../utils/constants/constants"
 
-export const Container = styled.div`
+export const Container = styled.div<{ bgColor: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  width: 100vw;
+  background-color: ${(props) => props.bgColor};
+  overflow: hidden;
+  position: relative;
 `;
 
 export const ImageContainer = styled.div`
   position: relative;
-  display: flex;
   width: 80%;
   height: 80%;
+  display: flex;
   overflow: hidden;
-  border: 2px solid #000;
 `;
 
-export const ImageSection = styled(motion.div)<{ backgroundColor: string }>`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.backgroundColor};
-  transition: background-color 0.3s ease;
+export const ImageWrapper = styled(motion.div)<{ side: 'left' | 'right'; hovered: boolean }>`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  ${(props) => (props.side === 'left' ? 'left: 0;' : 'right: 0;')}
+  clip-path: ${(props) =>
+    props.hovered
+      ? 'inset(0 0 0 0)'
+      : (props.side === 'left' ? 'inset(0 50% 0 0)' : 'inset(0 0 0 50%)')};
+  transform: ${(props) => (props.hovered ? 'scale(1)' : 'scale(1.1)')};
+  transition: clip-path 0.3s ease, transform 0.3s ease;
+  z-index: ${(props) => (props.hovered ? 2 : 1)};
 `;
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const Info = styled.div`
@@ -40,4 +48,7 @@ export const Info = styled.div`
   left: 20px;
   color: #fff;
   z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
 `;

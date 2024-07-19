@@ -1,8 +1,8 @@
-import * as S from "./styles"
-import * as CONSTANTS from "../../utils/constants/constants"
+import * as S from "./styles";
+import * as CONSTANTS from "../../utils/constants/constants";
 import React, { useState } from 'react';
 
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   const [hoveredSection, setHoveredSection] = useState<null | 'front' | 'back'>(null);
 
   const handleMouseEnter = (section: 'front' | 'back') => {
@@ -13,20 +13,18 @@ const Home: React.FC = () => {
     setHoveredSection(null);
   };
 
+  const bgColor = hoveredSection === 'front' ? '#ff4d4d' : hoveredSection === 'back' ? '#007bff' : '#f0f0f0';
+
   return (
-    <S.Container>
+    <S.Container bgColor={bgColor}>
       <S.ImageContainer>
-        <S.ImageSection
-          backgroundColor={hoveredSection === 'front' ? 'rgba(0, 123, 255, 0.7)' : 'transparent'}
+        <S.ImageWrapper
+          side="left"
           onMouseEnter={() => handleMouseEnter('front')}
           onMouseLeave={handleMouseLeave}
+          hovered={hoveredSection === 'front'}
         >
-          <S.Image
-            src="/front-end-image.png"
-            style={{
-              transform: hoveredSection === 'front' ? 'scale(1.1)' : 'scale(1)',
-            }}
-          />
+          <S.Image src={CONSTANTS.IMAGES.frontEnd} alt="Front-end" />
           <S.Info>
             <h2>Front-end Skills</h2>
             <ul>
@@ -36,18 +34,14 @@ const Home: React.FC = () => {
               <li>React</li>
             </ul>
           </S.Info>
-        </S.ImageSection>
-        <S.ImageSection
-          backgroundColor={hoveredSection === 'back' ? 'rgba(255, 193, 7, 0.7)' : 'transparent'}
+        </S.ImageWrapper>
+        <S.ImageWrapper
+          side="right"
           onMouseEnter={() => handleMouseEnter('back')}
           onMouseLeave={handleMouseLeave}
+          hovered={hoveredSection === 'back'}
         >
-          <S.Image
-            src="/back-end-image.png"
-            style={{
-              transform: hoveredSection === 'back' ? 'scale(1.1)' : 'scale(1)',
-            }}
-          />
+          <S.Image src={CONSTANTS.IMAGES.backEnd} alt="Back-end" />
           <S.Info>
             <h2>Back-end Skills</h2>
             <ul>
@@ -57,10 +51,8 @@ const Home: React.FC = () => {
               <li>SQL</li>
             </ul>
           </S.Info>
-        </S.ImageSection>
+        </S.ImageWrapper>
       </S.ImageContainer>
     </S.Container>
   );
 };
-
-export default Home;
