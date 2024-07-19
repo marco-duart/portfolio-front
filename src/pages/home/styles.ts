@@ -24,7 +24,7 @@ export const ImageWrapper = styled(motion.div)<{ side: 'left' | 'right'; hovered
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 50%;
+  width: 100%;
   height: 100%;
   ${(props) => (props.side === 'left' ? 'left: 0;' : 'right: 0;')}
   clip-path: ${(props) =>

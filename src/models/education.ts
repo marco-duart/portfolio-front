@@ -4,8 +4,8 @@ export interface Education {
   id: number;
   institutionName: string;
   degree: EducationDegreeEnum;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   description: string;
   createdAt: Date;
   updatedAt: Date;
