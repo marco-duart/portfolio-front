@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const Container = styled.div<{ bgColor: string }>`
@@ -23,6 +23,7 @@ export const ImageContainer = styled.div`
 export const ImageWrapper = styled(motion.div)<{
   side: "left" | "right";
   hovered: boolean;
+  initialState: boolean;
 }>`
   position: absolute;
   top: 0;
@@ -33,9 +34,9 @@ export const ImageWrapper = styled(motion.div)<{
   clip-path: ${(props) =>
     props.hovered
       ? "inset(0 0 0 0)"
-      : props.side === "left"
-      ? "inset(0 50% 0 0)"
-      : "inset(0 0 0 50%)"};
+      : props.initialState
+      ? (props.side === "left" ? "inset(0 50% 0 0)" : "inset(0 0 0 50%)")
+      : "inset(0 100% 0 0)"};
   transform: ${(props) =>
     props.hovered
       ? `translateX(${props.side === "left" ? "-30%" : "30%"}) scale(1)`
@@ -50,13 +51,22 @@ export const Image = styled.img`
   object-fit: cover;
 `;
 
-export const Info = styled.div`
+export const Info = styled.div<{ hoveredSection: "front" | "back" }>`
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  ${(props) => (props.hoveredSection === "front" ? "right: 10%;" : "left: 10%;")}
   color: #fff;
-  z-index: 10;
+  z-index: 3;
   background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
 `;
