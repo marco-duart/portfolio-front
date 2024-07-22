@@ -51,15 +51,26 @@ export const Home: React.FC = () => {
                 <>
                   <li>HTML</li>
                   <li>CSS</li>
+                  <li>SCSS</li>
+                  <li>Bootstrap</li>
+                  <li>Saas</li>
                   <li>JavaScript</li>
+                  <li>TypeScript</li>
                   <li>React</li>
+                  <li>React Native</li>
+                  <li>Redux</li>
+                  <li>NextJs</li>
                 </>
               ) : (
                 <>
-                  <li>Node.js</li>
+                  <li>NodeJs</li>
+                  <li>TypeScript</li>
                   <li>Express</li>
+                  <li>NestJs</li>
+                  <li>Ruby on Rails</li>
                   <li>MongoDB</li>
-                  <li>SQL</li>
+                  <li>MySQL</li>
+                  <li>PostgreSQL</li>
                 </>
               )}
             </ul>
