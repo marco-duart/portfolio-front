@@ -1,36 +1,27 @@
-//NATIVE
 import React, { useEffect, useState } from "react";
 //LIBRARIES
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-//COMPONENTS
-
-
 //STYLES
 import * as S from "./styles";
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Resume } from "../../models/resume";
 
-//HOOKS
-
-
 const resumeFormSchema = z.object({
   title: z.string().min(3, FORM_MESSAGE.RESUME_TITLE),
-  summary: z.string().min(3, FORM_MESSAGE.RESUME_SUMMARY)
+  summary: z.string().min(3, FORM_MESSAGE.RESUME_SUMMARY),
 });
 
 type ResumeFormData = z.infer<typeof resumeFormSchema>;
 
 type Props = {
   resume?: Resume;
-  isOpen: boolean;
 };
 
 export const ResumeForm: React.FC<Props> = ({
   resume,
-  isOpen,
 }) => {
   const [disabled, setDisabled] = useState<boolean>(resume ? true : false);
   const {
@@ -42,30 +33,16 @@ export const ResumeForm: React.FC<Props> = ({
     resolver: zodResolver(resumeFormSchema),
   });
 
-  // Disable input when action is view
   const handleDisableInput = () => {
     setDisabled(!disabled);
   };
 
   const handleSubmitForm = async (data: ResumeFormData) => {
-    // if (resume && data.id) {
-    //   const { id, ...rest } = data;
-    //   if (!id) {
-    //     return;
-    //   }
-    //   onEdit({ ...rest, id });
-    // } else {
-    //   const { id, ...rest } = data;
-    //   onCreate(rest);
-    // }
-    // onClose();
+    // Handle form submission logic here
   };
 
   const handleDeleteForm = async () => {
-    // if (resume) {
-    //   onDelete({ id: resume?.id });
-    //   onClose();
-    // }
+    // Handle form deletion logic here
   };
 
   useEffect(() => {
@@ -78,17 +55,33 @@ export const ResumeForm: React.FC<Props> = ({
       setValue("title", "");
       setValue("summary", "");
     }
-  }, [resume, isOpen]);
+  }, [resume]);
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}>
       <div>
-        <label htmlFor=""></label><input {...register("title")} type="text" />
+        <label htmlFor="title">Title</label>
+        <S.TextInput
+          error={errors.title ? true : false}
+          {...register("title")}
+          type="text"
+          disabled={disabled}
+        />
+        {errors.title && <p>{errors.title.message}</p>}
       </div>
       <div>
-        <label htmlFor=""></label>
-        <textarea {...register("summary")}></textarea>
+        <label htmlFor="summary">Summary</label>
+        <S.TextArea
+          error={errors.summary ? true : false}
+          {...register("summary")}
+          disabled={disabled}
+        />
+        {errors.summary && <p>{errors.summary.message}</p>}
       </div>
+      <button type="submit">Submit</button>
+      <button type="button" onClick={handleDisableInput}>
+        {disabled ? "Enable Editing" : "Disable Editing"}
+      </button>
     </form>
   );
 };

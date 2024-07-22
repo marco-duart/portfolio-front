@@ -33,7 +33,6 @@ export const PasswordSection = styled.div`
   }
 `;
 
-
 // -- INPUTS --
 
 export const TextInput = styled("input")<{ error: boolean }>`
@@ -45,17 +44,104 @@ export const TextInput = styled("input")<{ error: boolean }>`
   opacity: .8;
 
   &::placeholder {
-  color: rgb(145, 145, 145);
-  font-size: .75rem;
+    color: rgb(145, 145, 145);
+    font-size: .75rem;
   }
 
   &:focus {
-  border: none;
-  box-shadow: 0px 1.5px 0px 0px ${ props => props.theme.colors.primary };
-  outline: none;
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
+    outline: none;
   }
 
   &:focus::placeholder {
-  visibility: hidden;
+    visibility: hidden;
   }
-`
+`;
+
+export const SelectInput = styled("select")<{ error: boolean }>`
+  width: 250px;
+  border: none;
+  box-shadow: 0px 1.5px 0px 0px #858585;
+  padding: .5rem;
+  transition: all 200ms ease-in-out;
+  opacity: .8;
+
+  &:focus {
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
+    outline: none;
+  }
+`;
+
+export const PasswordInput = styled("input")<{ error: boolean }>`
+  width: 250px;
+  border: none;
+  box-shadow: 0px 1.5px 0px 0px #858585;
+  padding: .5rem;
+  transition: all 200ms ease-in-out;
+  opacity: .8;
+
+  &::placeholder {
+    color: rgb(145, 145, 145);
+    font-size: .75rem;
+  }
+
+  &:focus {
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
+    outline: none;
+  }
+
+  &:focus::placeholder {
+    visibility: hidden;
+  }
+`;
+
+export const TextArea = styled("textarea")<{ error: boolean }>`
+  width: 250px;
+  border: none;
+  box-shadow: 0px 1.5px 0px 0px #858585;
+  padding: .5rem;
+  transition: all 200ms ease-in-out;
+  opacity: .8;
+
+  &::placeholder {
+    color: rgb(145, 145, 145);
+    font-size: .75rem;
+  }
+
+  &:focus {
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
+    outline: none;
+  }
+
+  &:focus::placeholder {
+    visibility: hidden;
+  }
+`;
+
+export const DateInput = styled("input")<{ error: boolean }>`
+  width: 250px;
+  border: none;
+  box-shadow: 0px 1.5px 0px 0px #858585;
+  padding: .5rem;
+  transition: all 200ms ease-in-out;
+  opacity: .8;
+
+  &::placeholder {
+    color: rgb(145, 145, 145);
+    font-size: .75rem;
+  }
+
+  &:focus {
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
+    outline: none;
+  }
+
+  &:focus::placeholder {
+    visibility: hidden;
+  }
+`;
