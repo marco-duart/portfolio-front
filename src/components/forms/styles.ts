@@ -10,6 +10,13 @@ export const LoginForm = styled.form`
   gap: 0.5rem;
 `;
 
+export const ResumeForm = styled.form`
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: ${ props => props.theme.colors.white };
+`
+
 // -- DIVS --
 
 export const HandlePassword = styled.div`

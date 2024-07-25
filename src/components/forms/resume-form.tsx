@@ -20,9 +20,7 @@ type Props = {
   resume?: Resume;
 };
 
-export const ResumeForm: React.FC<Props> = ({
-  resume,
-}) => {
+export const ResumeForm: React.FC<Props> = ({ resume }) => {
   const [disabled, setDisabled] = useState<boolean>(resume ? true : false);
   const {
     register,
@@ -58,30 +56,35 @@ export const ResumeForm: React.FC<Props> = ({
   }, [resume]);
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitForm)}>
+    <S.ResumeForm onSubmit={handleSubmit(handleSubmitForm)}>
       <div>
-        <label htmlFor="title">Title</label>
-        <S.TextInput
-          error={errors.title ? true : false}
-          {...register("title")}
-          type="text"
-          disabled={disabled}
-        />
-        {errors.title && <p>{errors.title.message}</p>}
+        <div>
+          <label htmlFor="title">Title</label>
+          <S.TextInput
+            error={errors.title ? true : false}
+            {...register("title")}
+            type="text"
+            disabled={disabled}
+          />
+          {errors.title && <p>{errors.title.message}</p>}
+        </div>
+        <div>
+          <label htmlFor="summary">Summary</label>
+          <S.TextArea
+            error={errors.summary ? true : false}
+            {...register("summary")}
+            disabled={disabled}
+          />
+          {errors.summary && <p>{errors.summary.message}</p>}
+        </div>
       </div>
+
       <div>
-        <label htmlFor="summary">Summary</label>
-        <S.TextArea
-          error={errors.summary ? true : false}
-          {...register("summary")}
-          disabled={disabled}
-        />
-        {errors.summary && <p>{errors.summary.message}</p>}
+        <button type="submit">Submit</button>
+        <button type="button" onClick={handleDisableInput}>
+          {disabled ? "Enable Editing" : "Disable Editing"}
+        </button>
       </div>
-      <button type="submit">Submit</button>
-      <button type="button" onClick={handleDisableInput}>
-        {disabled ? "Enable Editing" : "Disable Editing"}
-      </button>
-    </form>
+    </S.ResumeForm>
   );
 };
