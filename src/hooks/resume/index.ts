@@ -27,7 +27,6 @@ export const useResumeCrud = () => {
     }
 
     const { resume } = await GetResume({ userId: user.id });
-    console.log(resume)
     setState({ resume });
   };
 
