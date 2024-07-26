@@ -105,7 +105,7 @@ export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit
             Cancelar
           </CrudButton>
         )}
-        <CrudButton type="submit" action="edit">Submit</CrudButton>
+        <CrudButton type="submit" action="save">Salvar</CrudButton>
       </S.ButtonSection>
     </S.ResumeForm>
   );
