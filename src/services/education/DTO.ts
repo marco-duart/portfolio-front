@@ -20,7 +20,6 @@ export namespace CreateEducationDTO {
 
 export namespace GetEducationsDTO {
   export type IParams = {
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -32,7 +31,6 @@ export namespace GetEducationsDTO {
 export namespace GetEducationDTO {
   export type IParams = {
     educationId: number;
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -61,6 +59,7 @@ export namespace UpdateEducationDTO {
 export namespace DeleteEducationDTO {
   export type IParams = {
     educationId: number;
+    token: string;
   };
   export type IResponse = {
     message: string;

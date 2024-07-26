@@ -17,7 +17,6 @@ export namespace CreateResumeDTO {
 export namespace GetResumeDTO {
   export type IParams = {
     resumeId: number;
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -43,6 +42,7 @@ export namespace UpdateResumeDTO {
 export namespace DeleteResumeDTO {
   export type IParams = {
     resumeId: number;
+    token: string;
   };
   export type IResponse = {
     message: string;

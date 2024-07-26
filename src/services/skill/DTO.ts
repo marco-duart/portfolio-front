@@ -17,7 +17,6 @@ export namespace CreateSkillDTO {
 
 export namespace GetSkillsDTO {
   export type IParams = {
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -29,7 +28,6 @@ export namespace GetSkillsDTO {
 export namespace GetSkillDTO {
   export type IParams = {
     skillId: number;
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -55,6 +53,7 @@ export namespace UpdateSkillDTO {
 export namespace DeleteSkillDTO {
   export type IParams = {
     skillId: number;
+    token: string;
   };
   export type IResponse = {
     message: string;

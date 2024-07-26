@@ -19,7 +19,6 @@ export namespace CreateExperienceDTO {
 
 export namespace GetExperiencesDTO {
   export type IParams = {
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -31,7 +30,6 @@ export namespace GetExperiencesDTO {
 export namespace GetExperienceDTO {
   export type IParams = {
     experienceId: number;
-    token: string;
   };
   export type IResponse = {
     message: string;
@@ -60,6 +58,7 @@ export namespace UpdateExperienceDTO {
 export namespace DeleteExperienceDTO {
   export type IParams = {
     experienceId: number;
+    token: string;
   };
   export type IResponse = {
     message: string;

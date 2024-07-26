@@ -14,6 +14,7 @@ export const light: DefaultTheme = {
     create: "",
     save: "",
     black: "#000000",
+    gray: "#999",
     lightGray: "#d3d3d3",
     white: "#e8e8e8",
   },

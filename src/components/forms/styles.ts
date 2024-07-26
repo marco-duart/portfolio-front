@@ -11,9 +11,11 @@ export const LoginForm = styled.form`
 `;
 
 export const ResumeForm = styled.form`
-  min-width: 500px;
+  min-width: 600px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   background-color: ${ props => props.theme.colors.white };
 `
 
@@ -40,6 +42,30 @@ export const PasswordSection = styled.div`
   }
 `;
 
+export const InputSection = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+`
+
+export const ButtonSection = styled.div`
+  display: flex;
+`
+
+// -- TEXTS --
+
+export const Title = styled.h3`
+  width: 100%;
+  text-align: left;
+  margin: 2rem 0;
+`
+
 // -- INPUTS --
 
 export const TextInput = styled("input")<{ error: boolean }>`
@@ -50,19 +76,10 @@ export const TextInput = styled("input")<{ error: boolean }>`
   transition: all 200ms ease-in-out;
   opacity: .8;
 
-  &::placeholder {
-    color: rgb(145, 145, 145);
-    font-size: .75rem;
-  }
-
   &:focus {
     border: none;
     box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
     outline: none;
-  }
-
-  &:focus::placeholder {
-    visibility: hidden;
   }
 `;
 
@@ -89,19 +106,10 @@ export const PasswordInput = styled("input")<{ error: boolean }>`
   transition: all 200ms ease-in-out;
   opacity: .8;
 
-  &::placeholder {
-    color: rgb(145, 145, 145);
-    font-size: .75rem;
-  }
-
   &:focus {
     border: none;
     box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
     outline: none;
-  }
-
-  &:focus::placeholder {
-    visibility: hidden;
   }
 `;
 
@@ -113,19 +121,10 @@ export const TextArea = styled("textarea")<{ error: boolean }>`
   transition: all 200ms ease-in-out;
   opacity: .8;
 
-  &::placeholder {
-    color: rgb(145, 145, 145);
-    font-size: .75rem;
-  }
-
   &:focus {
     border: none;
     box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
     outline: none;
-  }
-
-  &:focus::placeholder {
-    visibility: hidden;
   }
 `;
 
@@ -137,18 +136,14 @@ export const DateInput = styled("input")<{ error: boolean }>`
   transition: all 200ms ease-in-out;
   opacity: .8;
 
-  &::placeholder {
-    color: rgb(145, 145, 145);
-    font-size: .75rem;
-  }
-
   &:focus {
     border: none;
     box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
     outline: none;
   }
+`;
 
-  &:focus::placeholder {
-    visibility: hidden;
-  }
+export const Label = styled.label`
+  color: ${ props => props.theme.colors.gray };
+  font-size: 1rem;
 `;

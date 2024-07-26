@@ -8,6 +8,7 @@ import * as S from "./styles";
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Resume } from "../../models/resume";
+import CrudButton from "../shared/buttons/crud-button";
 
 const resumeFormSchema = z.object({
   title: z.string().min(3, FORM_MESSAGE.RESUME_TITLE),
@@ -57,9 +58,10 @@ export const ResumeForm: React.FC<Props> = ({ resume }) => {
 
   return (
     <S.ResumeForm onSubmit={handleSubmit(handleSubmitForm)}>
-      <div>
+      <S.Title>Resumo:</S.Title>
+      <S.InputSection>
         <div>
-          <label htmlFor="title">Title</label>
+          <S.Label htmlFor="title">Título</S.Label>
           <S.TextInput
             error={errors.title ? true : false}
             {...register("title")}
@@ -69,7 +71,7 @@ export const ResumeForm: React.FC<Props> = ({ resume }) => {
           {errors.title && <p>{errors.title.message}</p>}
         </div>
         <div>
-          <label htmlFor="summary">Summary</label>
+          <S.Label htmlFor="summary">Descrição</S.Label>
           <S.TextArea
             error={errors.summary ? true : false}
             {...register("summary")}
@@ -77,14 +79,14 @@ export const ResumeForm: React.FC<Props> = ({ resume }) => {
           />
           {errors.summary && <p>{errors.summary.message}</p>}
         </div>
-      </div>
+      </S.InputSection>
 
-      <div>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleDisableInput}>
+      <S.ButtonSection>
+        <CrudButton type="submit" action="edit">Submit</CrudButton>
+        <CrudButton  onClick={handleDisableInput}>
           {disabled ? "Enable Editing" : "Disable Editing"}
-        </button>
-      </div>
+        </CrudButton>
+      </S.ButtonSection>
     </S.ResumeForm>
   );
 };

@@ -5,6 +5,7 @@ import { ResumeForm } from "../../components/forms/resume-form"
 export const Profile: React.FC = () => {
   return (
     <S.Container>
+      <S.Title>Perfil</S.Title>
       <ResumeForm /> 
     </S.Container>
   )
