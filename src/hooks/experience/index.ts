@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
   DeleteExperience,
@@ -9,6 +8,7 @@ import {
   GetExperience,
 } from "../../services/experience/index";
 import { Experience } from "../../models/experience";
+import { CreateExperienceData, DeleteExperienceData, UpdateExperienceData } from "../../assets/@types/global";
 
 type State = {
   experiences: undefined | Experience[];
@@ -18,28 +18,7 @@ const INITIAL_STATE = {
   experiences: undefined,
 };
 
-export type CreateExperienceData = {
-  resumeId: number;
-  companyName: string;
-  role: string;
-  startDate: Date;
-  endDate: Date;
-  description: string;
-};
 
-export type UpdateExperienceData = {
-  experienceId: number;
-  resumeId: number;
-  companyName: string;
-  role: string;
-  startDate: Date;
-  endDate: Date;
-  description: string;
-};
-
-export type DeleteExperienceData = {
-  experienceId: number;
-};
 
 export const useExperienceCrud = () => {
   const [state, setState] = useState<State>(INITIAL_STATE);

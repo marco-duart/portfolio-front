@@ -49,7 +49,7 @@ const LoginForm = () => {
     const result = await login(rest);
 
     if (result) {
-      navigate("/user");
+      navigate("/admin/profile");
     } else {
       console.log("Deu ruim!");
     }

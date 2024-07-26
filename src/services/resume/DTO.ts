@@ -18,11 +18,7 @@ export namespace GetResumeDTO {
   export type IParams = {
     userId: number;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    resume: Resume;
-  };
+  export type IResponse =  Resume;
 }
 
 export namespace UpdateResumeDTO {

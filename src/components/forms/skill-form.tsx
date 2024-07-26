@@ -17,6 +17,7 @@ import { Skill } from "../../models/skill";
 
 
 const skillFormSchema = z.object({
+  id: z.coerce.number().nullable(),
   name: z.string().min(3),
   level: z.string().min(3)
 });

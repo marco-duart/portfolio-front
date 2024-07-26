@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
   DeleteSkill,
@@ -9,7 +8,7 @@ import {
   GetSkill,
 } from "../../services/skill/index";
 import { Skill } from "../../models/skill";
-import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
+import { CreateSkillData, DeleteSkillData, UpdateSkillData } from "../../assets/@types/global";
 
 type State = {
   skills: undefined | Skill[];
@@ -17,23 +16,6 @@ type State = {
 
 const INITIAL_STATE = {
   skills: undefined,
-};
-
-export type CreateSkillData = {
-  resumeId: number;
-  name: string;
-  level: SkillLevelEnum;
-};
-
-export type UpdateSkillData = {
-  skillId: number;
-  resumeId: number;
-  name: string;
-  level: SkillLevelEnum;
-};
-
-export type DeleteSkillData = {
-  skillId: number;
 };
 
 export const useSkillCrud = () => {

@@ -17,6 +17,7 @@ import { Education } from "../../models/education";
 
 
 const educationFormSchema = z.object({
+  id: z.coerce.number().nullable(),
   institutionName: z.string().min(3),
   degree: z.string().min(3),
   startDate: z.string(),

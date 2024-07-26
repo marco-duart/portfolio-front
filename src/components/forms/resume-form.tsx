@@ -9,8 +9,10 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Resume } from "../../models/resume";
 import CrudButton from "../shared/buttons/crud-button";
+import { UpdateResumeData, CreateResumeData } from "../../assets/@types/global";
 
 const resumeFormSchema = z.object({
+  id: z.coerce.number().nullable(),
   title: z.string().min(3, FORM_MESSAGE.RESUME_TITLE),
   summary: z.string().min(3, FORM_MESSAGE.RESUME_SUMMARY),
 });
@@ -19,9 +21,12 @@ type ResumeFormData = z.infer<typeof resumeFormSchema>;
 
 type Props = {
   resume?: Resume;
+  onEdit: (params: UpdateResumeData) => void;
+  onCreate: (params: CreateResumeData) => void;
+  onCancel: () => void;
 };
 
-export const ResumeForm: React.FC<Props> = ({ resume }) => {
+export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit }) => {
   const [disabled, setDisabled] = useState<boolean>(resume ? true : false);
   const {
     register,
@@ -37,20 +42,28 @@ export const ResumeForm: React.FC<Props> = ({ resume }) => {
   };
 
   const handleSubmitForm = async (data: ResumeFormData) => {
-    // Handle form submission logic here
-  };
-
-  const handleDeleteForm = async () => {
-    // Handle form deletion logic here
+    if (resume && data.id) {
+      const { id, ...rest } = data;
+      if (!id) {
+        return;
+      }
+      onEdit({ ...rest, resumeId: id });
+    } else {
+      const { id, ...rest } = data;
+      onCreate(rest);
+    }
+    onCancel();
   };
 
   useEffect(() => {
     if (resume) {
       setDisabled(true);
+      setValue("id", resume.id);
       setValue("title", resume.title);
       setValue("summary", resume.summary);
     } else {
       setDisabled(false);
+      setValue("id", null);
       setValue("title", "");
       setValue("summary", "");
     }
@@ -82,10 +95,17 @@ export const ResumeForm: React.FC<Props> = ({ resume }) => {
       </S.InputSection>
 
       <S.ButtonSection>
+        {(disabled && resume) && (
+          <CrudButton onClick={handleDisableInput} action="edit">
+            Editar
+          </CrudButton>
+        )}
+        {(!disabled && resume) && (
+          <CrudButton onClick={handleDisableInput} action="cancel">
+            Cancelar
+          </CrudButton>
+        )}
         <CrudButton type="submit" action="edit">Submit</CrudButton>
-        <CrudButton  onClick={handleDisableInput}>
-          {disabled ? "Enable Editing" : "Disable Editing"}
-        </CrudButton>
       </S.ButtonSection>
     </S.ResumeForm>
   );

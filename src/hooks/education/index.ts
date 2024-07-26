@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
   DeleteEducation,
@@ -9,7 +8,7 @@ import {
   GetEducation,
 } from "../../services/education/index";
 import { Education } from "../../models/education";
-import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
+import { CreateEducationData, DeleteEducationData, UpdateEducationData } from "../../assets/@types/global";
 
 type State = {
   educations: undefined | Education[];
@@ -17,29 +16,6 @@ type State = {
 
 const INITIAL_STATE = {
   educations: undefined,
-};
-
-export type CreateEducationData = {
-  resumeId: number;
-  institutionName: string;
-  degree: EducationDegreeEnum;
-  startDate: Date;
-  endDate: Date;
-  description: string;
-};
-
-export type UpdateEducationData = {
-  educationId: number;
-  resumeId: number;
-  institutionName: string;
-  degree: EducationDegreeEnum;
-  startDate: Date;
-  endDate: Date;
-  description: string;
-};
-
-export type DeleteEducationData = {
-  educationId: number;
 };
 
 export const useEducationCrud = () => {

@@ -17,6 +17,7 @@ import { Experience } from "../../models/experience";
 
 
 const experienceFormSchema = z.object({
+  id: z.coerce.number().nullable(),
   companyName: z.string().min(3),
   role: z.string().min(3),
   startDate: z.string(),

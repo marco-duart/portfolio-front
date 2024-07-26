@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
   DeleteResume,
@@ -8,6 +7,7 @@ import {
   GetResume,
 } from "../../services/resume/index";
 import { Resume } from "../../models/resume";
+import { CreateResumeData, DeleteResumeData, UpdateResumeData } from "../../assets/@types/global";
 
 type State = {
   resume: undefined | Resume;
@@ -15,22 +15,6 @@ type State = {
 
 const INITIAL_STATE = {
   resume: undefined,
-};
-
-export type CreateResumeData = {
-  userId: number;
-  title: string;
-  summary: string;
-};
-
-export type UpdateResumeData = {
-  resumeId: number;
-  title: string;
-  summary: string;
-};
-
-export type DeleteResumeData = {
-  resumeId: number;
 };
 
 export const useResumeCrud = () => {
@@ -43,15 +27,16 @@ export const useResumeCrud = () => {
     }
 
     const { resume } = await GetResume({ userId: user.id });
+    console.log(resume)
     setState({ resume });
   };
 
   const createResume = async (data: CreateResumeData) => {
-    if (!token) {
+    if (!token || !user) {
       return;
     }
 
-    const params = { ...data, token };
+    const params = { ...data, token, userId: user?.id };
     await CreateResume(params);
     fetchResume();
   };

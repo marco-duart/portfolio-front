@@ -14,11 +14,10 @@ export const GetResume = async (params: GetResumeDTO.IParams) => {
       { params }
     );
 
-    
     return {
       success: true,
       message: "MESSAGE",
-      resume: response.data.resume,
+      resume: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
