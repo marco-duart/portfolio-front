@@ -7,11 +7,7 @@ export namespace CreateResumeDTO {
     summary: string;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    resume: Resume;
-  };
+  export type IResponse = Resume;
 }
 
 export namespace GetResumeDTO {
@@ -28,11 +24,7 @@ export namespace UpdateResumeDTO {
     summary: string;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    resume: Resume;
-  };
+  export type IResponse = Resume;
 }
 
 export namespace DeleteResumeDTO {

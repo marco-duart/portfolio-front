@@ -11,32 +11,20 @@ export namespace CreateEducationDTO {
     description: string;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    education: Education;
-  };
+  export type IResponse = Education;
 }
 
 export namespace GetEducationsDTO {
   export type IParams = {
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    educations: Education[];
-  };
+  export type IResponse = Education[];
 }
 
 export namespace GetEducationDTO {
   export type IParams = {
     educationId: number;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    education: Education;
-  };
+  export type IResponse = Education;
 }
 
 export namespace UpdateEducationDTO {
@@ -49,11 +37,7 @@ export namespace UpdateEducationDTO {
     description?: string;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    education: Education;
-  };
+  export type IResponse = Education;
 }
 
 export namespace DeleteEducationDTO {

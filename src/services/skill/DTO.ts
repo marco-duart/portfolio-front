@@ -8,32 +8,20 @@ export namespace CreateSkillDTO {
     level: SkillLevelEnum;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    skill: Skill;
-  };
+  export type IResponse = Skill;
 }
 
 export namespace GetSkillsDTO {
   export type IParams = {
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    skills: Skill[];
-  };
+  export type IResponse = Skill[];
 }
 
 export namespace GetSkillDTO {
   export type IParams = {
     skillId: number;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    skill: Skill;
-  };
+  export type IResponse = Skill;
 }
 
 export namespace UpdateSkillDTO {
@@ -43,11 +31,7 @@ export namespace UpdateSkillDTO {
     level?: SkillLevelEnum;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    skill: Skill;
-  };
+  export type IResponse = Skill;
 }
 
 export namespace DeleteSkillDTO {

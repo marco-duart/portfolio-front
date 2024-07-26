@@ -10,32 +10,20 @@ export namespace CreateExperienceDTO {
     description: string;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    experience: Experience;
-  };
+  export type IResponse = Experience;
 }
 
 export namespace GetExperiencesDTO {
   export type IParams = {
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    experiences: Experience[];
-  };
+  export type IResponse = Experience[];
 }
 
 export namespace GetExperienceDTO {
   export type IParams = {
     experienceId: number;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    experience: Experience;
-  };
+  export type IResponse = Experience;
 }
 
 export namespace UpdateExperienceDTO {
@@ -48,11 +36,7 @@ export namespace UpdateExperienceDTO {
     description?: string;
     token: string;
   };
-  export type IResponse = {
-    message: string;
-    error: boolean;
-    experience: Experience;
-  };
+  export type IResponse = Experience;
 }
 
 export namespace DeleteExperienceDTO {
