@@ -16,7 +16,7 @@ export namespace CreateResumeDTO {
 
 export namespace GetResumeDTO {
   export type IParams = {
-    resumeId: number;
+    userId: number;
   };
   export type IResponse = {
     message: string;

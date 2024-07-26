@@ -2,90 +2,88 @@ import { useEffect, useState } from "react";
 
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
-  DeleteEntity,
-  GetEntities,
-  CreateEntity,
-  UpdateEntity,
-  GetEntity,
-} from "../../services/entity/index";
-
-import { Entity } from "../../services/entity/DTO";
+  DeleteResume,
+  CreateResume,
+  UpdateResume,
+  GetResume,
+} from "../../services/resume/index";
+import { Resume } from "../../models/resume";
 
 type State = {
-  entities: undefined | Entity[];
+  resume: undefined | Resume;
 };
 
 const INITIAL_STATE = {
-  entities: undefined,
+  resume: undefined,
 };
 
-export type CreateEntityData = {
-
+export type CreateResumeData = {
+  userId: number;
+  title: string;
+  summary: string;
 };
 
-export type UpdateEntityData = {
-  id: number;
-  business_name: string;
-  sector: string;
-  entity_size: number;
-  entity_location: string;
+export type UpdateResumeData = {
+  resumeId: number;
+  title: string;
+  summary: string;
 };
 
-export type DeleteEntityData = {
-  id: number;
+export type DeleteResumeData = {
+  resumeId: number;
 };
 
-export const useEntityCrud = () => {
+export const useResumeCrud = () => {
   const [state, setState] = useState<State>(INITIAL_STATE);
-  const { token } = useUserContext();
+  const { token, user } = useUserContext();
 
-  const fetchEntities = async () => {
-    if (!token) {
+  const fetchResume = async () => {
+    if (!user) {
       return;
     }
 
-    const { entities } = await GetEntities({ token });
-    setState({ entities });
+    const { resume } = await GetResume({ userId: user.id });
+    setState({ resume });
   };
 
-  const createEntity = async (data: CreateEntityData) => {
+  const createResume = async (data: CreateResumeData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await CreateEntity(params);
-    fetchEntities();
+    await CreateResume(params);
+    fetchResume();
   };
 
-  const deleteEntity = async (data: DeleteEntityData) => {
+  const deleteResume = async (data: DeleteResumeData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await DeleteEntity(params);
-    fetchEntities();
+    await DeleteResume(params);
+    fetchResume();
   };
 
-  const updateEntity = async (data: UpdateEntityData) => {
+  const updateResume = async (data: UpdateResumeData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await UpdateEntity(params);
-    fetchEntities();
+    await UpdateResume(params);
+    fetchResume();
   };
 
   useEffect(() => {
-    fetchEntities();
+    fetchResume();
   }, []);
 
   return {
-    entities: state.entities,
-    createEntity,
-    deleteEntity,
-    updateEntity,
+    resume: state.resume,
+    createResume,
+    deleteResume,
+    updateResume,
   };
 };

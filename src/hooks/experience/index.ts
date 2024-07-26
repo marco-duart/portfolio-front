@@ -2,90 +2,92 @@ import { useEffect, useState } from "react";
 
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
-  DeleteEntity,
-  GetEntities,
-  CreateEntity,
-  UpdateEntity,
-  GetEntity,
-} from "../../services/entity/index";
-
-import { Entity } from "../../services/entity/DTO";
+  DeleteExperience,
+  GetExperiences,
+  CreateExperience,
+  UpdateExperience,
+  GetExperience,
+} from "../../services/experience/index";
+import { Experience } from "../../models/experience";
 
 type State = {
-  entities: undefined | Entity[];
+  experiences: undefined | Experience[];
 };
 
 const INITIAL_STATE = {
-  entities: undefined,
+  experiences: undefined,
 };
 
-export type CreateEntityData = {
-
+export type CreateExperienceData = {
+  resumeId: number;
+  companyName: string;
+  role: string;
+  startDate: Date;
+  endDate: Date;
+  description: string;
 };
 
-export type UpdateEntityData = {
-  id: number;
-  business_name: string;
-  sector: string;
-  entity_size: number;
-  entity_location: string;
+export type UpdateExperienceData = {
+  experienceId: number;
+  resumeId: number;
+  companyName: string;
+  role: string;
+  startDate: Date;
+  endDate: Date;
+  description: string;
 };
 
-export type DeleteEntityData = {
-  id: number;
+export type DeleteExperienceData = {
+  experienceId: number;
 };
 
-export const useEntityCrud = () => {
+export const useExperienceCrud = () => {
   const [state, setState] = useState<State>(INITIAL_STATE);
   const { token } = useUserContext();
 
-  const fetchEntities = async () => {
-    if (!token) {
-      return;
-    }
-
-    const { entities } = await GetEntities({ token });
-    setState({ entities });
+  const fetchExperiences = async () => {
+    const { experiences } = await GetExperiences({ token });
+    setState({ experiences });
   };
 
-  const createEntity = async (data: CreateEntityData) => {
+  const createExperience = async (data: CreateExperienceData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await CreateEntity(params);
-    fetchEntities();
+    await CreateExperience(params);
+    fetchExperiences();
   };
 
-  const deleteEntity = async (data: DeleteEntityData) => {
+  const deleteExperience = async (data: DeleteExperienceData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await DeleteEntity(params);
-    fetchEntities();
+    await DeleteExperience(params);
+    fetchExperiences();
   };
 
-  const updateEntity = async (data: UpdateEntityData) => {
+  const updateExperience = async (data: UpdateExperienceData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await UpdateEntity(params);
-    fetchEntities();
+    await UpdateExperience(params);
+    fetchExperiences();
   };
 
   useEffect(() => {
-    fetchEntities();
+    fetchExperiences();
   }, []);
 
   return {
-    entities: state.entities,
-    createEntity,
-    deleteEntity,
-    updateEntity,
+    experiences: state.experiences,
+    createExperience,
+    deleteExperience,
+    updateExperience,
   };
 };

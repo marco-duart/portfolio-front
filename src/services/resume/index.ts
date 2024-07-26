@@ -9,9 +9,9 @@ import {
 
 export const GetResume = async (params: GetResumeDTO.IParams) => {
   try {
-    const { resumeId } = params;
     const response = await api.get<GetResumeDTO.IResponse>(
-      `/resumes/${resumeId}`,
+      `/resumes`,
+      { params }
     );
 
     

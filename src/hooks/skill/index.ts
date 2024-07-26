@@ -2,90 +2,87 @@ import { useEffect, useState } from "react";
 
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
-  DeleteEntity,
-  GetEntities,
-  CreateEntity,
-  UpdateEntity,
-  GetEntity,
-} from "../../services/entity/index";
-
-import { Entity } from "../../services/entity/DTO";
+  DeleteSkill,
+  GetSkills,
+  CreateSkill,
+  UpdateSkill,
+  GetSkill,
+} from "../../services/skill/index";
+import { Skill } from "../../models/skill";
+import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 
 type State = {
-  entities: undefined | Entity[];
+  skills: undefined | Skill[];
 };
 
 const INITIAL_STATE = {
-  entities: undefined,
+  skills: undefined,
 };
 
-export type CreateEntityData = {
-
+export type CreateSkillData = {
+  resumeId: number;
+  name: string;
+  level: SkillLevelEnum;
 };
 
-export type UpdateEntityData = {
-  id: number;
-  business_name: string;
-  sector: string;
-  entity_size: number;
-  entity_location: string;
+export type UpdateSkillData = {
+  skillId: number;
+  resumeId: number;
+  name: string;
+  level: SkillLevelEnum;
 };
 
-export type DeleteEntityData = {
-  id: number;
+export type DeleteSkillData = {
+  skillId: number;
 };
 
-export const useEntityCrud = () => {
+export const useSkillCrud = () => {
   const [state, setState] = useState<State>(INITIAL_STATE);
   const { token } = useUserContext();
 
-  const fetchEntities = async () => {
-    if (!token) {
-      return;
-    }
-
-    const { entities } = await GetEntities({ token });
-    setState({ entities });
+  const fetchSkills = async () => {
+    const { skills } = await GetSkills({ token });
+    setState({ skills });
   };
 
-  const createEntity = async (data: CreateEntityData) => {
+  const createSkill = async (data: CreateSkillData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await CreateEntity(params);
-    fetchEntities();
+    await CreateSkill(params);
+    fetchSkills();
   };
 
-  const deleteEntity = async (data: DeleteEntityData) => {
+  const deleteSkill = async (data: DeleteSkillData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await DeleteEntity(params);
-    fetchEntities();
+    await DeleteSkill(params);
+    fetchSkills();
   };
 
-  const updateEntity = async (data: UpdateEntityData) => {
+  const updateSkill = async (data: UpdateSkillData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await UpdateEntity(params);
-    fetchEntities();
+    await UpdateSkill(params);
+    fetchSkills();
   };
 
   useEffect(() => {
-    fetchEntities();
+    fetchSkills();
   }, []);
 
   return {
-    entities: state.entities,
-    createEntity,
-    deleteEntity,
-    updateEntity,
+    skills: state.skills,
+    createSkill,
+    deleteSkill,
+    updateSkill,
   };
 };

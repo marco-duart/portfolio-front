@@ -2,90 +2,93 @@ import { useEffect, useState } from "react";
 
 import { useUserContext } from "../../hooks/user/use-user-context";
 import {
-  DeleteEntity,
-  GetEntities,
-  CreateEntity,
-  UpdateEntity,
-  GetEntity,
-} from "../../services/entity/index";
-
-import { Entity } from "../../services/entity/DTO";
+  DeleteEducation,
+  GetEducations,
+  CreateEducation,
+  UpdateEducation,
+  GetEducation,
+} from "../../services/education/index";
+import { Education } from "../../models/education";
+import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
 
 type State = {
-  entities: undefined | Entity[];
+  educations: undefined | Education[];
 };
 
 const INITIAL_STATE = {
-  entities: undefined,
+  educations: undefined,
 };
 
-export type CreateEntityData = {
-
+export type CreateEducationData = {
+  resumeId: number;
+  institutionName: string;
+  degree: EducationDegreeEnum;
+  startDate: Date;
+  endDate: Date;
+  description: string;
 };
 
-export type UpdateEntityData = {
-  id: number;
-  business_name: string;
-  sector: string;
-  entity_size: number;
-  entity_location: string;
+export type UpdateEducationData = {
+  educationId: number;
+  resumeId: number;
+  institutionName: string;
+  degree: EducationDegreeEnum;
+  startDate: Date;
+  endDate: Date;
+  description: string;
 };
 
-export type DeleteEntityData = {
-  id: number;
+export type DeleteEducationData = {
+  educationId: number;
 };
 
-export const useEntityCrud = () => {
+export const useEducationCrud = () => {
   const [state, setState] = useState<State>(INITIAL_STATE);
   const { token } = useUserContext();
 
-  const fetchEntities = async () => {
-    if (!token) {
-      return;
-    }
-
-    const { entities } = await GetEntities({ token });
-    setState({ entities });
+  const fetchEducations = async () => {
+    const { educations } = await GetEducations({});
+    setState({ educations });
   };
 
-  const createEntity = async (data: CreateEntityData) => {
+  const createEducation = async (data: CreateEducationData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await CreateEntity(params);
-    fetchEntities();
+    await CreateEducation(params);
+    fetchEducations();
   };
 
-  const deleteEntity = async (data: DeleteEntityData) => {
+  const deleteEducation = async (data: DeleteEducationData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await DeleteEntity(params);
-    fetchEntities();
+    await DeleteEducation(params);
+    fetchEducations();
   };
 
-  const updateEntity = async (data: UpdateEntityData) => {
+  const updateEducation = async (data: UpdateEducationData) => {
     if (!token) {
       return;
     }
 
     const params = { ...data, token };
-    await UpdateEntity(params);
-    fetchEntities();
+    await UpdateEducation(params);
+    fetchEducations();
   };
 
   useEffect(() => {
-    fetchEntities();
+    fetchEducations();
   }, []);
 
   return {
-    entities: state.entities,
-    createEntity,
-    deleteEntity,
-    updateEntity,
+    educations: state.educations,
+    createEducation,
+    deleteEducation,
+    updateEducation,
   };
 };
