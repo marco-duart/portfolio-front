@@ -1,41 +1,35 @@
-//NATIVE
 import React, { useEffect, useState } from "react";
 //LIBRARIES
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-//COMPONENTS
-
-
 //STYLES
 import * as S from "./styles";
 //UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Education } from "../../models/education";
-
-//HOOKS
-
+import CrudButton from "../shared/buttons/crud-button";
+import { UpdateEducationData, CreateEducationData } from "../../assets/@types/global";
 
 const educationFormSchema = z.object({
   id: z.coerce.number().nullable(),
-  institutionName: z.string().min(3),
-  degree: z.string().min(3),
+  institutionName: z.string().min(3, FORM_MESSAGE.EDUCATION_INSTITUTION_NAME),
+  degree: z.string().min(3, FORM_MESSAGE.EDUCATION_DEGREE),
   startDate: z.string(),
   endDate: z.string().optional(),
-  description: z.string()
+  description: z.string(),
 });
 
 type EducationFormData = z.infer<typeof educationFormSchema>;
 
 type Props = {
   education?: Education;
-  isOpen: boolean;
+  onEdit: (params: UpdateEducationData) => void;
+  onCreate: (params: CreateEducationData) => void;
+  onCancel: () => void;
 };
 
-export const EducationForm: React.FC<Props> = ({
-  education,
-  isOpen,
-}) => {
+export const EducationForm: React.FC<Props> = ({ education, onCancel, onCreate, onEdit }) => {
   const [disabled, setDisabled] = useState<boolean>(education ? true : false);
   const {
     register,
@@ -46,35 +40,28 @@ export const EducationForm: React.FC<Props> = ({
     resolver: zodResolver(educationFormSchema),
   });
 
-  // Disable input when action is view
   const handleDisableInput = () => {
     setDisabled(!disabled);
   };
 
   const handleSubmitForm = async (data: EducationFormData) => {
-    // if (education && data.id) {
-    //   const { id, ...rest } = data;
-    //   if (!id) {
-    //     return;
-    //   }
-    //   onEdit({ ...rest, id });
-    // } else {
-    //   const { id, ...rest } = data;
-    //   onCreate(rest);
-    // }
-    // onClose();
-  };
-
-  const handleDeleteForm = async () => {
-    // if (education) {
-    //   onDelete({ id: education?.id });
-    //   onClose();
-    // }
+    if (education && data.id) {
+      const { id, ...rest } = data;
+      if (!id) {
+        return;
+      }
+      onEdit({ ...rest, educationId: id });
+    } else {
+      const { id, ...rest } = data;
+      onCreate(rest);
+    }
+    onCancel();
   };
 
   useEffect(() => {
     if (education) {
       setDisabled(true);
+      setValue("id", education.id);
       setValue("institutionName", education.institutionName);
       setValue("degree", education.degree);
       setValue("startDate", education.startDate);
@@ -82,39 +69,83 @@ export const EducationForm: React.FC<Props> = ({
       setValue("description", education.description);
     } else {
       setDisabled(false);
+      setValue("id", null);
       setValue("institutionName", "");
       setValue("degree", "");
       setValue("startDate", "");
       setValue("endDate", "");
       setValue("description", "");
     }
-  }, [education, isOpen]);
+  }, [education]);
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitForm)}>
-      <div>
-        <label htmlFor=""></label><input {...register("institutionName")} type="text" />
-      </div>
+    <S.EducationForm onSubmit={handleSubmit(handleSubmitForm)}>
+      <S.Title>Educação:</S.Title>
+      <S.InputSection>
+        <div>
+          <S.Label htmlFor="institutionName">Instituição</S.Label>
+          <S.TextInput
+            error={errors.institutionName ? true : false}
+            {...register("institutionName")}
+            type="text"
+            disabled={disabled}
+          />
+          {errors.institutionName && <p>{errors.institutionName.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="degree">Grau</S.Label>
+          <S.TextInput
+            error={errors.degree ? true : false}
+            {...register("degree")}
+            type="text"
+            disabled={disabled}
+          />
+          {errors.degree && <p>{errors.degree.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="startDate">Data de Início</S.Label>
+          <S.TextInput
+            error={errors.startDate ? true : false}
+            {...register("startDate")}
+            type="date"
+            disabled={disabled}
+          />
+          {errors.startDate && <p>{errors.startDate.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="endDate">Data de Término</S.Label>
+          <S.TextInput
+            error={errors.endDate ? true : false}
+            {...register("endDate")}
+            type="date"
+            disabled={disabled}
+          />
+          {errors.endDate && <p>{errors.endDate.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="description">Descrição</S.Label>
+          <S.TextArea
+            error={errors.description ? true : false}
+            {...register("description")}
+            disabled={disabled}
+          />
+          {errors.description && <p>{errors.description.message}</p>}
+        </div>
+      </S.InputSection>
 
-      <div>
-        <label htmlFor=""></label>
-        <input {...register("degree")} type="text"></input>
-      </div>
-
-      <div>
-        <label htmlFor=""></label>
-        <input {...register("startDate")} type="date"></input>
-      </div>
-
-      <div>
-        <label htmlFor=""></label>
-        <input {...register("endDate")} type="date"></input>
-      </div>
-
-      <div>
-        <label htmlFor=""></label>
-        <textarea {...register("description")}></textarea>
-      </div>
-    </form>
+      <S.ButtonSection>
+        {(disabled && education) && (
+          <CrudButton onClick={handleDisableInput} action="edit">
+            Editar
+          </CrudButton>
+        )}
+        {(!disabled && education) && (
+          <CrudButton onClick={handleDisableInput} action="cancel">
+            Cancelar
+          </CrudButton>
+        )}
+        {!disabled && <CrudButton type="submit" action="save">Salvar</CrudButton>}
+      </S.ButtonSection>
+    </S.EducationForm>
   );
 };

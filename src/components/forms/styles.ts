@@ -19,6 +19,12 @@ export const ResumeForm = styled.form`
   background-color: ${ props => props.theme.colors.white };
 `
 
+export const ExperienceForm = styled.form``
+
+export const EducationForm = styled.form``
+
+export const SkillForm = styled.form``
+
 // -- DIVS --
 
 export const HandlePassword = styled.div`
