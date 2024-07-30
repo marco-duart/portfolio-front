@@ -48,11 +48,24 @@ export const PasswordSection = styled.div`
   }
 `;
 
-export const InputSection = styled.div`
+export const InputSectionRow = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
 
+  div {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+`
+
+export const InputSectionColumn = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  
   div {
     display: flex;
     flex-direction: column;

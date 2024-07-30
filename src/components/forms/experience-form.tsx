@@ -23,13 +23,14 @@ const experienceFormSchema = z.object({
 type ExperienceFormData = z.infer<typeof experienceFormSchema>;
 
 type Props = {
+  resumeId?: number;
   experience?: Experience;
   onEdit: (params: UpdateExperienceData) => void;
   onCreate: (params: CreateExperienceData) => void;
   onCancel: () => void;
 };
 
-export const ExperienceForm: React.FC<Props> = ({ experience, onCancel, onCreate, onEdit }) => {
+export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel, onCreate, onEdit }) => {
   const [disabled, setDisabled] = useState<boolean>(experience ? true : false);
   const {
     register,
@@ -50,15 +51,20 @@ export const ExperienceForm: React.FC<Props> = ({ experience, onCancel, onCreate
       if (!id) {
         return;
       }
-      onEdit();
+
+      onEdit({...rest, experienceId: id});
     } else {
+      if (!resumeId) {
+        return;
+      }
+    
       const { id, ...rest } = data;
-      onCreate();
+      onCreate({...rest, resumeId});
     }
     onCancel();
   };
 
-  const handleDeleteForm
+  // const handleDeleteForm
 
   useEffect(() => {
     if (experience) {
@@ -83,7 +89,7 @@ export const ExperienceForm: React.FC<Props> = ({ experience, onCancel, onCreate
   return (
     <S.ExperienceForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.Title>Experiência:</S.Title>
-      <S.InputSection>
+      <S.InputSectionColumn>
         <div>
           <S.Label htmlFor="companyName">Empresa</S.Label>
           <S.TextInput
@@ -133,7 +139,7 @@ export const ExperienceForm: React.FC<Props> = ({ experience, onCancel, onCreate
           />
           {errors.description && <p>{errors.description.message}</p>}
         </div>
-      </S.InputSection>
+      </S.InputSectionColumn>
 
       <S.ButtonSection>
         {(disabled && experience) && (

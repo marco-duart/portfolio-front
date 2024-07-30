@@ -20,13 +20,14 @@ const skillFormSchema = z.object({
 type SkillFormData = z.infer<typeof skillFormSchema>;
 
 type Props = {
+  resumeId?: number;
   skill?: Skill;
   onEdit: (params: UpdateSkillData) => void;
   onCreate: (params: CreateSkillData) => void;
   onCancel: () => void;
 };
 
-export const SkillForm: React.FC<Props> = ({ skill, onCancel, onCreate, onEdit }) => {
+export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate, onEdit }) => {
   const [disabled, setDisabled] = useState<boolean>(skill ? true : false);
   const {
     register,
@@ -72,7 +73,7 @@ export const SkillForm: React.FC<Props> = ({ skill, onCancel, onCreate, onEdit }
   return (
     <S.SkillForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.Title>Habilidade:</S.Title>
-      <S.InputSection>
+      <S.InputSectionColumn>
         <div>
           <S.Label htmlFor="name">Nome</S.Label>
           <S.TextInput
@@ -93,7 +94,7 @@ export const SkillForm: React.FC<Props> = ({ skill, onCancel, onCreate, onEdit }
           />
           {errors.level && <p>{errors.level.message}</p>}
         </div>
-      </S.InputSection>
+      </S.InputSectionColumn>
 
       <S.ButtonSection>
         {(disabled && skill) && (

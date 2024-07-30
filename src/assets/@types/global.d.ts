@@ -21,18 +21,17 @@ export type CreateEducationData = {
   resumeId: number;
   institutionName: string;
   degree: EducationDegreeEnum;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   description: string;
 };
 
 export type UpdateEducationData = {
   educationId: number;
-  resumeId: number;
   institutionName: string;
   degree: EducationDegreeEnum;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   description: string;
 };
 
@@ -45,18 +44,17 @@ export type CreateExperienceData = {
   resumeId: number;
   companyName: string;
   role: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   description: string;
 };
 
 export type UpdateExperienceData = {
   experienceId: number;
-  resumeId: number;
   companyName: string;
   role: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   description: string;
 };
 
@@ -72,7 +70,6 @@ export type CreateSkillData = {
 
 export type UpdateSkillData = {
   skillId: number;
-  resumeId: number;
   name: string;
   level: SkillLevelEnum;
 };

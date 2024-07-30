@@ -23,13 +23,14 @@ const educationFormSchema = z.object({
 type EducationFormData = z.infer<typeof educationFormSchema>;
 
 type Props = {
+  resumeId?: number;
   education?: Education;
   onEdit: (params: UpdateEducationData) => void;
   onCreate: (params: CreateEducationData) => void;
   onCancel: () => void;
 };
 
-export const EducationForm: React.FC<Props> = ({ education, onCancel, onCreate, onEdit }) => {
+export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, onCreate, onEdit }) => {
   const [disabled, setDisabled] = useState<boolean>(education ? true : false);
   const {
     register,
@@ -81,7 +82,7 @@ export const EducationForm: React.FC<Props> = ({ education, onCancel, onCreate, 
   return (
     <S.EducationForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.Title>Educação:</S.Title>
-      <S.InputSection>
+      <S.InputSectionColumn>
         <div>
           <S.Label htmlFor="institutionName">Instituição</S.Label>
           <S.TextInput
@@ -131,7 +132,7 @@ export const EducationForm: React.FC<Props> = ({ education, onCancel, onCreate, 
           />
           {errors.description && <p>{errors.description.message}</p>}
         </div>
-      </S.InputSection>
+      </S.InputSectionColumn>
 
       <S.ButtonSection>
         {(disabled && education) && (

@@ -72,7 +72,7 @@ export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit
   return (
     <S.ResumeForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.Title>Resumo:</S.Title>
-      <S.InputSection>
+      <S.InputSectionRow>
         <div>
           <S.Label htmlFor="title">Título</S.Label>
           <S.TextInput
@@ -92,7 +92,7 @@ export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit
           />
           {errors.summary && <p>{errors.summary.message}</p>}
         </div>
-      </S.InputSection>
+      </S.InputSectionRow>
 
       <S.ButtonSection>
         {(disabled && resume) && (
