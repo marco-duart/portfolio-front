@@ -10,11 +10,12 @@ import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Education } from "../../models/education";
 import CrudButton from "../shared/buttons/crud-button";
 import { UpdateEducationData, CreateEducationData } from "../../assets/@types/global";
+import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
 
 const educationFormSchema = z.object({
   id: z.coerce.number().nullable(),
   institutionName: z.string().min(3, FORM_MESSAGE.EDUCATION_INSTITUTION_NAME),
-  degree: z.string().min(3, FORM_MESSAGE.EDUCATION_DEGREE),
+  degree: z.enum(EducationDegreeEnum).min(3, FORM_MESSAGE.EDUCATION_DEGREE),
   startDate: z.string(),
   endDate: z.string().optional(),
   description: z.string(),
@@ -53,8 +54,12 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
       }
       onEdit();
     } else {
+      if (!resumeId) {
+        return;
+      }
+
       const { id, ...rest } = data;
-      onCreate();
+      onCreate({...rest, resumeId});
     }
     onCancel();
   };

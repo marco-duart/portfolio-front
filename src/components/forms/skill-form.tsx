@@ -10,11 +10,12 @@ import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Skill } from "../../models/skill";
 import CrudButton from "../shared/buttons/crud-button";
 import { UpdateSkillData, CreateSkillData } from "../../assets/@types/global";
+import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 
 const skillFormSchema = z.object({
   id: z.coerce.number().nullable(),
   name: z.string().min(3, FORM_MESSAGE.SKILL_NAME),
-  level: z.string().min(3, FORM_MESSAGE.SKILL_LEVEL),
+  level: z.enum(SkillLevelEnum).min(3, FORM_MESSAGE.SKILL_LEVEL),
 });
 
 type SkillFormData = z.infer<typeof skillFormSchema>;
@@ -50,8 +51,12 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
       }
       onEdit();
     } else {
+      if (!resumeId) {
+        return;
+      }
+
       const { id, ...rest } = data;
-      onCreate();
+      onCreate({...rest, resumeId});
     }
     onCancel();
   };
