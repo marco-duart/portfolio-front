@@ -50,10 +50,10 @@ export const EducationForm: React.FC<Props> = ({ education, onCancel, onCreate, 
       if (!id) {
         return;
       }
-      onEdit({ ...rest, educationId: id });
+      onEdit();
     } else {
       const { id, ...rest } = data;
-      onCreate(rest);
+      onCreate();
     }
     onCancel();
   };

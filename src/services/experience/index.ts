@@ -19,7 +19,7 @@ export const GetExperience = async (params: GetExperienceDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      experience: response.data.experience,
+      experience: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -46,7 +46,7 @@ export const GetExperiences = async (params: GetExperiencesDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      experiences: response.data.experiences,
+      experiences: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -76,7 +76,7 @@ export const CreateExperience = async (params: CreateExperienceDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      experience: response.data.experience,
+      experience: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -105,7 +105,7 @@ export const UpdateExperience = async (params: UpdateExperienceDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      experience: response.data.experience,
+      experience: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {

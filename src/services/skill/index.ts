@@ -19,7 +19,7 @@ export const GetSkill = async (params: GetSkillDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      skill: response.data.skill,
+      skill: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -46,7 +46,7 @@ export const GetSkills = async (params: GetSkillsDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      skills: response.data.skills,
+      skills: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -76,7 +76,7 @@ export const CreateSkill = async (params: CreateSkillDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      skill: response.data.skill,
+      skill: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -105,7 +105,7 @@ export const UpdateSkill = async (params: UpdateSkillDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      skill: response.data.skill,
+      skill: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {

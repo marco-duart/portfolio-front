@@ -19,7 +19,7 @@ export const GetEducation = async (params: GetEducationDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      education: response.data.education,
+      education: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -46,7 +46,7 @@ export const GetEducations = async (params: GetEducationsDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      educations: response.data.educations,
+      educations: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -76,7 +76,7 @@ export const CreateEducation = async (params: CreateEducationDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      education: response.data.education,
+      education: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -105,7 +105,7 @@ export const UpdateEducation = async (params: UpdateEducationDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      education: response.data.education,
+      education: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {

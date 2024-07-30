@@ -50,10 +50,10 @@ export const ExperienceForm: React.FC<Props> = ({ experience, onCancel, onCreate
       if (!id) {
         return;
       }
-      onEdit({ ...rest, experienceId: id });
+      onEdit();
     } else {
       const { id, ...rest } = data;
-      onCreate(rest);
+      onCreate();
     }
     onCancel();
   };

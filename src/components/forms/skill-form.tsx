@@ -47,10 +47,10 @@ export const SkillForm: React.FC<Props> = ({ skill, onCancel, onCreate, onEdit }
       if (!id) {
         return;
       }
-      onEdit({ ...rest, skillId: id });
+      onEdit();
     } else {
       const { id, ...rest } = data;
-      onCreate(rest);
+      onCreate();
     }
     onCancel();
   };
