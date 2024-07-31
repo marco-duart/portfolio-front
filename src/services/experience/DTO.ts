@@ -5,8 +5,8 @@ export namespace CreateExperienceDTO {
     resumeId: number;
     companyName: string;
     role: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string | null;
     description: string;
     token: string;
   };
@@ -31,8 +31,8 @@ export namespace UpdateExperienceDTO {
     experienceId: number;
     companyName?: string;
     role?: string;
-    startDate?: Date;
-    endDate?: Date;
+    startDate?: string;
+    endDate: string | null;
     description?: string;
     token: string;
   };

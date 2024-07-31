@@ -6,8 +6,8 @@ export namespace CreateEducationDTO {
     resumeId: number;
     institutionName: string;
     degree: EducationDegreeEnum;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate?: string;
     description: string;
     token: string;
   };
@@ -32,8 +32,8 @@ export namespace UpdateEducationDTO {
     educationId: number;
     institutionName?: string;
     degree?: EducationDegreeEnum;
-    startDate?: Date;
-    endDate?: Date;
+    startDate?: string;
+    endDate?: string;
     description?: string;
     token: string;
   };

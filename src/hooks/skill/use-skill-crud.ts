@@ -51,7 +51,6 @@ export const useSkillCrud = () => {
     if (!token) {
       return;
     }
-
     const params = { ...data, token };
     await UpdateSkill(params);
     fetchSkills();

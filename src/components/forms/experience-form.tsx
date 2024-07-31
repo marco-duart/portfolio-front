@@ -16,7 +16,7 @@ const experienceFormSchema = z.object({
   companyName: z.string().min(3, FORM_MESSAGE.EXPERIENCE_COMPANY_NAME),
   role: z.string().min(3, FORM_MESSAGE.EXPERIENCE_ROLE),
   startDate: z.string(),
-  endDate: z.string(),
+  endDate: z.string().nullable(),
   description: z.string(),
 });
 
@@ -81,7 +81,7 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
       setValue("companyName", "");
       setValue("role", "");
       setValue("startDate", "");
-      setValue("endDate", "");
+      setValue("endDate", null);
       setValue("description", "");
     }
   }, [experience]);

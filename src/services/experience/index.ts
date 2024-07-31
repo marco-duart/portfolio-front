@@ -70,7 +70,7 @@ export const CreateExperience = async (params: CreateExperienceDTO.IParams) => {
     const response = await api.post<CreateExperienceDTO.IResponse>(
       "/experiences", 
       rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -99,7 +99,7 @@ export const UpdateExperience = async (params: UpdateExperienceDTO.IParams) => {
     const { experienceId, token, ...rest } = params;
     const response = await api.patch<UpdateExperienceDTO.IResponse>(
       `/experiences/${experienceId}`, rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -128,7 +128,7 @@ export const DeleteExperience = async (params: DeleteExperienceDTO.IParams) => {
     const { experienceId, token } = params;
     const response = await api.delete<DeleteExperienceDTO.IResponse>(
       `/experiences/${experienceId}`,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {

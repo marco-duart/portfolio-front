@@ -45,7 +45,7 @@ export type CreateExperienceData = {
   companyName: string;
   role: string;
   startDate: string;
-  endDate?: string;
+  endDate: string | null;
   description: string;
 };
 
@@ -54,7 +54,7 @@ export type UpdateExperienceData = {
   companyName: string;
   role: string;
   startDate: string;
-  endDate?: string;
+  endDate: string | null;
   description: string;
 };
 

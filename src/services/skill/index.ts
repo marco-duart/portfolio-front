@@ -70,7 +70,7 @@ export const CreateSkill = async (params: CreateSkillDTO.IParams) => {
     const response = await api.post<CreateSkillDTO.IResponse>(
       "/skills", 
       rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -99,7 +99,7 @@ export const UpdateSkill = async (params: UpdateSkillDTO.IParams) => {
     const { skillId, token, ...rest } = params;
     const response = await api.patch<UpdateSkillDTO.IResponse>(
       `/skills/${skillId}`, rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -128,7 +128,7 @@ export const DeleteSkill = async (params: DeleteSkillDTO.IParams) => {
     const { skillId, token } = params;
     const response = await api.delete<DeleteSkillDTO.IResponse>(
       `/skills/${skillId}`,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {

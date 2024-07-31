@@ -70,7 +70,7 @@ export const CreateEducation = async (params: CreateEducationDTO.IParams) => {
     const response = await api.post<CreateEducationDTO.IResponse>(
       "/educations", 
       rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -99,7 +99,7 @@ export const UpdateEducation = async (params: UpdateEducationDTO.IParams) => {
     const { educationId, token, ...rest } = params;
     const response = await api.patch<UpdateEducationDTO.IResponse>(
       `/educations/${educationId}`, rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -128,7 +128,7 @@ export const DeleteEducation = async (params: DeleteEducationDTO.IParams) => {
     const { educationId, token } = params;
     const response = await api.delete<DeleteEducationDTO.IResponse>(
       `/educations/${educationId}`,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {

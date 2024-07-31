@@ -41,7 +41,7 @@ export const CreateResume = async (params: CreateResumeDTO.IParams) => {
     const response = await api.post<CreateResumeDTO.IResponse>(
       "/resumes", 
       rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -70,7 +70,7 @@ export const UpdateResume = async (params: UpdateResumeDTO.IParams) => {
     const { resumeId, token, ...rest } = params;
     const response = await api.patch<UpdateResumeDTO.IResponse>(
       `/resumes/${resumeId}`, rest,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
@@ -99,7 +99,7 @@ export const DeleteResume = async (params: DeleteResumeDTO.IParams) => {
     const { resumeId, token } = params;
     const response = await api.delete<DeleteResumeDTO.IResponse>(
       `/resumes/${resumeId}`,
-      { headers: { Authorization: token } }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
     return {
