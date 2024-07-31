@@ -115,6 +115,10 @@ export const SelectInput = styled("select")<{ error: boolean }>`
     box-shadow: 0px 1.5px 0px 0px ${props => props.theme.colors.primary};
     outline: none;
   }
+
+  ${props => props.error && `
+    box-shadow: 0px 1.5px 0px 0px ${props.theme.colors.error};
+  `}
 `;
 
 export const PasswordInput = styled("input")<{ error: boolean }>`
@@ -165,4 +169,44 @@ export const DateInput = styled("input")<{ error: boolean }>`
 export const Label = styled.label`
   color: ${ props => props.theme.colors.gray };
   font-size: 1rem;
+`;
+
+export const CheckboxInput = styled.input.attrs({ type: 'checkbox' })<{ error: boolean }>`
+  all: unset;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #858585;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: all 200ms ease-in-out;
+
+  &:checked {
+    background-color: ${props => props.theme.colors.primary};
+    border-color: ${props => props.theme.colors.primary};
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: white;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+  }
+
+  &:checked::before {
+    opacity: 1;
+  }
+
+  ${props => props.error && `
+    border-color: ${props.theme.colors.error};
+  `}
 `;

@@ -22,7 +22,7 @@ export type CreateEducationData = {
   institutionName: string;
   degree: EducationDegreeEnum;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   description: string;
 };
 
@@ -31,7 +31,7 @@ export type UpdateEducationData = {
   institutionName: string;
   degree: EducationDegreeEnum;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   description: string;
 };
 
@@ -45,7 +45,7 @@ export type CreateExperienceData = {
   companyName: string;
   role: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   description: string;
 };
 
@@ -54,7 +54,7 @@ export type UpdateExperienceData = {
   companyName: string;
   role: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   description: string;
 };
 

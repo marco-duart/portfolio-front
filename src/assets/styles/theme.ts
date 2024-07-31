@@ -17,6 +17,8 @@ export const light: DefaultTheme = {
     gray: "#999",
     lightGray: "#D3D3D3",
     white: "#E8E8E8",
+    error: "#red",
+    success: "#green",
   },
   fonts: {
     playWrite: "'Playwrite IT Moderna', cursive",

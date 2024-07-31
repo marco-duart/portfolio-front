@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-//LIBRARIES
+// LIBRARIES
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-//STYLES
+// STYLES
 import * as S from "./styles";
-//UTILS
+// UTILS
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Education } from "../../models/education";
 import CrudButton from "../shared/buttons/crud-button";
@@ -15,7 +15,9 @@ import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
 const educationFormSchema = z.object({
   id: z.coerce.number().nullable(),
   institutionName: z.string().min(3, FORM_MESSAGE.EDUCATION_INSTITUTION_NAME),
-  degree: z.enum(EducationDegreeEnum).min(3, FORM_MESSAGE.EDUCATION_DEGREE),
+  degree: z.nativeEnum(EducationDegreeEnum, {
+    errorMap: () => ({ message: FORM_MESSAGE.EDUCATION_DEGREE })
+  }),
   startDate: z.string(),
   endDate: z.string().optional(),
   description: z.string(),
@@ -52,14 +54,14 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
       if (!id) {
         return;
       }
-      onEdit();
+      onEdit({ ...rest, educationId: id });
     } else {
       if (!resumeId) {
         return;
       }
 
       const { id, ...rest } = data;
-      onCreate({...rest, resumeId});
+      onCreate({ ...rest, resumeId });
     }
     onCancel();
   };
@@ -77,7 +79,7 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
       setDisabled(false);
       setValue("id", null);
       setValue("institutionName", "");
-      setValue("degree", "");
+      setValue("degree", EducationDegreeEnum.HIGH_SCHOOL);
       setValue("startDate", "");
       setValue("endDate", "");
       setValue("description", "");
@@ -100,12 +102,18 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
         </div>
         <div>
           <S.Label htmlFor="degree">Grau</S.Label>
-          <S.TextInput
+          <S.SelectInput
             error={errors.degree ? true : false}
             {...register("degree")}
-            type="text"
             disabled={disabled}
-          />
+          >
+            <option value="">Selecione</option>
+            {Object.values(EducationDegreeEnum).map((degree) => (
+              <option key={degree} value={degree}>
+                {degree}
+              </option>
+            ))}
+          </S.SelectInput>
           {errors.degree && <p>{errors.degree.message}</p>}
         </div>
         <div>
@@ -140,12 +148,12 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
       </S.InputSectionColumn>
 
       <S.ButtonSection>
-        {(disabled && education) && (
+        {disabled && education && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
           </CrudButton>
         )}
-        {(!disabled && education) && (
+        {!disabled && education && (
           <CrudButton onClick={handleDisableInput} action="cancel">
             Cancelar
           </CrudButton>

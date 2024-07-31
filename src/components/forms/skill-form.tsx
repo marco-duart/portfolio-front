@@ -15,7 +15,7 @@ import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 const skillFormSchema = z.object({
   id: z.coerce.number().nullable(),
   name: z.string().min(3, FORM_MESSAGE.SKILL_NAME),
-  level: z.enum(SkillLevelEnum).min(3, FORM_MESSAGE.SKILL_LEVEL),
+  level: z.nativeEnum(SkillLevelEnum),
 });
 
 type SkillFormData = z.infer<typeof skillFormSchema>;
@@ -49,7 +49,7 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
       if (!id) {
         return;
       }
-      onEdit();
+      onEdit({ ...rest, skillId: id });
     } else {
       if (!resumeId) {
         return;
@@ -71,7 +71,7 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
       setDisabled(false);
       setValue("id", null);
       setValue("name", "");
-      setValue("level", "");
+      setValue("level", SkillLevelEnum.BEGINNER);
     }
   }, [skill]);
 
@@ -91,12 +91,17 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
         </div>
         <div>
           <S.Label htmlFor="level">Nível</S.Label>
-          <S.TextInput
+          <S.SelectInput
             error={errors.level ? true : false}
             {...register("level")}
-            type="text"
             disabled={disabled}
-          />
+          >
+            {Object.values(SkillLevelEnum).map((level) => (
+              <option key={level} value={level}>
+                {level}
+              </option>
+            ))}
+          </S.SelectInput>
           {errors.level && <p>{errors.level.message}</p>}
         </div>
       </S.InputSectionColumn>

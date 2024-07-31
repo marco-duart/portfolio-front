@@ -18,6 +18,8 @@ declare module "styled-components" {
       gray: string;
       lightGray: string;
       white: string;
+      error: string;
+      success: string;
     };
     fonts: {
       playWrite: string;
