@@ -1,4 +1,5 @@
 import { Skill } from "../../models/skill";
+import { SkillCategoryEnum } from "../../utils/enums/skill-category.enum";
 import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 
 export namespace CreateSkillDTO {
@@ -6,6 +7,8 @@ export namespace CreateSkillDTO {
     resumeId: number;
     name: string;
     level: SkillLevelEnum;
+    category: SkillCategoryEnum;
+    link: string;
     token: string;
   };
   export type IResponse = Skill;
@@ -29,6 +32,8 @@ export namespace UpdateSkillDTO {
     skillId: number;
     name?: string;
     level?: SkillLevelEnum;
+    category?: SkillCategoryEnum;
+    link?: string;
     token: string;
   };
   export type IResponse = Skill;

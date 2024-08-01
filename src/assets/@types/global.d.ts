@@ -1,5 +1,6 @@
 import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
 import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
+import { SkillCategoryEnum } from "../../utils/enums/skill-category.enum";
 
 export type CreateResumeData = {
   title: string;
@@ -66,12 +67,16 @@ export type CreateSkillData = {
   resumeId: number;
   name: string;
   level: SkillLevelEnum;
+  category: SkillCategoryEnum;
+  link: string;
 };
 
 export type UpdateSkillData = {
   skillId: number;
   name: string;
   level: SkillLevelEnum;
+  category: SkillCategoryEnum;
+  link: string;
 };
 
 export type DeleteSkillData = {
