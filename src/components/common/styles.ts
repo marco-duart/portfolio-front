@@ -53,13 +53,12 @@ export const Logo = styled.div`
 export const Sidebar = styled("div")<{ expanded: boolean }>`
   width: ${(props) => (props.expanded ? "280px" : "80px")};
   height: 100%;
-  position: relative;
+  top: 0;
+  position: sticky;
   background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const SidebarStick = styled.div`
-  position: sticky;
-  top: 0;
   width: 100%;
   height: 100vh;
   padding: 20px 0px;

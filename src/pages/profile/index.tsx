@@ -12,11 +12,29 @@ import BaseIcon from "../../components/shared/icons/base-icon";
 
 export const Profile: React.FC = () => {
   const { resume, createResume, updateResume } = useResumeCrud();
-  const { experiences, createExperience, updateExperience } = useExperienceCrud();
   const { educations, createEducation, updateEducation } = useEducationCrud();
+  const { experiences, createExperience, updateExperience } = useExperienceCrud();
   const { skills, createSkill, updateSkill } = useSkillCrud();
 
+  const [showNewEducationForm, setShowNewEducationForm] = useState(false);
+  const [showNewExperienceForm, setShowNewExperienceForm] = useState(false);
   const [showNewSkillForm, setShowNewSkillForm] = useState(false);
+
+  const handleAddNewEducation = () => {
+    setShowNewEducationForm(true);
+  };
+
+  const handleCancelNewEducation = () => {
+    setShowNewEducationForm(false);
+  };
+
+  const handleAddNewExperience = () => {
+    setShowNewExperienceForm(true);
+  };
+
+  const handleCancelNewExperience = () => {
+    setShowNewExperienceForm(false);
+  };
 
   const handleAddNewSkill = () => {
     setShowNewSkillForm(true);
@@ -32,19 +50,41 @@ export const Profile: React.FC = () => {
       <ResumeForm resume={resume} onCancel={() => {}} onCreate={createResume} onEdit={updateResume} />
       
       <div>
-        {experiences?.map((experience, index) => (
-          <BaseCard key={index}>
-            <ExperienceForm resumeId={resume?.id} experience={experience} onCreate={createExperience} onEdit={updateExperience} onCancel={() => {}} />
-          </BaseCard>
-        ))}
-      </div>
-      
-      <div>
         {educations?.map((education, index) => (
           <BaseCard key={index}>
             <EducationForm resumeId={resume?.id} education={education} onCreate={createEducation} onEdit={updateEducation} onCancel={() => {}} />
           </BaseCard>
         ))}
+        {showNewEducationForm && (
+          <BaseCard>
+            <EducationForm resumeId={resume?.id} onCreate={createEducation} onEdit={updateEducation} onCancel={handleCancelNewEducation} />
+          </BaseCard>
+        )}
+        <BaseIcon
+          icon={PlusCircle}
+          text=""
+          expanded={false}
+          handleClick={handleAddNewEducation}
+          link={""} />
+      </div>
+
+      <div>
+        {experiences?.map((experience, index) => (
+          <BaseCard key={index}>
+            <ExperienceForm resumeId={resume?.id} experience={experience} onCreate={createExperience} onEdit={updateExperience} onCancel={() => {}} />
+          </BaseCard>
+        ))}
+        {showNewExperienceForm && (
+          <BaseCard>
+            <ExperienceForm resumeId={resume?.id} onCreate={createExperience} onEdit={updateExperience} onCancel={handleCancelNewExperience} />
+          </BaseCard>
+        )}
+        <BaseIcon
+          icon={PlusCircle}
+          text=""
+          expanded={false}
+          handleClick={handleAddNewExperience}
+          link={""} />
       </div>
       
       <div>
@@ -60,7 +100,7 @@ export const Profile: React.FC = () => {
         )}
         <BaseIcon
           icon={PlusCircle}
-          text="Currículo"
+          text=""
           expanded={false}
           handleClick={handleAddNewSkill}
           link={""} />
