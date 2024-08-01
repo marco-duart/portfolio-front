@@ -7,6 +7,8 @@ import BaseCard from "../../components/shared/cards/base-card";
 import { ExperienceForm } from "../../components/forms/experience-form";
 import { EducationForm } from "../../components/forms/education-form";
 import { SkillForm } from "../../components/forms/skill-form";
+import { PlusCircle } from "@styled-icons/evaicons-solid"
+import BaseIcon from "../../components/shared/icons/base-icon";
 
 export const Profile: React.FC = () => {
   const { resume, createResume, updateResume } = useResumeCrud();
@@ -56,7 +58,12 @@ export const Profile: React.FC = () => {
             <SkillForm resumeId={resume?.id} onCreate={createSkill} onEdit={updateSkill} onCancel={handleCancelNewSkill} />
           </BaseCard>
         )}
-        <S.AddButton onClick={handleAddNewSkill}>Adicionar Nova Habilidade</S.AddButton>
+        <BaseIcon
+          icon={PlusCircle}
+          text="Currículo"
+          expanded={false}
+          handleClick={handleAddNewSkill}
+          link={""} />
       </div>
     </S.Container>
   );
