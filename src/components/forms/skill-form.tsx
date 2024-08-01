@@ -11,11 +11,14 @@ import { Skill } from "../../models/skill";
 import CrudButton from "../shared/buttons/crud-button";
 import { UpdateSkillData, CreateSkillData } from "../../assets/@types/global";
 import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
+import { SkillCategoryEnum } from "../../utils/enums/skill-category.enum";
 
 const skillFormSchema = z.object({
   id: z.coerce.number().nullable(),
   name: z.string().min(3, FORM_MESSAGE.SKILL_NAME),
   level: z.nativeEnum(SkillLevelEnum),
+  category: z.nativeEnum(SkillCategoryEnum),
+  link: z.string().min(3, FORM_MESSAGE.SKILL_LINK)
 });
 
 type SkillFormData = z.infer<typeof skillFormSchema>;
@@ -67,11 +70,15 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
       setValue("id", skill.id);
       setValue("name", skill.name);
       setValue("level", skill.level);
+      setValue("category", skill.category);
+      setValue("link", skill.link);
     } else {
       setDisabled(false);
       setValue("id", null);
       setValue("name", "");
       setValue("level", SkillLevelEnum.BEGINNER);
+      setValue("category", SkillCategoryEnum.BACK);
+      setValue("link", "");
     }
   }, [skill]);
 
@@ -103,6 +110,31 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
             ))}
           </S.SelectInput>
           {errors.level && <p>{errors.level.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="category">Categoria</S.Label>
+          <S.SelectInput
+            error={errors.category ? true : false}
+            {...register("category")}
+            disabled={disabled}
+          >
+            {Object.values(SkillCategoryEnum).map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </S.SelectInput>
+          {errors.category && <p>{errors.category.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="link">Link do Icone</S.Label>
+          <S.TextInput
+            error={errors.link ? true : false}
+            {...register("link")}
+            type="text"
+            disabled={disabled}
+          />
+          {errors.link && <p>{errors.link.message}</p>}
         </div>
       </S.InputSectionColumn>
 

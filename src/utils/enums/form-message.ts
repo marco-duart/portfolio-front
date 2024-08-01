@@ -12,5 +12,5 @@ export enum FORM_MESSAGE {
   EDUCATION_DEGREE = "O gráu de educação deve ser informado!",
   EDUCATION_START_DATE = "A data de início deve ser informada!",
   SKILL_NAME = "O nome da habilidade deve ser informado!",
-  SKILL_LEVEL = "O nível da habilidade deve ser informado!",
+  SKILL_LINK = "O link do icone da habilidade deve ser informado!",
 }
