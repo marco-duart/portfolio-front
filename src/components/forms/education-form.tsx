@@ -9,8 +9,10 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Education } from "../../models/education";
 import CrudButton from "../shared/buttons/crud-button";
-import { UpdateEducationData, CreateEducationData } from "../../assets/@types/global";
+import { UpdateEducationData, CreateEducationData, DeleteEducationData } from "../../assets/@types/global";
 import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
+import { MinusCircle } from "@styled-icons/evaicons-solid"
+import BaseIcon from "../shared/icons/base-icon";
 
 const educationFormSchema = z.object({
   id: z.coerce.number().nullable(),
@@ -30,10 +32,11 @@ type Props = {
   education?: Education;
   onEdit: (params: UpdateEducationData) => void;
   onCreate: (params: CreateEducationData) => void;
+  onDelete: (params: DeleteEducationData) => void;
   onCancel: () => void;
 };
 
-export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, onCreate, onEdit }) => {
+export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, onCreate, onEdit, onDelete }) => {
   const [disabled, setDisabled] = useState<boolean>(education ? true : false);
   const {
     register,
@@ -66,6 +69,12 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
     onCancel();
   };
 
+  const handleDeleteForm = async () => {
+    if (education && education.id) {
+      onDelete({ educationId: education.id });
+    }
+  };
+
   useEffect(() => {
     if (education) {
       setDisabled(true);
@@ -88,6 +97,14 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
 
   return (
     <S.EducationForm onSubmit={handleSubmit(handleSubmitForm)}>
+      <S.HeaderIconSection>
+      {!education && <BaseIcon
+          icon={MinusCircle}
+          text=""
+          expanded={false}
+          handleClick={onCancel}
+          link={""} />}
+      </S.HeaderIconSection>
       <S.Title>Educação:</S.Title>
       <S.InputSectionColumn>
         <div>
@@ -151,6 +168,11 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
         {disabled && education && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
+          </CrudButton>
+        )}
+        {(disabled && education) && (
+          <CrudButton onClick={handleDeleteForm} action="delete">
+            Excluir
           </CrudButton>
         )}
         {!disabled && education && (

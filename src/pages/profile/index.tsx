@@ -12,7 +12,7 @@ import BaseIcon from "../../components/shared/icons/base-icon";
 
 export const Profile: React.FC = () => {
   const { resume, createResume, updateResume } = useResumeCrud();
-  const { educations, createEducation, updateEducation } = useEducationCrud();
+  const { educations, createEducation, updateEducation, deleteEducation } = useEducationCrud();
   const { experiences, createExperience, updateExperience } = useExperienceCrud();
   const { skills, createSkill, updateSkill } = useSkillCrud();
 
@@ -52,20 +52,20 @@ export const Profile: React.FC = () => {
       <div>
         {educations?.map((education, index) => (
           <BaseCard key={index}>
-            <EducationForm resumeId={resume?.id} education={education} onCreate={createEducation} onEdit={updateEducation} onCancel={() => {}} />
+            <EducationForm resumeId={resume?.id} education={education} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={() => {}} />
           </BaseCard>
         ))}
         {showNewEducationForm && (
           <BaseCard>
-            <EducationForm resumeId={resume?.id} onCreate={createEducation} onEdit={updateEducation} onCancel={handleCancelNewEducation} />
+            <EducationForm resumeId={resume?.id} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={handleCancelNewEducation} />
           </BaseCard>
         )}
-        <BaseIcon
+        {!showNewEducationForm && <BaseIcon
           icon={PlusCircle}
           text=""
           expanded={false}
           handleClick={handleAddNewEducation}
-          link={""} />
+          link={""} />}
       </div>
 
       <div>

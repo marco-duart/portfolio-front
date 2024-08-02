@@ -19,11 +19,17 @@ export const ResumeForm = styled.form`
   background-color: ${ props => props.theme.colors.white };
 `
 
-export const ExperienceForm = styled.form``
+export const ExperienceForm = styled.form`
+  position: relative;
+`
 
-export const EducationForm = styled.form``
+export const EducationForm = styled.form`
+  position: relative;
+`
 
-export const SkillForm = styled.form``
+export const SkillForm = styled.form`
+  position: relative;
+`
 
 // -- DIVS --
 
@@ -75,6 +81,12 @@ export const InputSectionColumn = styled.div`
 
 export const ButtonSection = styled.div`
   display: flex;
+`
+
+export const HeaderIconSection = styled.div`
+  position: absolute;
+  top: -2rem;
+  right: -2.5rem;
 `
 
 // -- TEXTS --
