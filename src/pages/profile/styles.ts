@@ -16,3 +16,8 @@ export const Title = styled.h1`
   width: 100%;
   text-align: center;
 `;
+
+export const SubTitle = styled.h2`
+  width: 100%;
+  text-align: left;
+`;

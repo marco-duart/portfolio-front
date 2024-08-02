@@ -20,7 +20,7 @@ const experienceFormSchema = z.object({
   startDate: z.string(),
   endDate: z.string().nullable(),
   description: z.string(),
-});
+}); 
 
 type ExperienceFormData = z.infer<typeof experienceFormSchema>;
 
@@ -29,10 +29,11 @@ type Props = {
   experience?: Experience;
   onEdit: (params: UpdateExperienceData) => void;
   onCreate: (params: CreateExperienceData) => void;
+  onDelete: (params: DeleteExperienceData) => void;
   onCancel: () => void;
 };
 
-export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel, onCreate, onEdit }) => {
+export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel, onCreate, onEdit, onDelete }) => {
   const [disabled, setDisabled] = useState<boolean>(experience ? true : false);
   const {
     register,
@@ -66,7 +67,11 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
     onCancel();
   };
 
-  // const handleDeleteForm
+  const handleDeleteForm = async () => {
+    if (experience && experience.id) {
+      onDelete({ experienceId: experience.id });
+    }
+  };
 
   useEffect(() => {
     if (experience) {
@@ -91,14 +96,14 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
   return (
     <S.ExperienceForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.HeaderIconSection>
-      {!education && <BaseIcon
+      {!experience && <BaseIcon
           icon={MinusCircle}
           text=""
           expanded={false}
           handleClick={onCancel}
           link={""} />}
       </S.HeaderIconSection>
-      <S.Title>Experiência:</S.Title>
+      <S.Title>Id: {experience?.id}</S.Title>
       <S.InputSectionColumn>
         <div>
           <S.Label htmlFor="companyName">Empresa</S.Label>
@@ -155,6 +160,11 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
         {(disabled && experience) && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
+          </CrudButton>
+        )}
+        {(disabled && experience) && (
+          <CrudButton onClick={handleDeleteForm} action="delete">
+            Excluir
           </CrudButton>
         )}
         {(!disabled && experience) && (

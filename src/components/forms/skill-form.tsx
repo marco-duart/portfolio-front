@@ -9,9 +9,11 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Skill } from "../../models/skill";
 import CrudButton from "../shared/buttons/crud-button";
-import { UpdateSkillData, CreateSkillData } from "../../assets/@types/global";
+import { UpdateSkillData, CreateSkillData, DeleteSkillData } from "../../assets/@types/global";
 import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 import { SkillCategoryEnum } from "../../utils/enums/skill-category.enum";
+import { MinusCircle } from "@styled-icons/evaicons-solid"
+import BaseIcon from "../shared/icons/base-icon";
 
 const skillFormSchema = z.object({
   id: z.coerce.number().nullable(),
@@ -28,10 +30,11 @@ type Props = {
   skill?: Skill;
   onEdit: (params: UpdateSkillData) => void;
   onCreate: (params: CreateSkillData) => void;
+  onDelete: (params: DeleteSkillData) => void;
   onCancel: () => void;
 };
 
-export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate, onEdit }) => {
+export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate, onEdit, onDelete }) => {
   const [disabled, setDisabled] = useState<boolean>(skill ? true : false);
   const {
     register,
@@ -64,6 +67,12 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
     onCancel();
   };
 
+  const handleDeleteForm = async () => {
+    if (skill && skill.id) {
+      onDelete({ skillId: skill.id });
+    }
+  };
+
   useEffect(() => {
     if (skill) {
       setDisabled(true);
@@ -84,7 +93,15 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
 
   return (
     <S.SkillForm onSubmit={handleSubmit(handleSubmitForm)}>
-      <S.Title>Habilidade:</S.Title>
+      <S.HeaderIconSection>
+      {!skill && <BaseIcon
+          icon={MinusCircle}
+          text=""
+          expanded={false}
+          handleClick={onCancel}
+          link={""} />}
+      </S.HeaderIconSection>
+      <S.Title>Id: {skill?.id}</S.Title>
       <S.InputSectionColumn>
         <div>
           <S.Label htmlFor="name">Nome</S.Label>
@@ -142,6 +159,11 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
         {(disabled && skill) && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
+          </CrudButton>
+        )}
+        {(disabled && skill) && (
+          <CrudButton onClick={handleDeleteForm} action="delete">
+            Excluir
           </CrudButton>
         )}
         {(!disabled && skill) && (

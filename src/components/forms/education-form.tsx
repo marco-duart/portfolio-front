@@ -105,7 +105,7 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
           handleClick={onCancel}
           link={""} />}
       </S.HeaderIconSection>
-      <S.Title>Educação:</S.Title>
+      <S.Title>Id: {education?.id}</S.Title>
       <S.InputSectionColumn>
         <div>
           <S.Label htmlFor="institutionName">Instituição</S.Label>
