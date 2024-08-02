@@ -9,7 +9,9 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Experience } from "../../models/experience";
 import CrudButton from "../shared/buttons/crud-button";
-import { UpdateExperienceData, CreateExperienceData } from "../../assets/@types/global";
+import { UpdateExperienceData, CreateExperienceData, DeleteExperienceData } from "../../assets/@types/global";
+import { MinusCircle } from "@styled-icons/evaicons-solid"
+import BaseIcon from "../shared/icons/base-icon";
 
 const experienceFormSchema = z.object({
   id: z.coerce.number().nullable(),
@@ -88,6 +90,14 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
 
   return (
     <S.ExperienceForm onSubmit={handleSubmit(handleSubmitForm)}>
+      <S.HeaderIconSection>
+      {!education && <BaseIcon
+          icon={MinusCircle}
+          text=""
+          expanded={false}
+          handleClick={onCancel}
+          link={""} />}
+      </S.HeaderIconSection>
       <S.Title>Experiência:</S.Title>
       <S.InputSectionColumn>
         <div>
