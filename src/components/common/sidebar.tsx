@@ -14,7 +14,7 @@ import * as S from "./styles";
 //HOOKS
 
 const Sidebar = () => {
-  const [expanded, setExpanded] = useState<boolean>(true);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   const handleExpanded = () => {
     setExpanded(!expanded);

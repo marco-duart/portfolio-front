@@ -26,7 +26,12 @@ type Props = {
   onCancel: () => void;
 };
 
-export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit }) => {
+export const ResumeForm: React.FC<Props> = ({
+  resume,
+  onCancel,
+  onCreate,
+  onEdit,
+}) => {
   const [disabled, setDisabled] = useState<boolean>(resume ? true : false);
   const {
     register,
@@ -71,7 +76,6 @@ export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit
 
   return (
     <S.ResumeForm onSubmit={handleSubmit(handleSubmitForm)}>
-      <S.Title>Resumo:</S.Title>
       <S.InputSectionRow>
         <div>
           <S.Label htmlFor="title">Título</S.Label>
@@ -87,6 +91,7 @@ export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit
           <S.Label htmlFor="summary">Descrição</S.Label>
           <S.TextArea
             error={errors.summary ? true : false}
+            size="middle"
             {...register("summary")}
             disabled={disabled}
           />
@@ -95,17 +100,21 @@ export const ResumeForm: React.FC<Props> = ({ resume, onCancel, onCreate, onEdit
       </S.InputSectionRow>
 
       <S.ButtonSection>
-        {(disabled && resume) && (
+        {disabled && resume && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
           </CrudButton>
         )}
-        {(!disabled && resume) && (
+        {!disabled && resume && (
           <CrudButton onClick={handleDisableInput} action="cancel">
             Cancelar
           </CrudButton>
         )}
-        {!disabled && <CrudButton type="submit" action="save">Salvar</CrudButton>}
+        {!disabled && (
+          <CrudButton type="submit" action="save">
+            Salvar
+          </CrudButton>
+        )}
       </S.ButtonSection>
     </S.ResumeForm>
   );

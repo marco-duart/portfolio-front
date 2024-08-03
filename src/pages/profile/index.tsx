@@ -47,10 +47,19 @@ export const Profile: React.FC = () => {
   return (
     <S.Container>
       <S.Title>Perfil</S.Title>
-      <ResumeForm resume={resume} onCancel={() => {}} onCreate={createResume} onEdit={updateResume} />
+      <hr />
+
+      <S.Section>
+        <S.SubTitle>Resumo:</S.SubTitle>
+        <hr />
+        <ResumeForm resume={resume} onCancel={() => {}} onCreate={createResume} onEdit={updateResume} />
+      </S.Section>
       
+      
+      <S.Section>
+      <S.SubTitle>Educação:</S.SubTitle>
+      <hr />
       <div>
-        <S.Title>Educação:</S.Title>
         {educations?.map((education, index) => (
           <BaseCard key={index}>
             <EducationForm resumeId={resume?.id} education={education} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={() => {}} />
@@ -68,9 +77,12 @@ export const Profile: React.FC = () => {
           handleClick={handleAddNewEducation}
           link={""} />}
       </div>
+      </S.Section>
 
-      <div>
-        <S.Title>Experiências:</S.Title>
+      <S.Section>
+        <S.SubTitle>Experiências:</S.SubTitle>
+        <hr />
+        <div>
         {experiences?.map((experience, index) => (
           <BaseCard key={index}>
             <ExperienceForm resumeId={resume?.id} experience={experience} onCreate={createExperience} onEdit={updateExperience} onDelete={deleteExperience} onCancel={handleCancelNewExperience} />
@@ -87,9 +99,13 @@ export const Profile: React.FC = () => {
           expanded={false}
           handleClick={handleAddNewExperience}
           link={""} />
-      </div>
+        </div>
+      </S.Section>
       
-      <div>
+      <S.Section>
+      <S.SubTitle>Habilidades:</S.SubTitle>
+        <hr />
+        <div>
         {skills?.map((skill, index) => (
           <BaseCard key={index}>
             <SkillForm resumeId={resume?.id} skill={skill} onCreate={createSkill} onEdit={updateSkill} onDelete={deleteSkill} onCancel={handleCancelNewSkill} />
@@ -106,7 +122,8 @@ export const Profile: React.FC = () => {
           expanded={false}
           handleClick={handleAddNewSkill}
           link={""} />
-      </div>
+        </div>
+      </S.Section>
     </S.Container>
   );
 };

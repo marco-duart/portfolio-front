@@ -71,7 +71,7 @@ const Footer = () => {
       </S.FooterContent>
       <S.FooterEnd>
         <span>
-          &copy; {year} . Todos os
+          &copy; {year} - Marco Aurélio. Todos os
           direitos reservados
         </span>
         <span>

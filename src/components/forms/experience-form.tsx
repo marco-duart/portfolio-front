@@ -149,6 +149,7 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
           <S.Label htmlFor="description">Descrição</S.Label>
           <S.TextArea
             error={errors.description ? true : false}
+            size="small"
             {...register("description")}
             disabled={disabled}
           />
