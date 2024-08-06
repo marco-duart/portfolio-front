@@ -9,11 +9,12 @@ import * as S from "./styles";
 //UTILS
 
 type Props = {
+  size: "small" | "middle" | "large"
   children: ReactNode;
 };
 
-const BaseCard: React.FC<Props> = ({ children }) => {
-  return <S.Card>{children}</S.Card>;
+const BaseCard: React.FC<Props> = ({ children, size }) => {
+  return <S.Card size={size}>{children}</S.Card>;
 };
 
 export default BaseCard;

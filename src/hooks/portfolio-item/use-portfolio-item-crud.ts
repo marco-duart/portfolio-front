@@ -8,6 +8,7 @@ import {
   GetPortfolioItem,
 } from "../../services/portfolio/index";
 import { PortfolioItem } from "../../models/portfolio-item";
+import { PortfolioPhoto } from "../../models/portfolio-photo";
 import {
   CreatePortfolioItemData,
   DeletePortfolioItemData,
@@ -15,7 +16,7 @@ import {
 } from "../../assets/@types/global";
 
 type State = {
-  portfolioItems: undefined | PortfolioItem[];
+  portfolioItems: undefined | (PortfolioItem & { photos: PortfolioPhoto[] })[];
 };
 
 const INITIAL_STATE = {

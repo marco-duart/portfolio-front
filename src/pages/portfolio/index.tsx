@@ -35,7 +35,7 @@ export const Profile: React.FC = () => {
         <hr />
         <div>
           {portfolioItems?.map((portfolioItem, index) => (
-            <BaseCard key={index}>
+            <BaseCard key={index} size="large">
               <PortfolioItemForm
                 portfolioItem={portfolioItem}
                 onCreate={createPortfolioItem}
@@ -43,10 +43,27 @@ export const Profile: React.FC = () => {
                 onDelete={deletePortfolioItem}
                 onCancel={handleCancelNewPortfolioItem}
               />
+              <S.CarouselSection>
+              <S.StyledCarousel
+              showArrows={true} 
+              showStatus={false} 
+              showIndicators={false} 
+              showThumbs={false} 
+              infiniteLoop={true}
+              useKeyboardArrows={true}
+              width={"100%"}
+              >
+              {portfolioItem.photos?.map((photo) => (
+                  <S.CarouselItem key={photo.id}>
+                    <img src={photo.photoUrl} />
+                  </S.CarouselItem>
+              ))}
+              </S.StyledCarousel>
+              </S.CarouselSection>
             </BaseCard>
           ))}
           {showNewPortfolioItemForm && (
-            <BaseCard>
+            <BaseCard size="large">
               <PortfolioItemForm
                 userId={user?.id}
                 onCreate={createPortfolioItem}

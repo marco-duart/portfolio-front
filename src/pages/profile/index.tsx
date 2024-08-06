@@ -61,12 +61,12 @@ export const Portfolio: React.FC = () => {
       <hr />
       <div>
         {educations?.map((education, index) => (
-          <BaseCard key={index}>
+          <BaseCard key={index} size="middle">
             <EducationForm resumeId={resume?.id} education={education} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={() => {}} />
           </BaseCard>
         ))}
         {showNewEducationForm && (
-          <BaseCard>
+          <BaseCard size="middle">
             <EducationForm resumeId={resume?.id} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={handleCancelNewEducation} />
           </BaseCard>
         )}
@@ -84,12 +84,12 @@ export const Portfolio: React.FC = () => {
         <hr />
         <div>
         {experiences?.map((experience, index) => (
-          <BaseCard key={index}>
+          <BaseCard key={index} size="middle">
             <ExperienceForm resumeId={resume?.id} experience={experience} onCreate={createExperience} onEdit={updateExperience} onDelete={deleteExperience} onCancel={handleCancelNewExperience} />
           </BaseCard>
         ))}
         {showNewExperienceForm && (
-          <BaseCard>
+          <BaseCard size="middle">
             <ExperienceForm resumeId={resume?.id} onCreate={createExperience} onEdit={updateExperience} onDelete={deleteExperience} onCancel={handleCancelNewExperience} />
           </BaseCard>
         )}
@@ -107,12 +107,12 @@ export const Portfolio: React.FC = () => {
         <hr />
         <div>
         {skills?.map((skill, index) => (
-          <BaseCard key={index}>
+          <BaseCard key={index} size="middle">
             <SkillForm resumeId={resume?.id} skill={skill} onCreate={createSkill} onEdit={updateSkill} onDelete={deleteSkill} onCancel={handleCancelNewSkill} />
           </BaseCard>
         ))}
         {showNewSkillForm && (
-          <BaseCard>
+          <BaseCard size="middle">
             <SkillForm resumeId={resume?.id} onCreate={createSkill} onEdit={updateSkill} onDelete={deleteSkill} onCancel={handleCancelNewSkill} />
           </BaseCard>
         )}

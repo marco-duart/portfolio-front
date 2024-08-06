@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 export const Container = styled.div`
   min-height: 40%;
@@ -32,3 +34,31 @@ export const SubTitle = styled.h2`
   width: 100%;
   text-align: left;
 `;
+
+export const CarouselSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`
+
+export const CarouselItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 4px solid #85858589;
+
+  img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+`
+
+export const StyledCarousel = styled(Carousel)`
+  .control-arrow {
+    opacity: 1 !important;
+    visibility: true !important;
+    background-color: #85858589 !important;
+  }
+`
