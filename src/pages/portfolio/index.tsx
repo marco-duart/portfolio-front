@@ -5,6 +5,7 @@ import { usePortfolioItemCrud, useUserContext } from "../../hooks";
 import BaseCard from "../../components/shared/cards/base-card";
 import { PortfolioItemForm } from "../../components/forms/portfolio-item-form";
 import { PlusCircle } from "@styled-icons/evaicons-solid";
+import { Trash2 } from "@styled-icons/evaicons-solid"
 import BaseIcon from "../../components/shared/icons/base-icon";
 
 export const Profile: React.FC = () => {
@@ -14,6 +15,8 @@ export const Profile: React.FC = () => {
     createPortfolioItem,
     deletePortfolioItem,
     updatePortfolioItem,
+    uploadPortfolioPhoto,
+    deletePortfolioPhoto,
   } = usePortfolioItemCrud();
   const [showNewPortfolioItemForm, setShowNewPortfolioItemForm] =
     useState(false);
@@ -41,6 +44,7 @@ export const Profile: React.FC = () => {
                 onCreate={createPortfolioItem}
                 onEdit={updatePortfolioItem}
                 onDelete={deletePortfolioItem}
+                onUpload={uploadPortfolioPhoto}
                 onCancel={handleCancelNewPortfolioItem}
               />
               <S.CarouselSection>
@@ -52,10 +56,19 @@ export const Profile: React.FC = () => {
               showThumbs={false} 
               infiniteLoop={true}
               useKeyboardArrows={true}
-              width={"100%"}
+              // width={"100%"}
               >
               {portfolioItem.photos?.map((photo) => (
                   <S.CarouselItem key={photo.id}>
+                    <S.IconSection>
+                      <BaseIcon
+                        icon={Trash2}
+                        text=""
+                        expanded={false}
+                        handleClick={() => deletePortfolioPhoto({ portfolioPhotoId: photo.id })}
+                        link={""}
+                      />
+                    </S.IconSection>
                     <img src={photo.photoUrl} />
                   </S.CarouselItem>
               ))}

@@ -85,6 +85,7 @@ export const InputSectionColumn = styled.div`
 
 export const ButtonSection = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 export const HeaderIconSection = styled.div`

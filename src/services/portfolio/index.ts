@@ -189,15 +189,10 @@ export const UploadPortfolioPhoto = async (params: UploadPortfolioPhotoDTO.IPara
 
 export const DeletePortfolioPhoto = async (params: DeletePortfolioPhotoDTO.IParams) => {
   try {
-    const { token, portfolioPhotoId, ...rest } = params;
-    const response = await api.post<DeletePortfolioPhotoDTO.IResponse>(
+    const { token, portfolioPhotoId } = params;
+    const response = await api.delete<DeletePortfolioPhotoDTO.IResponse>(
       `/portfolio/delete-photo/${portfolioPhotoId}`,
-      rest,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
     return {
       success: true,

@@ -11,7 +11,7 @@ export const Card = styled("div")<{size: "small" | "middle" | "large" }>`
     switch (props.size) {
       case "small": return "400px";
       case "middle": return "600px";
-      case "large": return "800px"
+      case "large": return "900px"
     }
   }};
   width: ${props => {

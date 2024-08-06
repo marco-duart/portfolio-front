@@ -1,27 +1,28 @@
-//NATIVE
+// NATIVE
 import React from "react";
-//LIBRARIES
+// LIBRARIES
 import { useDropzone } from "react-dropzone";
-//COMPONENTS
-//STYLES
+// COMPONENTS
+// STYLES
 import * as S from "./styles";
-//UTILS
+
+// UTILS
+import { UploadPortfolioPhotoData } from "../../assets/@types/global";
 
 type Props = {
-  uploadPhoto: (photo: File) => void;
-  userPhotoUrl: string;
+  uploadPhoto: (params: UploadPortfolioPhotoData) => void;
+  portfolioItemId: number;
 };
 
-const PhotoDropzone: React.FC<Props> = ({ userPhotoUrl, uploadPhoto }) => {
-
+const PhotoDropzone: React.FC<Props> = ({ uploadPhoto, portfolioItemId }) => {
   const onDrop = (acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
       const file = acceptedFiles[0];
-      uploadPhoto(file);
+      uploadPhoto({ photo: file, portfolioItemId});
     }
   };
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
       "image/*": [".jpeg", ".jpg", ".png"],
@@ -29,14 +30,10 @@ const PhotoDropzone: React.FC<Props> = ({ userPhotoUrl, uploadPhoto }) => {
   });
 
   return (
-    <div>
-      <S.DropzoneDivStyle {...getRootProps()}>
-        <input {...getInputProps()} />
-        <label htmlFor="photoInput">
-          <S.ImgStyle src={userPhotoUrl} alt="photo" />
-        </label>
-      </S.DropzoneDivStyle>
-    </div>
+    <S.DropzoneButton {...getRootProps()} isDragActive={isDragActive}>
+      <input {...getInputProps()} />
+      <label htmlFor="photoInput">Upload Image</label>
+    </S.DropzoneButton>
   );
 };
 

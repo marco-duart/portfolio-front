@@ -36,11 +36,14 @@ export const SubTitle = styled.h2`
 `;
 
 export const CarouselSection = styled.div`
+  max-width: 400px;
+  max-height: 200px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-`
+`;
 
 export const CarouselItem = styled.div`
   background-color: #181818;
@@ -52,15 +55,24 @@ export const CarouselItem = styled.div`
   border: 4px solid #85858589;
 
   img {
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
   }
+`;
+
+export const IconSection = styled.div`
+  position: absolute;
+  top: 0;
+  right: 10px;
 `
 
 export const StyledCarousel = styled(Carousel)`
+  width: 100%;
+  height: 100%;
   .control-arrow {
     opacity: 1 !important;
-    visibility: true !important;
+    visibility: visible !important;
     background-color: #85858589 !important;
   }
-`
+`;

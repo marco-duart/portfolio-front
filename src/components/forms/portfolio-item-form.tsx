@@ -13,9 +13,11 @@ import {
   UpdatePortfolioItemData,
   CreatePortfolioItemData,
   DeletePortfolioItemData,
+  UploadPortfolioPhotoData,
 } from "../../assets/@types/global";
 import { MinusCircle } from "@styled-icons/evaicons-solid";
 import BaseIcon from "../shared/icons/base-icon";
+import PhotoDropzone from "../photo-dropzone/photo-dropzone";
 
 const portfolioItemFormSchema = z.object({
   id: z.number().nullable(),
@@ -32,6 +34,7 @@ type Props = {
   onEdit: (params: UpdatePortfolioItemData) => void;
   onCreate: (params: CreatePortfolioItemData) => void;
   onDelete: (params: DeletePortfolioItemData) => void;
+  onUpload?: (params: UploadPortfolioPhotoData) => void;
   onCancel: () => void;
 };
 
@@ -42,6 +45,7 @@ export const PortfolioItemForm: React.FC<Props> = ({
   onCreate,
   onEdit,
   onDelete,
+  onUpload,
 }) => {
   const [disabled, setDisabled] = useState<boolean>(
     portfolioItem ? true : false
@@ -166,6 +170,14 @@ export const PortfolioItemForm: React.FC<Props> = ({
           <CrudButton type="submit" action="save">
             Salvar
           </CrudButton>
+        )}
+      </S.ButtonSection>
+      <S.ButtonSection>
+        {portfolioItem && onUpload && (
+          <PhotoDropzone
+            uploadPhoto={onUpload}
+            portfolioItemId={portfolioItem.id}
+          />
         )}
       </S.ButtonSection>
     </S.PortfolioItemForm>

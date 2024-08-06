@@ -73,6 +73,7 @@ export const usePortfolioItemCrud = () => {
 
     const params = { ...data, token };
     await UploadPortfolioPhoto(params);
+    fetchPortfolioItems();
   };
 
   const deletePortfolioPhoto = async (data: DeletePortfolioPhotoData) => {
@@ -82,6 +83,7 @@ export const usePortfolioItemCrud = () => {
 
     const params = { ...data, token };
     await DeletePortfolioPhoto(params);
+    fetchPortfolioItems();
   };
 
   useEffect(() => {
