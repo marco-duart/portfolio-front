@@ -13,4 +13,7 @@ export enum FORM_MESSAGE {
   EDUCATION_START_DATE = "A data de início deve ser informada!",
   SKILL_NAME = "O nome da habilidade deve ser informado!",
   SKILL_LINK = "O link do icone da habilidade deve ser informado!",
+  PORTFOLIO_ITEM_NAME = "O nome da item do portfolio deve ser informado!",
+  PORTFOLIO_ITEM_DESCRIPTION = "Uma descrição para o item do portfolio deve ser informado!",
+  PORTFOLIO_ITEM_TECHNOLOGIES = "Informe pelo menos uma técnologia utilizada. Para multiplas tecnologias, separar por espaço.",
 }

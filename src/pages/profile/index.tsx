@@ -10,7 +10,7 @@ import { SkillForm } from "../../components/forms/skill-form";
 import { PlusCircle } from "@styled-icons/evaicons-solid"
 import BaseIcon from "../../components/shared/icons/base-icon";
 
-export const Profile: React.FC = () => {
+export const Portfolio: React.FC = () => {
   const { resume, createResume, updateResume } = useResumeCrud();
   const { educations, createEducation, updateEducation, deleteEducation } = useEducationCrud();
   const { experiences, createExperience, updateExperience, deleteExperience } = useExperienceCrud();

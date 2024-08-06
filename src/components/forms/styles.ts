@@ -31,6 +31,10 @@ export const SkillForm = styled.form`
   position: relative;
 `;
 
+export const PortfolioItemForm = styled.form`
+  position: relative;
+`;
+
 // -- DIVS --
 
 export const HandlePassword = styled.div`
