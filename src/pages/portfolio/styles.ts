@@ -43,6 +43,8 @@ export const CarouselSection = styled.div`
 `
 
 export const CarouselItem = styled.div`
+  background-color: #181818;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +52,7 @@ export const CarouselItem = styled.div`
   border: 4px solid #85858589;
 
   img {
-    max-height: 100%;
+    max-height: 80%;
     object-fit: contain;
   }
 `

@@ -5,7 +5,9 @@ import {
   DeletePortfolioItemDTO,
   GetPortfolioItemDTO,
   GetPortfolioItemsDTO,
-  UpdatePortfolioItemDTO
+  UpdatePortfolioItemDTO,
+  DeletePortfolioPhotoDTO,
+  UploadPortfolioPhotoDTO,
 } from "./DTO";
 
 export const GetPortfolioItem = async (params: GetPortfolioItemDTO.IParams) => {
@@ -136,6 +138,73 @@ export const DeletePortfolioItem = async (params: DeletePortfolioItemDTO.IParams
       message: "MESSAGE",
     };
   } catch (error) {
+    if (isAxiosError(error)) {
+      return {
+        success: false,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      success: false,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const UploadPortfolioPhoto = async (params: UploadPortfolioPhotoDTO.IParams) => {
+  try {
+    const { token, portfolioItemId,...rest } = params;
+    const response = await api.post<UploadPortfolioPhotoDTO.IResponse>(
+      `/portfolio/${portfolioItemId}/upload-photo`,
+      rest,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return {
+      success: true,
+      message: "MESSAGE",
+    };
+  } catch (error) {
+    console.log(error);
+    if (isAxiosError(error)) {
+      return {
+        success: false,
+        message: "MESSAGE",
+        code: "CODIGO",
+      };
+    }
+    return {
+      success: false,
+      message: "MESSAGE",
+      code: "CODIGO",
+    };
+  }
+};
+
+export const DeletePortfolioPhoto = async (params: DeletePortfolioPhotoDTO.IParams) => {
+  try {
+    const { token, portfolioPhotoId, ...rest } = params;
+    const response = await api.post<DeletePortfolioPhotoDTO.IResponse>(
+      `/portfolio/delete-photo/${portfolioPhotoId}`,
+      rest,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return {
+      success: true,
+      message: "MESSAGE",
+    };
+  } catch (error) {
+    console.log(error);
     if (isAxiosError(error)) {
       return {
         success: false,

@@ -13,8 +13,7 @@ export namespace CreatePortfolioItemDTO {
 }
 
 export namespace GetPortfolioItemsDTO {
-  export type IParams = {
-  };
+  export type IParams = {};
   export type IResponse = (PortfolioItem & { photos: PortfolioPhoto[] })[];
 }
 
@@ -44,5 +43,26 @@ export namespace DeletePortfolioItemDTO {
   export type IResponse = {
     message: string;
     error: boolean;
+  };
+}
+
+export namespace UploadPortfolioPhotoDTO {
+  export type IParams = {
+    photo: File;
+    portfolioItemId: number;
+    token: string;
+  };
+  export type IResponse = {
+    photo: PortfolioPhoto;
+  };
+}
+
+export namespace DeletePortfolioPhotoDTO {
+  export type IParams = {
+    portfolioPhotoId: number;
+    token: string;
+  };
+  export type IResponse = {
+    message: string;
   };
 }

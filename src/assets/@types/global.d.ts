@@ -97,3 +97,12 @@ export type UpdatePortfolioItemData = {
 export type DeletePortfolioItemData = {
   portfolioItemId: number;
 }
+
+export type UploadPortfolioPhotoData = {
+  photo: File;
+  portfolioItemId: number;
+}
+
+export type DeletePortfolioPhotoData = {
+  portfolioPhotoId: number;
+}

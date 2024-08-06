@@ -44,6 +44,7 @@ export const Profile: React.FC = () => {
                 onCancel={handleCancelNewPortfolioItem}
               />
               <S.CarouselSection>
+              <div>Total de fotos: {portfolioItem.photos?.length}</div>
               <S.StyledCarousel
               showArrows={true} 
               showStatus={false} 

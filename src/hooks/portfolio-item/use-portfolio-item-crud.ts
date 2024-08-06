@@ -6,6 +6,8 @@ import {
   CreatePortfolioItem,
   UpdatePortfolioItem,
   GetPortfolioItem,
+  DeletePortfolioPhoto,
+  UploadPortfolioPhoto,
 } from "../../services/portfolio/index";
 import { PortfolioItem } from "../../models/portfolio-item";
 import { PortfolioPhoto } from "../../models/portfolio-photo";
@@ -13,6 +15,8 @@ import {
   CreatePortfolioItemData,
   DeletePortfolioItemData,
   UpdatePortfolioItemData,
+  UploadPortfolioPhotoData,
+  DeletePortfolioPhotoData,
 } from "../../assets/@types/global";
 
 type State = {
@@ -62,6 +66,24 @@ export const usePortfolioItemCrud = () => {
     fetchPortfolioItems();
   };
 
+  const uploadPortfolioPhoto = async (data: UploadPortfolioPhotoData) => {
+    if (!token) {
+      return;
+    }
+
+    const params = { ...data, token };
+    await UploadPortfolioPhoto(params);
+  };
+
+  const deletePortfolioPhoto = async (data: DeletePortfolioPhotoData) => {
+    if (!token) {
+      return;
+    }
+
+    const params = { ...data, token };
+    await DeletePortfolioPhoto(params);
+  };
+
   useEffect(() => {
     fetchPortfolioItems();
   }, []);
@@ -71,5 +93,7 @@ export const usePortfolioItemCrud = () => {
     createPortfolioItem,
     deletePortfolioItem,
     updatePortfolioItem,
+    uploadPortfolioPhoto,
+    deletePortfolioPhoto,
   };
 };
