@@ -82,3 +82,18 @@ export type UpdateSkillData = {
 export type DeleteSkillData = {
   skillId: number;
 };
+
+export type CreatePortfolioItemData = {
+  userId: number;
+  name: string;
+  description: string;
+  technologies: string;
+}
+
+export type UpdatePortfolioItemData = {
+  portfolioItemId: number;
+}
+
+export type DeletePortfolioItemData = {
+  portfolioItemId: number;
+}
