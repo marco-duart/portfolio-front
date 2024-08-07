@@ -9,8 +9,12 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Experience } from "../../models/experience";
 import CrudButton from "../shared/buttons/crud-button";
-import { UpdateExperienceData, CreateExperienceData, DeleteExperienceData } from "../../assets/@types/global";
-import { MinusCircle } from "@styled-icons/evaicons-solid"
+import {
+  UpdateExperienceData,
+  CreateExperienceData,
+  DeleteExperienceData,
+} from "../../assets/@types/global";
+import { MinusCircle } from "@styled-icons/evaicons-solid";
 import BaseIcon from "../shared/icons/base-icon";
 
 const experienceFormSchema = z.object({
@@ -20,7 +24,7 @@ const experienceFormSchema = z.object({
   startDate: z.string(),
   endDate: z.string().nullable(),
   description: z.string(),
-}); 
+});
 
 type ExperienceFormData = z.infer<typeof experienceFormSchema>;
 
@@ -33,7 +37,14 @@ type Props = {
   onCancel: () => void;
 };
 
-export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel, onCreate, onEdit, onDelete }) => {
+export const ExperienceForm: React.FC<Props> = ({
+  resumeId,
+  experience,
+  onCancel,
+  onCreate,
+  onEdit,
+  onDelete,
+}) => {
   const [disabled, setDisabled] = useState<boolean>(experience ? true : false);
   const {
     register,
@@ -55,14 +66,14 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
         return;
       }
 
-      onEdit({...rest, experienceId: id});
+      onEdit({ ...rest, experienceId: id });
     } else {
       if (!resumeId) {
         return;
       }
-    
+
       const { id, ...rest } = data;
-      onCreate({...rest, resumeId});
+      onCreate({ ...rest, resumeId });
     }
     onCancel();
   };
@@ -96,12 +107,16 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
   return (
     <S.ExperienceForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.HeaderIconSection>
-      {!experience && <BaseIcon
-          icon={MinusCircle}
-          text=""
-          expanded={false}
-          handleClick={onCancel}
-          link={""} />}
+        {!experience && (
+          <BaseIcon
+            icon={MinusCircle}
+            text=""
+            expanded={false}
+            handleClick={onCancel}
+            link={""}
+            color="black"
+          />
+        )}
       </S.HeaderIconSection>
       <S.Title>Id: {experience?.id}</S.Title>
       <S.InputSectionColumn>
@@ -158,22 +173,26 @@ export const ExperienceForm: React.FC<Props> = ({ resumeId, experience, onCancel
       </S.InputSectionColumn>
 
       <S.ButtonSection>
-        {(disabled && experience) && (
+        {disabled && experience && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
           </CrudButton>
         )}
-        {(disabled && experience) && (
+        {disabled && experience && (
           <CrudButton onClick={handleDeleteForm} action="delete">
             Excluir
           </CrudButton>
         )}
-        {(!disabled && experience) && (
+        {!disabled && experience && (
           <CrudButton onClick={handleDisableInput} action="cancel">
             Cancelar
           </CrudButton>
         )}
-        {!disabled && <CrudButton type="submit" action="save">Salvar</CrudButton>}
+        {!disabled && (
+          <CrudButton type="submit" action="save">
+            Salvar
+          </CrudButton>
+        )}
       </S.ButtonSection>
     </S.ExperienceForm>
   );

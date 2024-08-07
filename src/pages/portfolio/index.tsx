@@ -5,11 +5,11 @@ import { usePortfolioItemCrud, useUserContext } from "../../hooks";
 import BaseCard from "../../components/shared/cards/base-card";
 import { PortfolioItemForm } from "../../components/forms/portfolio-item-form";
 import { PlusCircle } from "@styled-icons/evaicons-solid";
-import { Trash2 } from "@styled-icons/evaicons-solid"
+import { Trash2 } from "@styled-icons/evaicons-solid";
 import BaseIcon from "../../components/shared/icons/base-icon";
 
-export const Profile: React.FC = () => {
-  const { user } = useUserContext()
+export const Portfolio: React.FC = () => {
+  const { user } = useUserContext();
   const {
     portfolioItems,
     createPortfolioItem,
@@ -48,31 +48,34 @@ export const Profile: React.FC = () => {
                 onCancel={handleCancelNewPortfolioItem}
               />
               <S.CarouselSection>
-              <div>Total de fotos: {portfolioItem.photos?.length}</div>
-              <S.StyledCarousel
-              showArrows={true} 
-              showStatus={false} 
-              showIndicators={false} 
-              showThumbs={false} 
-              infiniteLoop={true}
-              useKeyboardArrows={true}
-              // width={"100%"}
-              >
-              {portfolioItem.photos?.map((photo) => (
-                  <S.CarouselItem key={photo.id}>
-                    <S.IconSection>
-                      <BaseIcon
-                        icon={Trash2}
-                        text=""
-                        expanded={false}
-                        handleClick={() => deletePortfolioPhoto({ portfolioPhotoId: photo.id })}
-                        link={""}
-                      />
-                    </S.IconSection>
-                    <img src={photo.photoUrl} />
-                  </S.CarouselItem>
-              ))}
-              </S.StyledCarousel>
+                <h4>Total de fotos: {portfolioItem.photos?.length}</h4>
+                <S.StyledCarousel
+                  showArrows={true}
+                  showStatus={false}
+                  showIndicators={false}
+                  showThumbs={false}
+                  infiniteLoop={true}
+                  useKeyboardArrows={true}
+                  // width={"100%"}
+                >
+                  {portfolioItem.photos?.map((photo) => (
+                    <S.CarouselItem key={photo.id}>
+                      <S.IconSection>
+                        <BaseIcon
+                          icon={Trash2}
+                          text=""
+                          expanded={false}
+                          handleClick={() =>
+                            deletePortfolioPhoto({ portfolioPhotoId: photo.id })
+                          }
+                          link={""}
+                          color="red"
+                        />
+                      </S.IconSection>
+                      <img src={photo.photoUrl} />
+                    </S.CarouselItem>
+                  ))}
+                </S.StyledCarousel>
               </S.CarouselSection>
             </BaseCard>
           ))}
@@ -93,6 +96,7 @@ export const Profile: React.FC = () => {
             expanded={false}
             handleClick={handleAddNewPortfolioItem}
             link={""}
+            color="black"
           />
         </div>
       </S.Section>

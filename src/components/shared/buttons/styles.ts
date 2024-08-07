@@ -6,8 +6,8 @@ export const BaseButton = styled.button`
   height: 50px;
   font-size: 16px;
   font-weight: 700;
-  color: ${ props => props.theme.colors.secundary };
-  border: 3px solid ${ props => props.theme.colors.primary };
+  color: ${(props) => props.theme.colors.secundary};
+  border: 3px solid ${(props) => props.theme.colors.primary};
   cursor: pointer;
   position: relative;
   background-color: transparent;
@@ -22,9 +22,9 @@ export const BaseButton = styled.button`
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: ${ props => props.theme.colors.primary };
+    background-color: ${(props) => props.theme.colors.primary};
     transform: translateX(-100%);
-    transition: all .3s;
+    transition: all 0.3s;
     z-index: -1;
   }
 
@@ -33,19 +33,18 @@ export const BaseButton = styled.button`
   }
 `;
 
-
-
-
-
 export const FormButton = styled.button`
   border: none;
-  color: ${ (props) => props.theme.colors.white };
-  font-family: ${ (props) => props.theme.fonts.candal };
+  color: ${(props) => props.theme.colors.white};
+  font-family: ${(props) => props.theme.fonts.candal};
   cursor: pointer;
 `;
 
-export const CrudButton = styled("button")<{ action: "close" | "edit" | "delete" | "cancel" | "create" | "save"; }>`
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
+export const CrudButton = styled("button")<{
+  action: "close" | "edit" | "delete" | "cancel" | "create" | "save";
+}>`
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125),
+    0 1px 1px rgba(0, 0, 0, 0.05);
   padding: 0.8rem 1.5rem;
   margin: 1rem;
   background-color: ${(props) => {
@@ -66,8 +65,8 @@ export const CrudButton = styled("button")<{ action: "close" | "edit" | "delete"
   }};
 
   border: none;
-  color: ${ (props) => props.theme.colors.white };
-  font-family: ${ (props) => props.theme.fonts.candal };
+  color: ${(props) => props.theme.colors.white};
+  font-family: ${(props) => props.theme.fonts.candal};
   cursor: pointer;
 
   /* &:hover {

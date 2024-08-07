@@ -1,26 +1,34 @@
 import styled from "styled-components";
 
-export const Card = styled("div")<{size: "small" | "middle" | "large" }>`
-  background: ${props => props.theme.colors.white};
+export const Card = styled("div")<{ size: "small" | "middle" | "large" }>`
+  background: ${(props) => props.theme.colors.white};
   border-radius: 2px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${(props) =>
+    props.size === "large" ? "flex-start" : "center"};
   align-items: center;
-  height: ${props => {
+  height: ${(props) => {
     switch (props.size) {
-      case "small": return "400px";
-      case "middle": return "600px";
-      case "large": return "900px"
+      case "small":
+        return "400px";
+      case "middle":
+        return "600px";
+      case "large":
+        return "900px";
     }
   }};
-  width: ${props => {
+  width: ${(props) => {
     switch (props.size) {
-      case "small": return "300px";
-      case "middle": return "400px";
-      case "large": return "500px";
+      case "small":
+        return "300px";
+      case "middle":
+        return "400px";
+      case "large":
+        return "500px";
     }
   }};
+  padding-top: ${(props) => (props.size === "large" ? "2rem" : "0")};
   margin: 1rem;
   position: relative;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

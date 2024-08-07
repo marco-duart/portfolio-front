@@ -113,6 +113,7 @@ export const PortfolioItemForm: React.FC<Props> = ({
             expanded={false}
             handleClick={onCancel}
             link={""}
+            color="black"
           />
         )}
       </S.HeaderIconSection>

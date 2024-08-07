@@ -32,6 +32,7 @@ const Sidebar = () => {
                 handleClick={handleExpanded}
                 expanded={expanded}
                 text=""
+                color="black"
               />
             )}
             {expanded && (
@@ -41,6 +42,7 @@ const Sidebar = () => {
                 handleClick={handleExpanded}
                 expanded={expanded}
                 text=""
+                color="black"
               />
             )}
           </S.Menu>
@@ -51,16 +53,24 @@ const Sidebar = () => {
               link="/admin/profile"
               expanded={expanded}
               text="Currículo"
+              color="black"
             />
             <BaseIcon
               icon={Portfolio}
               link="/admin/portfolio"
               expanded={expanded}
               text="Portfolio"
+              color="black"
             />
           </S.Navigation>
 
-          <BaseIcon icon={Exit} link="/" expanded={expanded} text="Sair" />
+          <BaseIcon
+            icon={Exit}
+            link="/"
+            expanded={expanded}
+            text="Sair"
+            color="black"
+          />
         </S.IconsContainer>
       </S.SidebarStick>
     </S.Sidebar>

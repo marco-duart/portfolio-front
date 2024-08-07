@@ -17,16 +17,17 @@ type Props = {
   handleClick?: () => void;
   expanded: boolean;
   text: string;
+  color: "black" | "white" | "red";
 };
 
 const BaseIcon: React.FC<Props> = (props) => {
-  const { link, handleClick, expanded, text, ...rest } = props;
+  const { link, handleClick, expanded, text, color, ...rest } = props;
 
   return (
     <S.IconContainer>
       {handleClick ? (
         <div>
-          <S.Icon>
+          <S.Icon color={color}>
             <rest.icon onClick={() => handleClick()} />
           </S.Icon>
 
@@ -34,7 +35,7 @@ const BaseIcon: React.FC<Props> = (props) => {
         </div>
       ) : (
         <S.Link to={link}>
-          <S.Icon>
+          <S.Icon color={color}>
             <rest.icon />
           </S.Icon>
           {expanded && <h3>{text}</h3>}

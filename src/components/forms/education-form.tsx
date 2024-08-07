@@ -9,16 +9,20 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Education } from "../../models/education";
 import CrudButton from "../shared/buttons/crud-button";
-import { UpdateEducationData, CreateEducationData, DeleteEducationData } from "../../assets/@types/global";
+import {
+  UpdateEducationData,
+  CreateEducationData,
+  DeleteEducationData,
+} from "../../assets/@types/global";
 import { EducationDegreeEnum } from "../../utils/enums/education-degree.enum";
-import { MinusCircle } from "@styled-icons/evaicons-solid"
+import { MinusCircle } from "@styled-icons/evaicons-solid";
 import BaseIcon from "../shared/icons/base-icon";
 
 const educationFormSchema = z.object({
   id: z.coerce.number().nullable(),
   institutionName: z.string().min(3, FORM_MESSAGE.EDUCATION_INSTITUTION_NAME),
   degree: z.nativeEnum(EducationDegreeEnum, {
-    errorMap: () => ({ message: FORM_MESSAGE.EDUCATION_DEGREE })
+    errorMap: () => ({ message: FORM_MESSAGE.EDUCATION_DEGREE }),
   }),
   startDate: z.string(),
   endDate: z.string().optional(),
@@ -36,7 +40,14 @@ type Props = {
   onCancel: () => void;
 };
 
-export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, onCreate, onEdit, onDelete }) => {
+export const EducationForm: React.FC<Props> = ({
+  resumeId,
+  education,
+  onCancel,
+  onCreate,
+  onEdit,
+  onDelete,
+}) => {
   const [disabled, setDisabled] = useState<boolean>(education ? true : false);
   const {
     register,
@@ -98,12 +109,16 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
   return (
     <S.EducationForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.HeaderIconSection>
-      {!education && <BaseIcon
-          icon={MinusCircle}
-          text=""
-          expanded={false}
-          handleClick={onCancel}
-          link={""} />}
+        {!education && (
+          <BaseIcon
+            icon={MinusCircle}
+            text=""
+            expanded={false}
+            handleClick={onCancel}
+            link={""}
+            color="black"
+          />
+        )}
       </S.HeaderIconSection>
       <S.Title>Id: {education?.id}</S.Title>
       <S.InputSectionColumn>
@@ -171,7 +186,7 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
             Editar
           </CrudButton>
         )}
-        {(disabled && education) && (
+        {disabled && education && (
           <CrudButton onClick={handleDeleteForm} action="delete">
             Excluir
           </CrudButton>
@@ -181,7 +196,11 @@ export const EducationForm: React.FC<Props> = ({ resumeId, education, onCancel, 
             Cancelar
           </CrudButton>
         )}
-        {!disabled && <CrudButton type="submit" action="save">Salvar</CrudButton>}
+        {!disabled && (
+          <CrudButton type="submit" action="save">
+            Salvar
+          </CrudButton>
+        )}
       </S.ButtonSection>
     </S.EducationForm>
   );

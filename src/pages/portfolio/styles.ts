@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 
 export const Container = styled.div`
   min-height: 40%;
@@ -64,12 +64,14 @@ export const CarouselItem = styled.div`
 export const IconSection = styled.div`
   position: absolute;
   top: 0;
-  right: 10px;
-`
+  right: 1.5rem;
+`;
 
 export const StyledCarousel = styled(Carousel)`
   width: 100%;
   height: 100%;
+  margin-top: 1.5rem;
+
   .control-arrow {
     opacity: 1 !important;
     visibility: visible !important;

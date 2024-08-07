@@ -7,7 +7,7 @@ export const light: DefaultTheme = {
     secundary: "#161616",
     tertiary: "#098776",
     background: "#161616",
-    close: "",
+    close: "#95a5a6",
     edit: "#3182CE",
     delete: "#E53E3E",
     cancel: "#A0AEC0",
@@ -17,22 +17,17 @@ export const light: DefaultTheme = {
     gray: "#999",
     lightGray: "#D3D3D3",
     white: "#E8E8E8",
-    error: "#red",
-    success: "#green",
+    error: "#e74c3c",
+    success: "#2ecc71",
   },
   fonts: {
     playWrite: "'Playwrite IT Moderna', cursive",
     openSans: "'Open Sans', sans-serif",
     candal: "'Candal', sans-serif",
-    poppins: "'Poppins', sans-serif;"
+    poppins: "'Poppins', sans-serif;",
   },
-  fontSizes: {
-  },
-  borderRadius: {
-  },
-  boxShadow: {
-  },
-  breakpoints: {
-  },
+  fontSizes: {},
+  borderRadius: {},
+  boxShadow: {},
+  breakpoints: {},
 };
-

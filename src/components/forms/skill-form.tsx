@@ -9,10 +9,14 @@ import * as S from "./styles";
 import { FORM_MESSAGE } from "../../utils/enums/form-message";
 import { Skill } from "../../models/skill";
 import CrudButton from "../shared/buttons/crud-button";
-import { UpdateSkillData, CreateSkillData, DeleteSkillData } from "../../assets/@types/global";
+import {
+  UpdateSkillData,
+  CreateSkillData,
+  DeleteSkillData,
+} from "../../assets/@types/global";
 import { SkillLevelEnum } from "../../utils/enums/skill-level.enum";
 import { SkillCategoryEnum } from "../../utils/enums/skill-category.enum";
-import { MinusCircle } from "@styled-icons/evaicons-solid"
+import { MinusCircle } from "@styled-icons/evaicons-solid";
 import BaseIcon from "../shared/icons/base-icon";
 
 const skillFormSchema = z.object({
@@ -20,7 +24,7 @@ const skillFormSchema = z.object({
   name: z.string().min(3, FORM_MESSAGE.SKILL_NAME),
   level: z.nativeEnum(SkillLevelEnum),
   category: z.nativeEnum(SkillCategoryEnum),
-  link: z.string().min(3, FORM_MESSAGE.SKILL_LINK)
+  link: z.string().min(3, FORM_MESSAGE.SKILL_LINK),
 });
 
 type SkillFormData = z.infer<typeof skillFormSchema>;
@@ -34,7 +38,14 @@ type Props = {
   onCancel: () => void;
 };
 
-export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate, onEdit, onDelete }) => {
+export const SkillForm: React.FC<Props> = ({
+  resumeId,
+  skill,
+  onCancel,
+  onCreate,
+  onEdit,
+  onDelete,
+}) => {
   const [disabled, setDisabled] = useState<boolean>(skill ? true : false);
   const {
     register,
@@ -62,7 +73,7 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
       }
 
       const { id, ...rest } = data;
-      onCreate({...rest, resumeId});
+      onCreate({ ...rest, resumeId });
     }
     onCancel();
   };
@@ -94,12 +105,16 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
   return (
     <S.SkillForm onSubmit={handleSubmit(handleSubmitForm)}>
       <S.HeaderIconSection>
-      {!skill && <BaseIcon
-          icon={MinusCircle}
-          text=""
-          expanded={false}
-          handleClick={onCancel}
-          link={""} />}
+        {!skill && (
+          <BaseIcon
+            icon={MinusCircle}
+            text=""
+            expanded={false}
+            handleClick={onCancel}
+            link={""}
+            color="black"
+          />
+        )}
       </S.HeaderIconSection>
       <S.Title>Id: {skill?.id}</S.Title>
       <S.InputSectionColumn>
@@ -156,22 +171,26 @@ export const SkillForm: React.FC<Props> = ({ resumeId, skill, onCancel, onCreate
       </S.InputSectionColumn>
 
       <S.ButtonSection>
-        {(disabled && skill) && (
+        {disabled && skill && (
           <CrudButton onClick={handleDisableInput} action="edit">
             Editar
           </CrudButton>
         )}
-        {(disabled && skill) && (
+        {disabled && skill && (
           <CrudButton onClick={handleDeleteForm} action="delete">
             Excluir
           </CrudButton>
         )}
-        {(!disabled && skill) && (
+        {!disabled && skill && (
           <CrudButton onClick={handleDisableInput} action="cancel">
             Cancelar
           </CrudButton>
         )}
-        {!disabled && <CrudButton type="submit" action="save">Salvar</CrudButton>}
+        {!disabled && (
+          <CrudButton type="submit" action="save">
+            Salvar
+          </CrudButton>
+        )}
       </S.ButtonSection>
     </S.SkillForm>
   );

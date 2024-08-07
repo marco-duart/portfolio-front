@@ -2,18 +2,25 @@ import React, { useState } from "react";
 import * as S from "./styles";
 import * as CONSTANTS from "../../utils/constants/constants";
 import { ResumeForm } from "../../components/forms/resume-form";
-import { useEducationCrud, useExperienceCrud, useResumeCrud, useSkillCrud } from "../../hooks";
+import {
+  useEducationCrud,
+  useExperienceCrud,
+  useResumeCrud,
+  useSkillCrud,
+} from "../../hooks";
 import BaseCard from "../../components/shared/cards/base-card";
 import { ExperienceForm } from "../../components/forms/experience-form";
 import { EducationForm } from "../../components/forms/education-form";
 import { SkillForm } from "../../components/forms/skill-form";
-import { PlusCircle } from "@styled-icons/evaicons-solid"
+import { PlusCircle } from "@styled-icons/evaicons-solid";
 import BaseIcon from "../../components/shared/icons/base-icon";
 
-export const Portfolio: React.FC = () => {
+export const Profile: React.FC = () => {
   const { resume, createResume, updateResume } = useResumeCrud();
-  const { educations, createEducation, updateEducation, deleteEducation } = useEducationCrud();
-  const { experiences, createExperience, updateExperience, deleteExperience } = useExperienceCrud();
+  const { educations, createEducation, updateEducation, deleteEducation } =
+    useEducationCrud();
+  const { experiences, createExperience, updateExperience, deleteExperience } =
+    useExperienceCrud();
   const { skills, createSkill, updateSkill, deleteSkill } = useSkillCrud();
 
   const [showNewEducationForm, setShowNewEducationForm] = useState(false);
@@ -52,76 +59,127 @@ export const Portfolio: React.FC = () => {
       <S.Section>
         <S.SubTitle>Resumo:</S.SubTitle>
         <hr />
-        <ResumeForm resume={resume} onCancel={() => {}} onCreate={createResume} onEdit={updateResume} />
+        <ResumeForm
+          resume={resume}
+          onCancel={() => {}}
+          onCreate={createResume}
+          onEdit={updateResume}
+        />
       </S.Section>
-      
-      
+
       <S.Section>
-      <S.SubTitle>Educação:</S.SubTitle>
-      <hr />
-      <div>
-        {educations?.map((education, index) => (
-          <BaseCard key={index} size="middle">
-            <EducationForm resumeId={resume?.id} education={education} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={() => {}} />
-          </BaseCard>
-        ))}
-        {showNewEducationForm && (
-          <BaseCard size="middle">
-            <EducationForm resumeId={resume?.id} onCreate={createEducation} onEdit={updateEducation} onDelete={deleteEducation} onCancel={handleCancelNewEducation} />
-          </BaseCard>
-        )}
-        {!showNewEducationForm && <BaseIcon
-          icon={PlusCircle}
-          text=""
-          expanded={false}
-          handleClick={handleAddNewEducation}
-          link={""} />}
-      </div>
+        <S.SubTitle>Educação:</S.SubTitle>
+        <hr />
+        <div>
+          {educations?.map((education, index) => (
+            <BaseCard key={index} size="middle">
+              <EducationForm
+                resumeId={resume?.id}
+                education={education}
+                onCreate={createEducation}
+                onEdit={updateEducation}
+                onDelete={deleteEducation}
+                onCancel={() => {}}
+              />
+            </BaseCard>
+          ))}
+          {showNewEducationForm && (
+            <BaseCard size="middle">
+              <EducationForm
+                resumeId={resume?.id}
+                onCreate={createEducation}
+                onEdit={updateEducation}
+                onDelete={deleteEducation}
+                onCancel={handleCancelNewEducation}
+              />
+            </BaseCard>
+          )}
+          {!showNewEducationForm && (
+            <BaseIcon
+              icon={PlusCircle}
+              text=""
+              expanded={false}
+              handleClick={handleAddNewEducation}
+              link={""}
+              color="black"
+            />
+          )}
+        </div>
       </S.Section>
 
       <S.Section>
         <S.SubTitle>Experiências:</S.SubTitle>
         <hr />
         <div>
-        {experiences?.map((experience, index) => (
-          <BaseCard key={index} size="middle">
-            <ExperienceForm resumeId={resume?.id} experience={experience} onCreate={createExperience} onEdit={updateExperience} onDelete={deleteExperience} onCancel={handleCancelNewExperience} />
-          </BaseCard>
-        ))}
-        {showNewExperienceForm && (
-          <BaseCard size="middle">
-            <ExperienceForm resumeId={resume?.id} onCreate={createExperience} onEdit={updateExperience} onDelete={deleteExperience} onCancel={handleCancelNewExperience} />
-          </BaseCard>
-        )}
-        <BaseIcon
-          icon={PlusCircle}
-          text=""
-          expanded={false}
-          handleClick={handleAddNewExperience}
-          link={""} />
+          {experiences?.map((experience, index) => (
+            <BaseCard key={index} size="middle">
+              <ExperienceForm
+                resumeId={resume?.id}
+                experience={experience}
+                onCreate={createExperience}
+                onEdit={updateExperience}
+                onDelete={deleteExperience}
+                onCancel={handleCancelNewExperience}
+              />
+            </BaseCard>
+          ))}
+          {showNewExperienceForm && (
+            <BaseCard size="middle">
+              <ExperienceForm
+                resumeId={resume?.id}
+                onCreate={createExperience}
+                onEdit={updateExperience}
+                onDelete={deleteExperience}
+                onCancel={handleCancelNewExperience}
+              />
+            </BaseCard>
+          )}
+          <BaseIcon
+            icon={PlusCircle}
+            text=""
+            expanded={false}
+            handleClick={handleAddNewExperience}
+            link={""}
+            color="black"
+          />
         </div>
       </S.Section>
-      
+
       <S.Section>
-      <S.SubTitle>Habilidades:</S.SubTitle>
+        <S.SubTitle>Habilidades:</S.SubTitle>
         <hr />
         <div>
-        {skills?.map((skill, index) => (
-          <BaseCard key={index} size="middle">
-            <SkillForm resumeId={resume?.id} skill={skill} onCreate={createSkill} onEdit={updateSkill} onDelete={deleteSkill} onCancel={handleCancelNewSkill} />
-          </BaseCard>
-        ))}
-        {showNewSkillForm && (
-          <BaseCard size="middle">
-            <SkillForm resumeId={resume?.id} onCreate={createSkill} onEdit={updateSkill} onDelete={deleteSkill} onCancel={handleCancelNewSkill} />
-          </BaseCard>
-        )}
-        <BaseIcon
-          icon={PlusCircle}
-          text=""
-          expanded={false}
-          handleClick={handleAddNewSkill}
-          link={""} />
+          {skills?.map((skill, index) => (
+            <BaseCard key={index} size="middle">
+              <SkillForm
+                resumeId={resume?.id}
+                skill={skill}
+                onCreate={createSkill}
+                onEdit={updateSkill}
+                onDelete={deleteSkill}
+                onCancel={handleCancelNewSkill}
+              />
+            </BaseCard>
+          ))}
+          {showNewSkillForm && (
+            <BaseCard size="middle">
+              <SkillForm
+                resumeId={resume?.id}
+                onCreate={createSkill}
+                onEdit={updateSkill}
+                onDelete={deleteSkill}
+                onCancel={handleCancelNewSkill}
+              />
+            </BaseCard>
+          )}
+          <BaseIcon
+            icon={PlusCircle}
+            text=""
+            expanded={false}
+            handleClick={handleAddNewSkill}
+            link={""}
+            color="black"
+          />
         </div>
       </S.Section>
     </S.Container>
