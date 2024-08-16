@@ -1,8 +1,10 @@
+import * as S from "./styles"
+
 export const Contact = () => {
   return (
-    <div>
-      <h2>Contato</h2>
+    <S.Container>
+      <S.Title>Contato</S.Title>
       <hr />
-    </div>
+    </S.Container>
   )
 }

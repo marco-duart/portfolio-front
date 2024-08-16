@@ -1,16 +1,25 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Container = styled.div<{ bgColor: string }>`
+export const Container = styled.div<{ bgColor?: string }>`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props) => props.bgColor ? props.bgColor : props.theme.colors.secundary};
   overflow: hidden;
   position: relative;
 `;
+
+export const Title = styled.h2`
+  color: ${props => props.theme.colors.white};
+  font-weight: bold;
+  font-family: ${props => props.theme.fonts.playWrite};
+  font-size: 2rem;
+  margin: 3rem 0;
+`
 
 export const ImageContainer = styled.div`
   position: relative;

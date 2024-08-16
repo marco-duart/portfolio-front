@@ -11,7 +11,9 @@ export const Home: React.FC = () => {
   return (
     <div>
       <AboutMe />
+      <hr />
       <Skills />
+      <hr />
       <Contact />
     </div>
   );

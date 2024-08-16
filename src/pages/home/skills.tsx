@@ -20,11 +20,11 @@ export const Skills: React.FC = () => {
       ? "#ff4d4d"
       : hoveredSection === "back"
       ? "#007bff"
-      : "#f0f0f0";
+      : undefined;
 
   return (
     <S.Container bgColor={bgColor}>
-      <h2>Habilidades</h2>
+      <S.Title>Habilidades</S.Title>
       <S.ImageContainer>
         <S.ImageWrapper
           side="left"
