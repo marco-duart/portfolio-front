@@ -4,32 +4,79 @@ import { motion } from "framer-motion";
 export const Container = styled.div<{ bgColor?: string }>`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: ${(props) => props.bgColor ? props.bgColor : props.theme.colors.secundary};
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : props.theme.colors.secundary};
   overflow: hidden;
-  position: relative;
+  padding: 2rem 0;
 `;
 
 export const Title = styled.h2`
-  color: ${props => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
   font-weight: bold;
-  font-family: ${props => props.theme.fonts.playWrite};
+  font-family: ${(props) => props.theme.fonts.playWrite};
   font-size: 2rem;
-  margin: 3rem 0;
-`
+  margin: 1rem 0;
+`;
 
-export const ImageContainer = styled.div`
+export const FlexContainer = styled.div`
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+`;
+
+export const TextBlock = styled.div`
+  width: 55%;
+  font-size: 1.1rem;
+  color: ${(props) => props.theme.colors.white};
+  line-height: 1.6;
+`;
+
+export const PortraitWrapper = styled.div`
+  width: 30%;
+  position: relative;
+  transform: rotate(0deg);
+`;
+
+export const PortraitImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+`;
+
+export const PortraitOverlay = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(18, 246, 214, 0.3),
+    rgba(18, 246, 214, 0.5)
+  );
+  border-radius: 15px;
+  z-index: -1;
+  transform: rotate(5deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+`;
+
+
+export const SkillsImageContainer = styled.div`
   position: relative;
   width: 80%;
-  height: 80%;
+  height: 100%;
   display: flex;
   overflow: hidden;
 `;
 
-export const ImageWrapper = styled(motion.div)<{
+export const SkillsImageWrapper = styled(motion.div)<{
   side: "left" | "right";
   hovered: boolean;
   initialState: boolean;
@@ -44,7 +91,9 @@ export const ImageWrapper = styled(motion.div)<{
     props.hovered
       ? "inset(0 0 0 0)"
       : props.initialState
-      ? (props.side === "left" ? "inset(0 50% 0 0)" : "inset(0 0 0 50%)")
+      ? props.side === "left"
+        ? "inset(0 50% 0 0)"
+        : "inset(0 0 0 50%)"
       : "inset(0 100% 0 0)"};
   transform: ${(props) =>
     props.hovered
@@ -54,17 +103,18 @@ export const ImageWrapper = styled(motion.div)<{
   z-index: ${(props) => (props.hovered ? 2 : 1)};
 `;
 
-export const Image = styled.img`
+export const SkillsImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-export const Info = styled.div<{ hoveredSection: "front" | "back" }>`
+export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  ${(props) => (props.hoveredSection === "front" ? "right: 10%;" : "left: 10%;")}
+  ${(props) =>
+    props.hoveredSection === "front" ? "right: 10%;" : "left: 10%;"}
   color: #fff;
   z-index: 3;
   background: rgba(0, 0, 0, 0.5);

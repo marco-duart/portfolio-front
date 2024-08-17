@@ -25,27 +25,27 @@ export const Skills: React.FC = () => {
   return (
     <S.Container bgColor={bgColor}>
       <S.Title>Habilidades</S.Title>
-      <S.ImageContainer>
-        <S.ImageWrapper
+      <S.SkillsImageContainer>
+        <S.SkillsImageWrapper
           side="left"
           onMouseEnter={() => handleMouseEnter("front")}
           onMouseLeave={handleMouseLeave}
           hovered={hoveredSection === "front"}
           initialState={hoveredSection === null}
         >
-          <S.Image src={CONSTANTS.IMAGES.frontEnd} alt="Front-end" />
-        </S.ImageWrapper>
-        <S.ImageWrapper
+          <S.SkillsImage src={CONSTANTS.IMAGES.frontEnd} alt="Front-end" />
+        </S.SkillsImageWrapper>
+        <S.SkillsImageWrapper
           side="right"
           onMouseEnter={() => handleMouseEnter("back")}
           onMouseLeave={handleMouseLeave}
           hovered={hoveredSection === "back"}
           initialState={hoveredSection === null}
         >
-          <S.Image src={CONSTANTS.IMAGES.backEnd} alt="Back-end" />
-        </S.ImageWrapper>
+          <S.SkillsImage src={CONSTANTS.IMAGES.backEnd} alt="Back-end" />
+        </S.SkillsImageWrapper>
         {hoveredSection && (
-          <S.Info hoveredSection={hoveredSection}>
+          <S.SkillsInfo hoveredSection={hoveredSection}>
             <h2>{hoveredSection === "front" ? "Front-end Skills" : "Back-end Skills"}</h2>
             <ul>
               {hoveredSection === "front" ? (
@@ -75,9 +75,9 @@ export const Skills: React.FC = () => {
                 </>
               )}
             </ul>
-          </S.Info>
+          </S.SkillsInfo>
         )}
-      </S.ImageContainer>
+      </S.SkillsImageContainer>
       <hr />
     </S.Container>
   );
