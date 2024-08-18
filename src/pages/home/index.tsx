@@ -4,7 +4,7 @@ import { Contact } from "./contact";
 import { Skills } from "./skills";
 
 export const Home: React.FC = () => {
-  const { user } = useUserBio()
+  const { user, skills } = useUserBio()
 
   return (
     <div>
@@ -13,7 +13,7 @@ export const Home: React.FC = () => {
       </section>
       <hr />
       <section id="skills">
-      <Skills />
+      <Skills skills={skills} />
       </section>
       <hr />
       <section id="contact">

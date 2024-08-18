@@ -1,8 +1,13 @@
 import * as S from "./styles";
 import * as CONSTANTS from "../../utils/constants/constants";
 import React, { useState } from "react";
+import { Skill } from "../../models/skill";
 
-export const Skills: React.FC = () => {
+type Props = {
+  skills: undefined | Skill[];
+}
+
+export const Skills: React.FC<Props> = ({ skills }) => {
   const [hoveredSection, setHoveredSection] = useState<null | "front" | "back">(
     null
   );
@@ -52,28 +57,11 @@ export const Skills: React.FC = () => {
             <ul>
               {hoveredSection === "front" ? (
                 <>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>SCSS</li>
-                  <li>Bootstrap</li>
-                  <li>Saas</li>
-                  <li>JavaScript</li>
-                  <li>TypeScript</li>
-                  <li>React</li>
-                  <li>React Native</li>
-                  <li>Redux</li>
-                  <li>NextJs</li>
+                  {skills?.filter(skill => skill.category === 'front-end').map((skill, index) => <li key={index}>{skill.name}</li>)}
                 </>
               ) : (
                 <>
-                  <li>NodeJs</li>
-                  <li>TypeScript</li>
-                  <li>Express</li>
-                  <li>NestJs</li>
-                  <li>Ruby on Rails</li>
-                  <li>MongoDB</li>
-                  <li>MySQL</li>
-                  <li>PostgreSQL</li>
+                  {skills?.filter(skill => skill.category === 'back-end').map((skill, index) => <li key={index}>{skill.name}</li>)}
                 </>
               )}
             </ul>
