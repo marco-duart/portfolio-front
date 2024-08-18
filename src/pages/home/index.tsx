@@ -1,20 +1,18 @@
-import { useProfile } from "../../hooks";
+import { useUserBio } from "../../hooks";
 import { AboutMe } from "./about-me";
 import { Contact } from "./contact";
 import { Skills } from "./skills";
-import * as S from "./styles";
 
 export const Home: React.FC = () => {
-  const { profile } = useProfile()
+  const { user } = useUserBio()
 
-  console.log(profile)
   return (
     <div>
-      <AboutMe />
+      <AboutMe user={user} />
       <hr />
       <Skills />
       <hr />
-      <Contact />
+      <Contact user={user} />
     </div>
   );
 };

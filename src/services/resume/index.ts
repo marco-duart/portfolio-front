@@ -47,7 +47,7 @@ export const CreateResume = async (params: CreateResumeDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      resume: response.data.resume,
+      resume: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {
@@ -76,7 +76,7 @@ export const UpdateResume = async (params: UpdateResumeDTO.IParams) => {
     return {
       success: true,
       message: "MESSAGE",
-      resume: response.data.resume,
+      resume: response.data,
     };
   } catch (error) {
     if (isAxiosError(error)) {

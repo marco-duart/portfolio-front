@@ -2,8 +2,13 @@ import * as S from "./styles";
 import * as CONSTANTS from "../../utils/constants/constants";
 import { Whatsapp, Linkedin, Github } from "@styled-icons/bootstrap/";
 import { Email } from "@styled-icons/material-outlined";
+import { User } from "../../models/user";
 
-export const Contact = () => {
+type Props = {
+  user: undefined | User;
+};
+
+export const Contact: React.FC<Props> = ({ user }) => {
   return (
     <S.Container>
       <S.Title>Contato</S.Title>
@@ -14,36 +19,28 @@ export const Contact = () => {
         </S.PortraitWrapper>
         <S.TextContainer>
           <div>
-            <S.IconBlock>
+            <S.IconBlock href={user?.whatsapp} target="_blank">
               <Whatsapp />
-              <div>
-                +55 (62) 9 9406-9668
-              </div>
+              <div>{user?.phone}</div>
             </S.IconBlock>
           </div>
           <div>
-          <S.IconBlock>
-            <Email />
-            <div>
-              marcoaurelio_db@hotmail.com
-            </div>
-          </S.IconBlock>
+            <S.IconBlock href={`mailto:${user?.businessEmail}`}>
+              <Email />
+              <div>{user?.businessEmail}</div>
+            </S.IconBlock>
           </div>
           <div>
-          <S.IconBlock>
-            <Linkedin />
-            <div>
-              in/aurelio-duart/
-            </div>
-          </S.IconBlock>
+            <S.IconBlock href={user?.linkedin} target="_blank">
+              <Linkedin />
+              <div>{user?.linkedin}</div>
+            </S.IconBlock>
           </div>
           <div>
-          <S.IconBlock>
-            <Github />
-            <div>
-              github.com/marco-duart
-            </div>
-          </S.IconBlock>
+            <S.IconBlock href={user?.github} target="_blank">
+              <Github />
+              <div>{user?.github}</div>
+            </S.IconBlock>
           </div>
         </S.TextContainer>
       </S.FlexContainer>

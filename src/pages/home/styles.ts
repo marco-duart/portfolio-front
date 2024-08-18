@@ -141,7 +141,8 @@ export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
   }
 `;
 
-export const IconBlock = styled.div`
+export const IconBlock = styled.a`
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 1rem;
