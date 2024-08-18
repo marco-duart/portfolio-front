@@ -16,18 +16,18 @@ const Header: React.FC = () => {
         <Logo />
       </div>
       <S.Navbar>
-        <S.Link to={"/admin/dashboard"}>
+        <S.HeaderLink to={"/home"}>
           Home
-        </S.Link>
-        <S.Link to={"/admin/dashboard"}>
-          Portfolio
-        </S.Link>
-        <S.Link to={"/admin/dashboard"}>
+        </S.HeaderLink>
+        <S.HeaderScrool to="about" smooth={true} duration={500}>
           About
-        </S.Link>
-        <S.Link to={"/admin/dashboard"}>
+        </S.HeaderScrool>
+        <S.HeaderScrool to="contact" smooth={true} duration={500}>
           Contact
-        </S.Link>
+        </S.HeaderScrool>
+        <S.HeaderLink to={"/portfolio"}>
+          Portfolio
+        </S.HeaderLink>
       </S.Navbar>
     </S.Header>
   );

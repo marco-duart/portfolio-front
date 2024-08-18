@@ -8,11 +8,17 @@ export const Home: React.FC = () => {
 
   return (
     <div>
+      <section id="about">
       <AboutMe user={user} />
+      </section>
       <hr />
+      <section id="skills">
       <Skills />
+      </section>
       <hr />
+      <section id="contact">
       <Contact user={user} />
+      </section>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Link } from 'react-scroll';
 import styled from "styled-components";
 
 // HEADER
@@ -20,7 +21,30 @@ export const Navbar = styled.header`
   gap: 25px;
 `;
 
-export const Link = styled(NavLink)`
+export const HeaderLink = styled(NavLink)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: ${(props) => props.theme.colors.white};
+  border-radius: 10px;
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
+    text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
+      0 0 20px ${(props) => props.theme.colors.primary},
+      0 0 30px ${(props) => props.theme.colors.primary};
+  }
+  &.active {
+    color: ${(props) => props.theme.colors.primary};
+    text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
+      0 0 20px ${(props) => props.theme.colors.primary},
+      0 0 30px ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const HeaderScrool = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: center;
