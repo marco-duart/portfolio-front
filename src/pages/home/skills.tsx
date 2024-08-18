@@ -24,7 +24,9 @@ export const Skills: React.FC = () => {
 
   return (
     <S.Container bgColor={bgColor}>
-      <S.Title>Habilidades</S.Title>
+      <S.TitleContainer>
+        <S.Title>Habilidades</S.Title>
+      </S.TitleContainer>
       <S.SkillsImageContainer>
         <S.SkillsImageWrapper
           side="left"

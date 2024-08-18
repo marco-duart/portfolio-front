@@ -11,15 +11,17 @@ export const Container = styled.div<{ bgColor?: string }>`
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : props.theme.colors.secundary};
   overflow: hidden;
-  padding: 2rem 0;
 `;
+
+export const TitleContainer = styled.div`
+  height: 15%;
+`
 
 export const Title = styled.h2`
   color: ${(props) => props.theme.colors.white};
   font-weight: bold;
   font-family: ${(props) => props.theme.fonts.playWrite};
   font-size: 2rem;
-  margin: 1rem 0;
 `;
 
 export const FlexContainer = styled.div`
@@ -71,7 +73,7 @@ export const PortraitOverlay = styled.div`
 export const SkillsImageContainer = styled.div`
   position: relative;
   width: 80%;
-  height: 100%;
+  height: 85%;
   display: flex;
   overflow: hidden;
 `;
@@ -98,7 +100,7 @@ export const SkillsImageWrapper = styled(motion.div)<{
   transform: ${(props) =>
     props.hovered
       ? `translateX(${props.side === "left" ? "-30%" : "30%"}) scale(1)`
-      : "translateX(0%) scale(0.9)"};
+      : "translateX(0%) scale(1)"};
   transition: transform 0.3s ease, clip-path 0.3s ease;
   z-index: ${(props) => (props.hovered ? 2 : 1)};
 `;
@@ -106,7 +108,7 @@ export const SkillsImageWrapper = styled(motion.div)<{
 export const SkillsImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
