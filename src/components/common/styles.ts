@@ -29,9 +29,11 @@ export const Link = styled(NavLink)`
   padding-left: 10px;
   color: ${(props) => props.theme.colors.white};
   border-radius: 10px;
-  :hover {
-    background-color: ${(props) => props.theme.colors.white};
-    color: ${(props) => props.theme.colors.black};
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
+    text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
+      0 0 20px ${(props) => props.theme.colors.primary},
+      0 0 30px ${(props) => props.theme.colors.primary};
   }
   &.active {
     color: ${(props) => props.theme.colors.black};

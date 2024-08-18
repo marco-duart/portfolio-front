@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { StyledIconBase } from "@styled-icons/styled-icon";
 
 export const Container = styled.div<{ bgColor?: string }>`
   display: flex;
@@ -21,16 +22,28 @@ export const Title = styled.h2`
   color: ${(props) => props.theme.colors.white};
   font-weight: bold;
   font-family: ${(props) => props.theme.fonts.playWrite};
-  font-size: 2rem;
+  font-size: 2.5rem;
 `;
 
 export const FlexContainer = styled.div`
   width: 70%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-grow: 1;
 `;
+
+export const TextContainer = styled.div`
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+
+export const SubtitleBlock = styled.h3`
+  color: ${(props) => props.theme.colors.primary};
+  font-size: 1.5rem;
+`
 
 export const TextBlock = styled.div`
   width: 55%;
@@ -78,11 +91,7 @@ export const SkillsImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export const SkillsImageWrapper = styled(motion.div)<{
-  side: "left" | "right";
-  hovered: boolean;
-  initialState: boolean;
-}>`
+export const SkillsImageWrapper = styled(motion.div)<{side: "left" | "right"; hovered: boolean; initialState: boolean;}>`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -129,5 +138,24 @@ export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
     to {
       opacity: 1;
     }
+  }
+`;
+
+export const IconBlock = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+
+  div {
+    color: ${(props) => props.theme.colors.primary};
+    font-family: ${(props) => props.theme.fonts.poppins};
+    font-size: 1.25rem;
+  }
+
+  ${StyledIconBase} {
+    width: 40px;
+    height: 40px;
+    color: ${props => props.theme.colors.primary}
   }
 `;
