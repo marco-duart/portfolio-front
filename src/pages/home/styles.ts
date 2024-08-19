@@ -141,6 +141,10 @@ export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
   }
 `;
 
+export const SkillInfoIcon = styled.img`
+  width: 4rem;
+`
+
 export const IconBlock = styled.a`
   text-decoration: none;
   display: flex;

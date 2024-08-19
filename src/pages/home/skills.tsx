@@ -57,11 +57,11 @@ export const Skills: React.FC<Props> = ({ skills }) => {
             <ul>
               {hoveredSection === "front" ? (
                 <>
-                  {skills?.filter(skill => skill.category === 'front-end').map((skill, index) => <li key={index}>{skill.name}</li>)}
+                  {skills?.filter(skill => skill.category === 'front-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} /> )}
                 </>
               ) : (
                 <>
-                  {skills?.filter(skill => skill.category === 'back-end').map((skill, index) => <li key={index}>{skill.name}</li>)}
+                  {skills?.filter(skill => skill.category === 'back-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} />)}
                 </>
               )}
             </ul>
