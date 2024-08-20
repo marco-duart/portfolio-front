@@ -4,6 +4,7 @@ export interface PortfolioItem {
   name: string;
   description: string;
   technologies: string;
+  link: string;
   createdAt: Date;
   updatedAt: Date;
 }

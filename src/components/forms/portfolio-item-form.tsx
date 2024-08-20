@@ -24,6 +24,7 @@ const portfolioItemFormSchema = z.object({
   name: z.string().min(3, FORM_MESSAGE.PORTFOLIO_ITEM_NAME),
   description: z.string().min(3, FORM_MESSAGE.PORTFOLIO_ITEM_DESCRIPTION),
   technologies: z.string().min(3, FORM_MESSAGE.PORTFOLIO_ITEM_TECHNOLOGIES),
+  link: z.string().optional(),
 });
 
 type PortfolioItemFormData = z.infer<typeof portfolioItemFormSchema>;
@@ -94,12 +95,14 @@ export const PortfolioItemForm: React.FC<Props> = ({
       setValue("name", portfolioItem.name);
       setValue("description", portfolioItem.description);
       setValue("technologies", portfolioItem.technologies);
+      setValue("link", portfolioItem.link);
     } else {
       setDisabled(false);
       setValue("id", null);
       setValue("name", "");
       setValue("description", "");
       setValue("technologies", "");
+      setValue("link", "");
     }
   }, [portfolioItem]);
 
@@ -148,6 +151,16 @@ export const PortfolioItemForm: React.FC<Props> = ({
             disabled={disabled}
           />
           {errors.technologies && <p>{errors.technologies.message}</p>}
+        </div>
+        <div>
+          <S.Label htmlFor="link">Link do Projeto</S.Label>
+          <S.TextInput
+            error={errors.link ? true : false}
+            {...register("link")}
+            type="text"
+            disabled={disabled}
+          />
+          {errors.link && <p>{errors.link.message}</p>}
         </div>
       </S.InputSectionColumn>
 

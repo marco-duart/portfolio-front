@@ -79,7 +79,7 @@ export const Portfolio: React.FC = () => {
               </S.CarouselSection>
             </BaseCard>
           ))}
-          {showNewPortfolioItemForm && (
+          {!showNewPortfolioItemForm && (
             <BaseCard size="large">
               <PortfolioItemForm
                 userId={user?.id}

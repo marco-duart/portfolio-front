@@ -88,6 +88,7 @@ export type CreatePortfolioItemData = {
   name: string;
   description: string;
   technologies: string;
+  link?: string;
 }
 
 export type UpdatePortfolioItemData = {
