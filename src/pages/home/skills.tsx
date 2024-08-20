@@ -54,7 +54,7 @@ export const Skills: React.FC<Props> = ({ skills }) => {
         {hoveredSection && (
           <S.SkillsInfo hoveredSection={hoveredSection}>
             <h2>{hoveredSection === "front" ? "Front-end Skills" : "Back-end Skills"}</h2>
-            <ul>
+            <div>
               {hoveredSection === "front" ? (
                 <>
                   {skills?.filter(skill => skill.category === 'front-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} /> )}
@@ -64,7 +64,7 @@ export const Skills: React.FC<Props> = ({ skills }) => {
                   {skills?.filter(skill => skill.category === 'back-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} />)}
                 </>
               )}
-            </ul>
+            </div>
           </S.SkillsInfo>
         )}
       </S.SkillsImageContainer>

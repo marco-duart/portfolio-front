@@ -12,6 +12,7 @@ export const Container = styled.div<{ bgColor?: string }>`
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : props.theme.colors.secundary};
   overflow: hidden;
+  padding: 2rem 0;
 `;
 
 export const TitleContainer = styled.div`
@@ -121,6 +122,7 @@ export const SkillsImage = styled.img`
 `;
 
 export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
+  max-width: 40%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -138,6 +140,18 @@ export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
     to {
       opacity: 1;
     }
+  }
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 `;
 
