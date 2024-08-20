@@ -79,7 +79,7 @@ export const Portfolio: React.FC = () => {
               </S.CarouselSection>
             </BaseCard>
           ))}
-          {!showNewPortfolioItemForm && (
+          {showNewPortfolioItemForm && (
             <BaseCard size="large">
               <PortfolioItemForm
                 userId={user?.id}
@@ -90,14 +90,14 @@ export const Portfolio: React.FC = () => {
               />
             </BaseCard>
           )}
-          <BaseIcon
+          {!showNewPortfolioItemForm && <BaseIcon
             icon={PlusCircle}
             text=""
             expanded={false}
             handleClick={handleAddNewPortfolioItem}
             link={""}
             color="black"
-          />
+          />}
         </div>
       </S.Section>
     </S.Container>

@@ -134,14 +134,14 @@ export const Profile: React.FC = () => {
               />
             </BaseCard>
           )}
-          <BaseIcon
+          {!showNewExperienceForm && <BaseIcon
             icon={PlusCircle}
             text=""
             expanded={false}
             handleClick={handleAddNewExperience}
             link={""}
             color="black"
-          />
+          />}
         </div>
       </S.Section>
 
@@ -172,14 +172,14 @@ export const Profile: React.FC = () => {
               />
             </BaseCard>
           )}
-          <BaseIcon
+          {!showNewSkillForm && <BaseIcon
             icon={PlusCircle}
             text=""
             expanded={false}
             handleClick={handleAddNewSkill}
             link={""}
             color="black"
-          />
+          />}
         </div>
       </S.Section>
     </S.Container>
