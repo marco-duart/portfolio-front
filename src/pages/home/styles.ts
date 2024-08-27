@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { StyledIconBase } from "@styled-icons/styled-icon";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const Container = styled.div<{ bgColor?: string }>`
   display: flex;
@@ -225,5 +227,43 @@ export const PortfolioCard = styled.div`
   &:hover {
     transform: scale(0.98);
     border-radius: 20px;
+  }
+`;
+
+export const CarouselSection = styled.div`
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const CarouselItem = styled.div`
+  background-color: #181818;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 4px solid #85858589;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+`;
+
+export const StyledCarousel = styled(Carousel)`
+  width: 100%;
+  height: 100%;
+  margin-top: 1.5rem;
+
+  .control-arrow {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: #85858589 !important;
   }
 `;

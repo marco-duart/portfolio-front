@@ -21,6 +21,7 @@ export const Home: React.FC = () => {
       <section id="portfolio">
         <Portfolio portfolioItems={portfolioItems} />
       </section>
+      <hr />
       <section id="contact">
         <Contact user={user} />
       </section>
