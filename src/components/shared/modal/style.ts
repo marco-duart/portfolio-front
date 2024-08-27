@@ -18,21 +18,20 @@ export const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #dadada8d;
+  background-color: ${(props) => props.theme.colors.lightGray};
   display: flex;
   flex-direction: column;
   border-radius: 10px;
 `;
 
-
 export const ModalHeader = styled.div`
   width: 100%;
-  height: 70px;
+  height: 8%;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${props => props.theme.colors.tertiary};
+  background: ${(props) => props.theme.colors.secundary};
   border-radius: 10px 10px 0 0;
 `;
 
@@ -42,6 +41,8 @@ export const ModalTitle = styled.h2`
 `;
 
 export const ModalBody = styled.div`
+  width: 100%;
+  height: 92%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -93,7 +93,11 @@ export const SkillsImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export const SkillsImageWrapper = styled(motion.div)<{  side: "left" | "right";  hovered: boolean;  initialState: boolean;}>`
+export const SkillsImageWrapper = styled(motion.div)<{
+  side: "left" | "right";
+  hovered: boolean;
+  initialState: boolean;
+}>`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -230,9 +234,31 @@ export const PortfolioCard = styled.div`
   }
 `;
 
-export const CarouselSection = styled.div`
+export const ModalContent = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const DescriptionSection = styled.div`
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+
+  table {
+    width: 80%;
+  }
+`;
+
+export const TableRow = styled.td`
+  vertical-align: top;
+  padding: 0 0 1rem 1rem;
+`;
+
+export const CarouselSection = styled.div`
+  max-width: 60%;
+  max-height: 80%;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
