@@ -1,23 +1,28 @@
-import { useUserBio } from "../../hooks";
+import { useGetPortfolioItem, useUserBio } from "../../hooks";
 import { AboutMe } from "./about-me";
 import { Contact } from "./contact";
+import { Portfolio } from "./portfolio";
 import { Skills } from "./skills";
 
 export const Home: React.FC = () => {
-  const { user, skills } = useUserBio()
+  const { user, skills } = useUserBio();
+  const { portfolioItems } = useGetPortfolioItem();
 
   return (
     <div>
       <section id="about">
-      <AboutMe user={user} />
+        <AboutMe user={user} />
       </section>
       <hr />
       <section id="skills">
-      <Skills skills={skills} />
+        <Skills skills={skills} />
       </section>
       <hr />
+      <section id="portfolio">
+        <Portfolio portfolioItems={portfolioItems} />
+      </section>
       <section id="contact">
-      <Contact user={user} />
+        <Contact user={user} />
       </section>
     </div>
   );

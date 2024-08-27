@@ -1,18 +1,25 @@
 import * as S from "./styles";
-import * as CONSTANTS from "../../utils/constants/constants";
-import { User } from "../../models/user";
+import { PortfolioItem } from "../../models/portfolio-item";
+import { PortfolioPhoto } from "../../models/portfolio-photo";
 
 type Props = {
-  user: undefined | User
-}
+  portfolioItems: undefined | (PortfolioItem & { photos: PortfolioPhoto[] })[];
+};
 
-export const Portfolio: React.FC<Props> = ({ user }) => {
+export const Portfolio: React.FC<Props> = ({ portfolioItems }) => {
   return (
     <S.Container>
-      <S.Title>Sobre Mim</S.Title>
-      <S.FlexContainer>
-
-      </S.FlexContainer>
+      <S.Title>Projetos</S.Title>
+      <S.PortfolioCardContainer>
+        {portfolioItems?.map((item) => (
+          <S.PortfolioCardWrapper key={item.id}>
+            <S.PortfolioCard>
+              <img src={item.photos[0]?.photoUrl} alt={item.name} />
+              <h4>{item.name}</h4>
+            </S.PortfolioCard>
+          </S.PortfolioCardWrapper>
+        ))}
+      </S.PortfolioCardContainer>
     </S.Container>
   );
 };

@@ -17,7 +17,7 @@ export const Container = styled.div<{ bgColor?: string }>`
 
 export const TitleContainer = styled.div`
   height: 15%;
-`
+`;
 
 export const Title = styled.h2`
   color: ${(props) => props.theme.colors.white};
@@ -39,12 +39,12 @@ export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-`
+`;
 
 export const SubtitleBlock = styled.h3`
   color: ${(props) => props.theme.colors.primary};
   font-size: 1.5rem;
-`
+`;
 
 export const TextBlock = styled.div`
   width: 55%;
@@ -83,7 +83,6 @@ export const PortraitOverlay = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 `;
 
-
 export const SkillsImageContainer = styled.div`
   position: relative;
   width: 80%;
@@ -92,7 +91,7 @@ export const SkillsImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export const SkillsImageWrapper = styled(motion.div)<{side: "left" | "right"; hovered: boolean; initialState: boolean;}>`
+export const SkillsImageWrapper = styled(motion.div)<{  side: "left" | "right";  hovered: boolean;  initialState: boolean;}>`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -157,7 +156,7 @@ export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
 
 export const SkillInfoIcon = styled.img`
   width: 4rem;
-`
+`;
 
 export const IconBlock = styled.a`
   text-decoration: none;
@@ -175,6 +174,56 @@ export const IconBlock = styled.a`
   ${StyledIconBase} {
     width: 40px;
     height: 40px;
-    color: ${props => props.theme.colors.primary}
+    color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const PortfolioCardContainer = styled.div`
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+`;
+
+export const PortfolioCardWrapper = styled.div`
+  width: 320px;
+  height: 230px;
+  background-image: linear-gradient(
+    163deg,
+    ${(props) => props.theme.colors.primary} 0%,
+    ${(props) => props.theme.colors.tertiary} 100%
+  );
+  border-radius: 20px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+  }
+`;
+
+export const PortfolioCard = styled.div`
+  width: 320px;
+  height: 230px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h4 {
+    color: ${(props) => props.theme.colors.white};
+  }
+
+  img {
+    width: 90%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
   }
 `;
