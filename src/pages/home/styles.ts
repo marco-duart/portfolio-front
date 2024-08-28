@@ -202,6 +202,7 @@ export const PortfolioCardWrapper = styled.div`
   );
   border-radius: 20px;
   transition: all 0.3s;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
