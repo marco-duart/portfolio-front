@@ -3,6 +3,7 @@ import { PortfolioItem } from "../../models/portfolio-item";
 import { PortfolioPhoto } from "../../models/portfolio-photo";
 import { useState } from "react";
 import BaseModal from "../../components/shared/modal/base-modal";
+import { TechnologyTags } from "../../components/technology-tag/technology-tag";
 
 type Props = {
   portfolioItems: undefined | (PortfolioItem & { photos: PortfolioPhoto[] })[];
@@ -66,7 +67,11 @@ export const Portfolio: React.FC<Props> = ({ portfolioItems }) => {
                 <S.TableRow>
                   <h4>Tecnologias: </h4>
                 </S.TableRow>
-                <S.TableRow>{portfolioItem?.technologies}</S.TableRow>
+                <S.TableRow>
+                  <TechnologyTags
+                    techString={portfolioItem?.technologies || ""}
+                  />
+                </S.TableRow>
               </tr>
               <tr>
                 <S.TableRow>
