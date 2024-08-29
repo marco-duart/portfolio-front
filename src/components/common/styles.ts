@@ -53,6 +53,7 @@ export const HeaderScrool = styled(Link)`
   padding-left: 10px;
   color: ${(props) => props.theme.colors.white};
   border-radius: 10px;
+  cursor: pointer;
   &:hover {
     color: ${(props) => props.theme.colors.primary};
     text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
