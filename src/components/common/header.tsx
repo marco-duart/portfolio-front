@@ -9,25 +9,23 @@ import * as S from "./styles";
 //UTILS
 
 const Header: React.FC = () => {
-
   return (
     <S.Header>
       <div>
         <Logo />
       </div>
       <S.Navbar>
-        <S.HeaderLink to={"/home"}>
-          Home
-        </S.HeaderLink>
+        <S.HeaderLink to={"/home"}>Home</S.HeaderLink>
         <S.HeaderScrool to="about" smooth={true} duration={500}>
           About
         </S.HeaderScrool>
         <S.HeaderScrool to="contact" smooth={true} duration={500}>
           Contact
         </S.HeaderScrool>
-        <S.HeaderLink to={"/portfolio"}>
+        <S.HeaderScrool to="contact" smooth={true} duration={500}>
           Portfolio
-        </S.HeaderLink>
+        </S.HeaderScrool>
+        <S.HeaderLink to={"/curriculum"}>Currículo</S.HeaderLink>
       </S.Navbar>
     </S.Header>
   );

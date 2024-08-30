@@ -1,5 +1,6 @@
 import * as S from "./styles";
-import { PortfolioItem, PortfolioPhoto } from "../../models";
+import { PortfolioItem } from "../../models/portfolio-item";
+import { PortfolioPhoto } from "../../models/portfolio-photo";
 import { useState } from "react";
 import BaseModal from "../../components/shared/modal/base-modal";
 import { TechnologyTags } from "../../components/technology-tag/technology-tag";

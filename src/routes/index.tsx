@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BaseLayout from "../components/base-layout";
 import AdminLayout from "../components/admin-layout";
-import { Home, Login, Profile, Portfolio } from "../pages";
+import { Home, Login, Profile, Portfolio, Resume } from "../pages";
 import { PrivateRoute } from "../components/auth/private-route";
 
 const Router: React.FC = () => {
@@ -11,6 +11,7 @@ const Router: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route element={<BaseLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/curriculum" element={<Resume />} />
         </Route>
         <Route
           element={
