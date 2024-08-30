@@ -44,7 +44,7 @@ export const HeaderLink = styled(NavLink)`
   }
 `;
 
-export const HeaderScrool = styled(Link)`
+export const HeaderScrool = styled.div`
   text-decoration: none;
   display: flex;
   align-items: center;
