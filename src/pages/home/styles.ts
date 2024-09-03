@@ -253,9 +253,19 @@ export const IconBlock = styled.a`
 export const PortfolioCardContainer = styled.div`
   width: 80%;
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem 2rem;
   margin-top: 2rem;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    flex-wrap: nowrap;
+    overflow: scroll;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    flex-wrap: wrap;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    flex-wrap: wrap;
+  }
 `;
 
 export const PortfolioCardWrapper = styled.div`
@@ -305,7 +315,18 @@ export const ModalContent = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    flex-direction: column-reverse;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const DescriptionSection = styled.div`
