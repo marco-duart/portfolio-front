@@ -33,13 +33,13 @@ export const Contact: React.FC<Props> = ({ user }) => {
           <div>
             <S.IconBlock href={user?.linkedin} target="_blank">
               <Linkedin />
-              <div>{user?.linkedin}</div>
+              <div>{(user?.linkedin || "").replace(/^https?:\/\/www?./, "")}</div>
             </S.IconBlock>
           </div>
           <div>
             <S.IconBlock href={user?.github} target="_blank">
               <Github />
-              <div>{user?.github}</div>
+              <div>{(user?.github || "").replace(/^https?:\/\//, "")}</div> 
             </S.IconBlock>
           </div>
         </S.TextContainer>

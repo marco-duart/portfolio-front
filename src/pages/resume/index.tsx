@@ -77,7 +77,8 @@ export const Resume: React.FC = () => {
           <S.SkillSection>
             {skills?.map((skill, index) => (
               <S.SkillItem key={index}>
-                <S.ItemTitle>{skill.name}</S.ItemTitle>
+                <S.ItemSubtitle>{skill.name}</S.ItemSubtitle>
+                <S.ItemDescription>Nível: {skill.level}</S.ItemDescription>
               </S.SkillItem>
             ))}
           </S.SkillSection>
