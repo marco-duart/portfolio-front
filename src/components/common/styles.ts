@@ -53,6 +53,8 @@ export const HeaderScrool = styled.div`
   color: ${(props) => props.theme.colors.white};
   border-radius: 10px;
   cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+  
   &:hover {
     color: ${(props) => props.theme.colors.primary};
     text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
@@ -60,10 +62,13 @@ export const HeaderScrool = styled.div`
       0 0 30px ${(props) => props.theme.colors.primary};
   }
   &.active {
-    color: ${(props) => props.theme.colors.black};
-    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
+    text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
+      0 0 20px ${(props) => props.theme.colors.primary},
+      0 0 30px ${(props) => props.theme.colors.primary};
   }
 `;
+
 
 // LOGO
 export const Logo = styled.div`
