@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import * as CONSTANTS from "../../utils/constants/constants";
 
 // HEADER
 export const Header = styled.header`
@@ -7,12 +8,21 @@ export const Header = styled.header`
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 8vh;
   padding: 0 4rem;
   background-color: ${(props) => props.theme.colors.background};
   z-index: 4;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    justify-content: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    justify-content: space-around;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    justify-content: space-between;
+  }
 `;
 
 export const Navbar = styled.header`
@@ -54,7 +64,7 @@ export const HeaderScrool = styled.div`
   border-radius: 10px;
   cursor: pointer;
   transition: color 0.3s, background-color 0.3s;
-  
+
   &:hover {
     color: ${(props) => props.theme.colors.primary};
     text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
@@ -69,7 +79,6 @@ export const HeaderScrool = styled.div`
   }
 `;
 
-
 // LOGO
 export const Logo = styled.div`
   height: 7vh;
@@ -77,6 +86,16 @@ export const Logo = styled.div`
   img {
     width: 100%;
     height: 100%;
+  };
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: none;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: block;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    display: block;
   }
 `;
 

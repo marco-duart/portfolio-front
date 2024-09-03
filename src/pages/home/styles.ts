@@ -3,18 +3,29 @@ import { motion } from "framer-motion";
 import { StyledIconBase } from "@styled-icons/styled-icon";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import * as CONSTANTS from "../../utils/constants/constants"
 
 export const Container = styled.div<{ bgColor?: string }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 92vh;
-  width: 100vw;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : props.theme.colors.secundary};
   overflow: hidden;
   padding: 2rem 0;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    width: 100vw;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    height: 92vh;
+    width: 100vw;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    height: 92vh;
+    width: 100vw;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -31,34 +42,89 @@ export const Title = styled.h2`
 export const FlexContainer = styled.div`
   width: 70%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-grow: 1;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2rem;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+  }
 `;
 
 export const TextContainer = styled.div`
-  max-width: 60%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    max-width: 100%;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    max-width: 60%;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    max-width: 60%;
+  }
 `;
 
 export const SubtitleBlock = styled.h3`
   color: ${(props) => props.theme.colors.primary};
   font-size: 1.5rem;
+  
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    text-align: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    text-align: left;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    text-align: left;
+  }
 `;
 
 export const TextBlock = styled.div`
-  width: 55%;
   font-size: 1.1rem;
   color: ${(props) => props.theme.colors.white};
   line-height: 1.6;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    width: 100%;
+    text-align: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    width: 55%;
+    text-align: left;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    width: 55%;
+    text-align: left;
+  }
 `;
 
 export const PortraitWrapper = styled.div`
-  width: 30%;
   position: relative;
   transform: rotate(0deg);
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    width: 50%;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    width: 30%;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    width: 30%;
+  }
 `;
 
 export const PortraitImage = styled.img`
