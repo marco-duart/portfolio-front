@@ -12,7 +12,7 @@ export const Header = styled.header`
   height: 8vh;
   padding: 0 4rem;
   background-color: ${(props) => props.theme.colors.background};
-  z-index: 3;
+  z-index: 4;
 `;
 
 export const Navbar = styled.header`
