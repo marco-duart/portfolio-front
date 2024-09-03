@@ -9,7 +9,7 @@ export const Container = styled.div<{ bgColor?: string }>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : props.theme.colors.secundary};

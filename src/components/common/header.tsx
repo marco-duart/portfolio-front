@@ -5,7 +5,7 @@
 
 //STYLES
 import { useNavigate, useLocation } from "react-router-dom";
-import { animateScroll as scroll } from "react-scroll";
+import { scroller } from "react-scroll";
 
 import Logo from "./logo";
 import * as S from "./styles";
@@ -16,11 +16,16 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   const handleScrollTo = (id: string) => {
+    const headerOffset = window.innerHeight * 0.08;
+  
     if (location.pathname !== "/") {
       navigate("/", { state: { target: id } });
     } else {
-      const element = document.getElementById(id);
-      element && scroll.scrollTo(element.offsetTop);
+      scroller.scrollTo(id, {
+        duration: 500,
+        smooth: true,
+        offset: -headerOffset,
+      });
     }
   };
 
@@ -30,16 +35,15 @@ const Header: React.FC = () => {
         <Logo />
       </div>
       <S.Navbar>
-        <S.HeaderLink to={"/"}>Home</S.HeaderLink>
-        {/* <S.HeaderScrool to="about" smooth={true} duration={500}> */}
+        <S.HeaderScrool onClick={() => handleScrollTo("about")}>
+          Home
+        </S.HeaderScrool>
         <S.HeaderScrool onClick={() => handleScrollTo("skills")}>
           Habilidades
         </S.HeaderScrool>
-        {/* <S.HeaderScrool to="contact" smooth={true} duration={500}> */}
         <S.HeaderScrool onClick={() => handleScrollTo("portfolio")}>
           Projetos
         </S.HeaderScrool>
-        {/* <S.HeaderScrool to="contact" smooth={true} duration={500}> */}
         <S.HeaderScrool onClick={() => handleScrollTo("contact")}>
           Contato
         </S.HeaderScrool>

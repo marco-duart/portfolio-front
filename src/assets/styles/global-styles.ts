@@ -17,11 +17,13 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
- body {    
+  body {    
     background-color: ${(props) => props.theme.colors.background};
     margin: 0;
     padding: 0;
     
     
   }
+
+  /* #skills, #portfolio, #contact {scroll-margin-top: 8vh; /* Compensar o header fixo} */
 `;

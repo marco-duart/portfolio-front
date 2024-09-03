@@ -1,19 +1,18 @@
 import { NavLink } from "react-router-dom";
-import { Link } from 'react-scroll';
 import styled from "styled-components";
 
 // HEADER
 export const Header = styled.header`
-  /* position: sticky; */
-  /* top: 0; */
+  position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 100px;
+  height: 8vh;
   padding: 0 4rem;
   background-color: ${(props) => props.theme.colors.background};
-  /* z-index: 1; */
+  z-index: 3;
 `;
 
 export const Navbar = styled.header`
