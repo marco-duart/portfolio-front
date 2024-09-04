@@ -14,7 +14,7 @@ export const Contact: React.FC<Props> = ({ user }) => {
       <S.Title>Contato</S.Title>
       <S.FlexContainer>
         <S.PortraitWrapper>
-          <S.PortraitImage src={CONSTANTS.IMAGES.contact} alt="about" />
+          <S.PortraitImage src={CONSTANTS.IMAGES.contact} alt="contact" />
           <S.PortraitOverlay />
         </S.PortraitWrapper>
         <S.TextContainer>

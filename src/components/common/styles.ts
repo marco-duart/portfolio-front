@@ -140,26 +140,27 @@ export const Navigation = styled.div`
 // FOOTER
 export const Footer = styled.footer`
   width: 100%;
-  height: 400px;
+  height: 12vh;
 `;
 
 export const FooterContent = styled.div`
   width: 100%;
-  height: 83%;
-  padding: 50px 30px 0 30px;
+  height: 70%;
   background-color: ${(props) => props.theme.colors.tertiary};
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const FooterList = styled.ul`
+export const FooterList = styled.div`
   list-style-type: none;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 30px;
 
   span {
     display: flex;
-    flex-direction: column;
     gap: 10px;
   }
   h4 {
@@ -174,13 +175,12 @@ export const FooterList = styled.ul`
   div {
     width: 40px;
     height: 40px;
-    margin-bottom: 25px;
   }
 `;
 
 export const FooterEnd = styled.div`
   width: 100%;
-  height: 17%;
+  height: 30%;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;

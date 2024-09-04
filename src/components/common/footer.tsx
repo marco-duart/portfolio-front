@@ -13,61 +13,43 @@ import {
 import { Link } from "react-router-dom";
 import * as S from "./styles";
 //UTILS
-import { LINKS } from "../../utils/enums/links";
+import { useUserBio } from "../../hooks";
 
 const Footer = () => {
+  const { user } = useUserBio()
   const year = new Date().getFullYear();
   return (
     <S.Footer>
       <S.FooterContent>
         <S.FooterList>
-          <h4>Contato</h4>
           <span>
-            <li>
-              <a href="/" target="_blank">WhatsApp</a>
-            </li>
-          </span>
-        </S.FooterList>
-        <S.FooterList>
-          <h4>Redes Sociais</h4>
-          <li>
-            <a href={LINKS.linkedin} target="_blank">
+            <a href={user?.facebook} target="_blank">
               <div>
                 <FacebookCircle />
               </div>
             </a>{" "}
-            <a href={LINKS.linkedin} target="_blank">
+            <a href={user?.linkedin} target="_blank">
               <div>
                 <LinkedinSquare />
               </div>
             </a>
-          </li>
-          <li>
-            <a href={LINKS.linkedin} target="_blank">
+            <a href={user?.google} target="_blank">
               <div>
                 <Google />
               </div>
             </a>{" "}
-            <a href={LINKS.linkedin} target="_blank">
-              <div>
-                <Twitter />
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href={LINKS.linkedin} target="_blank">
+            <a href={user?.instagram} target="_blank">
               <div>
                 <InstagramAlt />
               </div>
             </a>{" "}
-            <a href={LINKS.linkedin} target="_blank">
+            <a href={user?.youtube} target="_blank">
               <div>
                 <Youtube />
               </div>
             </a>
-          </li>
+          </span>
         </S.FooterList>
-        <S.FooterList></S.FooterList>
       </S.FooterContent>
       <S.FooterEnd>
         <span>
