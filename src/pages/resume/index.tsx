@@ -1,89 +1,84 @@
 import { format } from "date-fns";
 import { useUserBio } from "../../hooks";
 import * as S from "./styles";
+import { TechnologyLevel } from "../../components/technology-level/technology-level";
 
 export const Resume: React.FC = () => {
   const { user, skills, educations, experiences } = useUserBio();
 
+  const formatDate = (date: string) => format(date, "dd/MM/yyyy");
+
   return (
     <S.Container>
       <S.PageTitle>Meu Currículo</S.PageTitle>
-      <S.Paper>
-        <S.Header>
-          <S.Name>{user?.name}</S.Name>
-          <S.Title>{user?.bioTitle}</S.Title>
-        </S.Header>
+      <S.BasicInfo>
+        <S.BasicInfoItem>
+          <S.ItemTitle>Telefone:</S.ItemTitle>
+          <S.ItemDescription>{user?.phone}</S.ItemDescription>
+        </S.BasicInfoItem>
+        <S.BasicInfoItem>
+          <S.ItemTitle>E-mail:</S.ItemTitle>
+          <S.ItemDescription>{user?.businessEmail}</S.ItemDescription>
+        </S.BasicInfoItem>
+        <S.BasicInfoItem>
+          <S.ItemTitle>LinkedIn:</S.ItemTitle>
+          <S.ItemDescription>{user?.linkedin}</S.ItemDescription>
+        </S.BasicInfoItem>
+        <S.BasicInfoItem>
+          <S.ItemTitle>Github:</S.ItemTitle>
+          <S.ItemDescription>{user?.github}</S.ItemDescription>
+        </S.BasicInfoItem>
+        <S.BasicInfoItem>
+          <S.ItemTitle>Endereço:</S.ItemTitle>
+          <S.ItemDescription>{user?.address}</S.ItemDescription>
+        </S.BasicInfoItem>
+      </S.BasicInfo>
 
-        <S.Section>
-          <S.SectionTitle>Dados Pesoais</S.SectionTitle>
-          <S.InfoItem>
-            <S.ItemSubtitle>Telefone:</S.ItemSubtitle>
-            <S.ItemDescription>{user?.phone}</S.ItemDescription>
-          </S.InfoItem>
-          <S.InfoItem>
-            <S.ItemSubtitle>E-mail:</S.ItemSubtitle>
-            <S.ItemDescription>{user?.businessEmail}</S.ItemDescription>
-          </S.InfoItem>
-          <S.InfoItem>
-            <S.ItemSubtitle>LinkedIn:</S.ItemSubtitle>
-            <S.ItemDescription>{user?.linkedin}</S.ItemDescription>
-          </S.InfoItem>
-          <S.InfoItem>
-            <S.ItemSubtitle>Github:</S.ItemSubtitle>
-            <S.ItemDescription>{user?.github}</S.ItemDescription>
-          </S.InfoItem>
-          <S.InfoItem>
-            <S.ItemSubtitle>Endereço:</S.ItemSubtitle>
-            <S.ItemDescription>{user?.address}</S.ItemDescription>
-          </S.InfoItem>
-        </S.Section>
-
-        <S.Section>
-          <S.SectionTitle>Educação</S.SectionTitle>
-          {educations?.map((education, index) => (
-            <S.Item key={index}>
-              <S.ItemTitle>{education.degree}</S.ItemTitle>
-              <S.ItemSubtitle>
+      <S.Timeline>
+        {educations?.map((education, index) => (
+          <S.TimelineItem key={index}>
+            <S.TimelinePoint />
+            <S.TimelineContent>
+              <S.TimelineTitle>{education.degree}</S.TimelineTitle>
+              <S.TimelineSubtitle>
                 {education.institutionName} - {education.degreeLevel} -{" "}
-                {format(education.startDate, "dd/MM/yyyy")}
-              </S.ItemSubtitle>
-              <S.ItemSubtitle>
-                {education.institutionName} - {education.degreeLevel} -{" "}
-                {format(education.startDate, "dd/MM/yyyy")}
-              </S.ItemSubtitle>
-            </S.Item>
-          ))}
-        </S.Section>
+                {formatDate(education.startDate)}
+              </S.TimelineSubtitle>
+              <S.TimelineSubtitle>
+                {education.endDate ? formatDate(education.endDate) : "Atual"}
+              </S.TimelineSubtitle>
+            </S.TimelineContent>
+          </S.TimelineItem>
+        ))}
+        {experiences?.map((experience, index) => (
+          <S.TimelineItem key={index}>
+            <S.TimelinePoint />
+            <S.TimelineContent>
+              <S.TimelineTitle>{experience.role}</S.TimelineTitle>
+              <S.TimelineSubtitle>{experience.companyName}</S.TimelineSubtitle>
+              <S.TimelineSubtitle>
+                {formatDate(experience.startDate)} -{" "}
+                {experience.endDate ? formatDate(experience.endDate) : "Atual"}
+              </S.TimelineSubtitle>
+              <S.TimelineDescription>
+                {experience.description}
+              </S.TimelineDescription>
+            </S.TimelineContent>
+          </S.TimelineItem>
+        ))}
+      </S.Timeline>
 
-        <S.Section>
-          <S.SectionTitle>Experiencias</S.SectionTitle>
-          {experiences?.map((experience, index) => (
-            <S.Item key={index}>
-              <S.ItemTitle>{experience.role}</S.ItemTitle>
-              <S.ItemSubtitle>{experience.companyName}</S.ItemSubtitle>
-              <S.ItemSubtitle>
-                {format(experience.startDate, "dd/MM/yyyy")} -{" "}
-                {experience.endDate
-                  ? format(experience.startDate, "dd/MM/yyyy")
-                  : "Atual"}
-              </S.ItemSubtitle>
-              <S.ItemDescription>{experience.description}</S.ItemDescription>
-            </S.Item>
+      <S.TechSection>
+        <S.TechTitle>Tecnologias</S.TechTitle>
+        <S.TechContainer>
+          {skills?.map((skill, index) => (
+            <S.TechItem key={index}>
+              <S.TechName>{skill.name}</S.TechName>
+              <TechnologyLevel level={skill.level} />
+            </S.TechItem>
           ))}
-        </S.Section>
-
-        <S.Section>
-          <S.SectionTitle>Habilidades</S.SectionTitle>
-          <S.SkillSection>
-            {skills?.map((skill, index) => (
-              <S.SkillItem key={index}>
-                <S.ItemSubtitle>{skill.name}</S.ItemSubtitle>
-                <S.ItemDescription>Nível: {skill.level}</S.ItemDescription>
-              </S.SkillItem>
-            ))}
-          </S.SkillSection>
-        </S.Section>
-      </S.Paper>
+        </S.TechContainer>
+      </S.TechSection>
     </S.Container>
   );
 };
