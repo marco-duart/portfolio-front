@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Education } from "@styled-icons/zondicons";
+import { Briefcase } from "@styled-icons/ionicons-sharp";
 
 export const Container = styled.div`
   display: flex;
@@ -42,10 +44,17 @@ export const ItemDescription = styled.p`
 `;
 
 export const Timeline = styled.div`
-  position: relative;
   width: 80%;
   max-width: 800px;
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-bottom: 2rem;
+  margin: 2rem 0;
+`;
+
+export const TimelineWrapper = styled.div`
+  position: relative;
 `;
 
 export const TimelineItem = styled.div`
@@ -53,7 +62,28 @@ export const TimelineItem = styled.div`
   padding: 1rem 0;
   border-left: 2px solid ${(props) => props.theme.colors.gray};
   margin-left: 1.5rem;
-  margin-bottom: 2rem;
+`;
+
+export const EducationIcon = styled(Education)`
+  color: ${(props) => props.theme.colors.white};
+  width: 32px;
+  height: 32px;
+`;
+
+export const ExperienceIcon = styled(Briefcase)`
+  color: ${(props) => props.theme.colors.white};
+  width: 32px;
+  height: 32px;
+`;
+
+export const TimelineIconContainer = styled.div`
+  position: absolute;
+  left: 10px;
+  top: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 `;
 
 export const TimelinePoint = styled.div`

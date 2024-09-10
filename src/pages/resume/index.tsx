@@ -35,37 +35,51 @@ export const Resume: React.FC = () => {
       </S.BasicInfo>
 
       <S.Timeline>
-        {educations?.map((education, index) => (
-          <S.TimelineItem key={index}>
-            <S.TimelinePoint />
-            <S.TimelineContent>
-              <S.TimelineTitle>{education.degree}</S.TimelineTitle>
-              <S.TimelineSubtitle>
-                {education.institutionName} - {education.degreeLevel} -{" "}
-                {formatDate(education.startDate)}
-              </S.TimelineSubtitle>
-              <S.TimelineSubtitle>
-                {education.endDate ? formatDate(education.endDate) : "Atual"}
-              </S.TimelineSubtitle>
-            </S.TimelineContent>
-          </S.TimelineItem>
-        ))}
-        {experiences?.map((experience, index) => (
-          <S.TimelineItem key={index}>
-            <S.TimelinePoint />
-            <S.TimelineContent>
-              <S.TimelineTitle>{experience.role}</S.TimelineTitle>
-              <S.TimelineSubtitle>{experience.companyName}</S.TimelineSubtitle>
-              <S.TimelineSubtitle>
-                {formatDate(experience.startDate)} -{" "}
-                {experience.endDate ? formatDate(experience.endDate) : "Atual"}
-              </S.TimelineSubtitle>
-              <S.TimelineDescription>
-                {experience.description}
-              </S.TimelineDescription>
-            </S.TimelineContent>
-          </S.TimelineItem>
-        ))}
+        <S.TimelineWrapper>
+          <S.TimelineIconContainer>
+            <S.EducationIcon />
+          </S.TimelineIconContainer>
+          {educations?.map((education, index) => (
+            <S.TimelineItem key={index}>
+              <S.TimelinePoint />
+              <S.TimelineContent>
+                <S.TimelineTitle>{education.degree}</S.TimelineTitle>
+                <S.TimelineSubtitle>
+                  {education.institutionName} - {education.degreeLevel} -{" "}
+                  {formatDate(education.startDate)}
+                </S.TimelineSubtitle>
+                <S.TimelineSubtitle>
+                  {education.endDate ? formatDate(education.endDate) : "Atual"}
+                </S.TimelineSubtitle>
+              </S.TimelineContent>
+            </S.TimelineItem>
+          ))}
+        </S.TimelineWrapper>
+        <S.TimelineWrapper>
+          <S.TimelineIconContainer>
+            <S.ExperienceIcon />
+          </S.TimelineIconContainer>
+          {experiences?.map((experience, index) => (
+            <S.TimelineItem key={index}>
+              <S.TimelinePoint />
+              <S.TimelineContent>
+                <S.TimelineTitle>{experience.role}</S.TimelineTitle>
+                <S.TimelineSubtitle>
+                  {experience.companyName}
+                </S.TimelineSubtitle>
+                <S.TimelineSubtitle>
+                  {formatDate(experience.startDate)} -{" "}
+                  {experience.endDate
+                    ? formatDate(experience.endDate)
+                    : "Atual"}
+                </S.TimelineSubtitle>
+                <S.TimelineDescription>
+                  {experience.description}
+                </S.TimelineDescription>
+              </S.TimelineContent>
+            </S.TimelineItem>
+          ))}
+        </S.TimelineWrapper>
       </S.Timeline>
 
       <S.TechSection>
