@@ -183,18 +183,31 @@ export const FooterEnd = styled.div`
   height: 30%;
   padding: 0 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
   background-color: ${(props) => props.theme.colors.background};
   font-family: ${(props) => props.theme.fonts.openSans};
   color: ${(props) => props.theme.colors.lightGray};
 
-  span {
-    display: flex;
-    gap: 20px;
-  }
   a {
     color: ${(props) => props.theme.colors.white};
+  }
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    justify-content: center;
+
+    #rules {
+      display: none;
+    }
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    justify-content: space-between;
+    gap: 2rem;
+
+    #rules {
+      display: flex;
+      gap: 20px;
+    }
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
   }
 `;

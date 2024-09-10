@@ -37,6 +37,15 @@ export const Title = styled.h2`
   font-weight: bold;
   font-family: ${(props) => props.theme.fonts.playWrite};
   font-size: 2.5rem;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    margin-bottom: 1rem;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    margin-bottom: 0;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 export const FlexContainer = styled.div`
@@ -65,15 +74,18 @@ export const FlexContainer = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  
 
   @media ${CONSTANTS.DEVICE.mobileS} {
+    gap: 0.5rem;
     max-width: 100%;
   }
   @media ${CONSTANTS.DEVICE.tablet} {
+    gap: 1.5rem;
     max-width: 60%;
   }
   @media ${CONSTANTS.DEVICE.desktop} {
+    gap: 2rem;
     max-width: 60%;
   }
 `;
@@ -120,6 +132,23 @@ export const PortraitWrapper = styled.div`
     width: 50%;
   }
   @media ${CONSTANTS.DEVICE.tablet} {
+    width: 30%;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    width: 30%;
+  }
+`;
+
+export const ContactPortraitWrapper = styled.div`
+  position: relative;
+  transform: rotate(0deg);
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: none;
+    width: 50%;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: block;
     width: 30%;
   }
   @media ${CONSTANTS.DEVICE.desktop} {
@@ -261,6 +290,7 @@ export const PortfolioCardContainer = styled.div`
     overflow: scroll;
   }
   @media ${CONSTANTS.DEVICE.tablet} {
+    justify-content: center;
     flex-wrap: wrap;
   }
   @media ${CONSTANTS.DEVICE.desktop} {

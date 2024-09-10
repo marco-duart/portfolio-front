@@ -56,7 +56,7 @@ const Footer = () => {
           &copy; {year} - Marco Aurélio. Todos os
           direitos reservados
         </span>
-        <span>
+        <span id="rules">
           <Link to="/use-terms">Termos de Uso</Link>
           <Link to="/privacy">Política de Privacidade</Link>
         </span>
