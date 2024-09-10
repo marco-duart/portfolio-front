@@ -14,11 +14,18 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     if (location.state?.target) {
-      scroller.scrollTo(location.state.target, {
-        duration: 800,
-        delay: 0,
-        smooth: 'easeInOutQuart',
-      });
+      const headerOffset = window.innerHeight * 0.08;
+      // Ele tava chamando o scroll antes de carregar corretamente os itens
+      setTimeout(() => {
+        scroller.scrollTo(location.state.target, {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          offset: -headerOffset,
+        });
+      }, 100);
+
+      window.history.replaceState({}, document.title);
     }
   }, [location]);
 

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { StyledIconBase } from "@styled-icons/styled-icon";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import * as CONSTANTS from "../../utils/constants/constants"
+import * as CONSTANTS from "../../utils/constants/constants";
 
 export const Container = styled.div<{ bgColor?: string }>`
   display: flex;
@@ -74,7 +74,6 @@ export const FlexContainer = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
 
   @media ${CONSTANTS.DEVICE.mobileS} {
     gap: 0.5rem;
@@ -93,7 +92,7 @@ export const TextContainer = styled.div`
 export const SubtitleBlock = styled.h3`
   color: ${(props) => props.theme.colors.primary};
   font-size: 1.5rem;
-  
+
   @media ${CONSTANTS.DEVICE.mobileS} {
     text-align: center;
   }

@@ -10,12 +10,12 @@ const Router: React.FC = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<BaseLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/curriculum" element={<Resume />} />
         </Route>
         <Route
           element={
-            <PrivateRoute redirectTo="/">
+            <PrivateRoute redirectTo="/home">
               <AdminLayout />
             </PrivateRoute>
           }
