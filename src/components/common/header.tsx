@@ -31,6 +31,27 @@ const Header: React.FC = () => {
     } else {
       setActiveSection(section);
     }
+
+    // Correção para a dinâmica de estilização de current page
+    const handleScroll = () => {
+      const sections = ["about", "skills", "portfolio", "contact"];
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
   return (
