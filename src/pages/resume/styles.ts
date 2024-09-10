@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Education } from "@styled-icons/zondicons";
 import { Briefcase } from "@styled-icons/ionicons-sharp";
+import { Download } from "@styled-icons/boxicons-regular";
 
 export const Container = styled.div`
   display: flex;
@@ -29,6 +30,34 @@ export const BasicInfo = styled.div`
 
 export const BasicInfoItem = styled.div`
   margin-bottom: 1rem;
+`;
+
+export const DownloadSection = styled.div`
+  margin-top: 2rem;
+  text-align: center;
+`;
+
+export const DownloadLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  color: ${(props) => props.theme.colors.white};
+  font-size: 16px;
+  text-decoration: none;
+  background-color: ${(props) => props.theme.colors.tertiary};
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const DownloadIcon = styled(Download)`
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export const ItemTitle = styled.h4`

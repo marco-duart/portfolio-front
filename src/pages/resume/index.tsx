@@ -93,6 +93,13 @@ export const Resume: React.FC = () => {
           ))}
         </S.TechContainer>
       </S.TechSection>
+
+      <S.DownloadSection>
+        <S.DownloadLink href="/assets/pdf/curriculo.pdf" download>
+          <S.DownloadIcon />
+          Baixar Currículo (PDF)
+        </S.DownloadLink>
+      </S.DownloadSection>
     </S.Container>
   );
 };
