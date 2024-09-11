@@ -13,10 +13,10 @@ export const Contact: React.FC<Props> = ({ user }) => {
     <S.Container>
       <S.Title>Contato</S.Title>
       <S.FlexContainer>
-        <S.PortraitWrapper>
-          <S.PortraitImage src={CONSTANTS.IMAGES.contact} alt="about" />
+        <S.ContactPortraitWrapper>
+          <S.PortraitImage src={CONSTANTS.IMAGES.contact} alt="contact" />
           <S.PortraitOverlay />
-        </S.PortraitWrapper>
+        </S.ContactPortraitWrapper>
         <S.TextContainer>
           <div>
             <S.IconBlock href={user?.whatsapp} target="_blank">

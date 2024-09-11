@@ -8,7 +8,7 @@ export interface User {
   github: string;
   linkedin: string;
   instagram: string;
-  twitter: string;
+  threads: string;
   google: string;
   youtube: string;
   facebook: string;

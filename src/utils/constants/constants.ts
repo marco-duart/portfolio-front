@@ -1,10 +1,9 @@
 import backgroundEffect1 from "../../assets/images/background-effect-1.png"
 import backgroundEffect2 from "../../assets/images/background-effect-2.png"
-import logoColors from "../../assets/images/logo-colors.png"
+import iconWhite from "../../assets/images/icon-white.png"
+import iconBlack from "../../assets/images/icon-black.png"
 import logoWhite from "../../assets/images/logo-white.png"
-import logoBlack from "../../assets/images/logo-black.png"
-import logoBackgroundColors from "../../assets/images/logo-background-white.svg"
-import logoBackgroundBlack from "../../assets/images/logo-background-black.svg"
+import logoBackgroundBlack from "../../assets/images/logo-background-black.png"
 import frontEnd from "../../assets/images/front-end.png"
 import backEnd from "../../assets/images/back-end.png"
 import about from "../../assets/images/about.png"
@@ -36,10 +35,9 @@ export const DEVICE = {
 export const IMAGES = {
   backgroundEffect1,
   backgroundEffect2,
-  logoColors,
+  iconWhite,
+  iconBlack,
   logoWhite,
-  logoBlack,
-  logoBackgroundColors,
   logoBackgroundBlack,
   frontEnd,
   backEnd,

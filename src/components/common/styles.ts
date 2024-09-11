@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import * as CONSTANTS from "../../utils/constants/constants";
 
 // HEADER
 export const Header = styled.header`
@@ -7,12 +8,21 @@ export const Header = styled.header`
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 8vh;
   padding: 0 4rem;
   background-color: ${(props) => props.theme.colors.background};
   z-index: 4;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    justify-content: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    justify-content: space-around;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    justify-content: space-between;
+  }
 `;
 
 export const Navbar = styled.header`
@@ -43,10 +53,8 @@ export const HeaderLink = styled(NavLink)`
   }
 `;
 
-export const HeaderScrool = styled.div`
+export const HeaderScrool = styled.div<{ mobile: boolean }>`
   text-decoration: none;
-  display: flex;
-  align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
@@ -54,7 +62,7 @@ export const HeaderScrool = styled.div`
   border-radius: 10px;
   cursor: pointer;
   transition: color 0.3s, background-color 0.3s;
-  
+
   &:hover {
     color: ${(props) => props.theme.colors.primary};
     text-shadow: 0 0 10px ${(props) => props.theme.colors.primary},
@@ -67,16 +75,36 @@ export const HeaderScrool = styled.div`
       0 0 20px ${(props) => props.theme.colors.primary},
       0 0 30px ${(props) => props.theme.colors.primary};
   }
-`;
 
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: ${(props) => (props.mobile ? "flex" : "none")};
+    align-items: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: flex;
+    align-items: center;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
+`;
 
 // LOGO
 export const Logo = styled.div`
-  height: 7vh;
+  height: 20vh;
 
   img {
     width: 100%;
     height: 100%;
+  }
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: none;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: block;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    display: block;
   }
 `;
 
@@ -121,26 +149,27 @@ export const Navigation = styled.div`
 // FOOTER
 export const Footer = styled.footer`
   width: 100%;
-  height: 400px;
+  height: 12vh;
 `;
 
 export const FooterContent = styled.div`
   width: 100%;
-  height: 83%;
-  padding: 50px 30px 0 30px;
+  height: 70%;
   background-color: ${(props) => props.theme.colors.tertiary};
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const FooterList = styled.ul`
+export const FooterList = styled.div`
   list-style-type: none;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 30px;
 
   span {
     display: flex;
-    flex-direction: column;
     gap: 10px;
   }
   h4 {
@@ -155,27 +184,39 @@ export const FooterList = styled.ul`
   div {
     width: 40px;
     height: 40px;
-    margin-bottom: 25px;
   }
 `;
 
 export const FooterEnd = styled.div`
   width: 100%;
-  height: 17%;
+  height: 30%;
   padding: 0 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
   background-color: ${(props) => props.theme.colors.background};
   font-family: ${(props) => props.theme.fonts.openSans};
   color: ${(props) => props.theme.colors.lightGray};
 
-  span {
-    display: flex;
-    gap: 20px;
-  }
   a {
     color: ${(props) => props.theme.colors.white};
+  }
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    justify-content: center;
+
+    #rules {
+      display: none;
+    }
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    justify-content: space-between;
+    gap: 2rem;
+
+    #rules {
+      display: flex;
+      gap: 20px;
+    }
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
   }
 `;

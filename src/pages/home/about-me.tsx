@@ -3,8 +3,8 @@ import * as CONSTANTS from "../../utils/constants/constants";
 import { User } from "../../models/user";
 
 type Props = {
-  user: undefined | User
-}
+  user: undefined | User;
+};
 
 export const AboutMe: React.FC<Props> = ({ user }) => {
   return (
@@ -12,8 +12,8 @@ export const AboutMe: React.FC<Props> = ({ user }) => {
       <S.Title>Sobre Mim</S.Title>
       <S.FlexContainer>
         <S.TextContainer>
-        <S.SubtitleBlock>{user?.bioTitle}</S.SubtitleBlock>
-        <S.TextBlock>{user?.bio}</S.TextBlock>
+          <S.SubtitleBlock>{user?.bioTitle}</S.SubtitleBlock>
+          <S.TextBlock>{user?.bio}</S.TextBlock>
         </S.TextContainer>
         <S.PortraitWrapper>
           <S.PortraitImage src={CONSTANTS.IMAGES.about} alt="about" />

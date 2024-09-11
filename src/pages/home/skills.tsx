@@ -5,63 +5,75 @@ import { Skill } from "../../models/skill";
 
 type Props = {
   skills: undefined | Skill[];
-}
+};
 
 export const Skills: React.FC<Props> = ({ skills }) => {
-  const [hoveredSection, setHoveredSection] = useState<null | "front" | "back">(
+  const [activeSection, setActiveSection] = useState<null | "front" | "back">(
     null
   );
 
-  const handleMouseEnter = (section: "front" | "back") => {
-    setHoveredSection(section);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredSection(null);
+  const handleImageClick = (section: "front" | "back") => {
+    setActiveSection((prev) => (prev === section ? null : section));
   };
 
   const bgColor =
-    hoveredSection === "front"
+    activeSection === "front"
       ? "#ff4d4d"
-      : hoveredSection === "back"
+      : activeSection === "back"
       ? "#007bff"
       : undefined;
 
   return (
-    <S.Container bgColor={bgColor}>
+    <S.SkillsContainer bgColor={bgColor}>
       <S.TitleContainer>
         <S.Title>Habilidades</S.Title>
       </S.TitleContainer>
       <S.SkillsImageContainer>
         <S.SkillsImageWrapper
           side="left"
-          onMouseEnter={() => handleMouseEnter("front")}
-          onMouseLeave={handleMouseLeave}
-          hovered={hoveredSection === "front"}
-          initialState={hoveredSection === null}
+          onClick={() => handleImageClick("front")}
+          active={activeSection === "front"}
+          initialState={activeSection === null}
         >
           <S.SkillsImage src={CONSTANTS.IMAGES.frontEnd} alt="Front-end" />
         </S.SkillsImageWrapper>
         <S.SkillsImageWrapper
           side="right"
-          onMouseEnter={() => handleMouseEnter("back")}
-          onMouseLeave={handleMouseLeave}
-          hovered={hoveredSection === "back"}
-          initialState={hoveredSection === null}
+          onClick={() => handleImageClick("back")}
+          active={activeSection === "back"}
+          initialState={activeSection === null}
         >
           <S.SkillsImage src={CONSTANTS.IMAGES.backEnd} alt="Back-end" />
         </S.SkillsImageWrapper>
-        {hoveredSection && (
-          <S.SkillsInfo hoveredSection={hoveredSection}>
-            <h2>{hoveredSection === "front" ? "Front-end Skills" : "Back-end Skills"}</h2>
+        {activeSection && (
+          <S.SkillsInfo activeSection={activeSection}>
+            <h2>
+              {activeSection === "front"
+                ? "Front-end Skills"
+                : "Back-end Skills"}
+            </h2>
             <div>
-              {hoveredSection === "front" ? (
+              {activeSection === "front" ? (
                 <>
-                  {skills?.filter(skill => skill.category === 'front-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} /> )}
+                  {skills
+                    ?.filter((skill) => skill.category === "front-end")
+                    .map((skill, index) => (
+                      <S.SkillInfoIconWrapper key={index}>
+                        <S.SkillInfoIcon src={skill.link} alt={skill.name} />
+                        <S.Tooltip>{skill.name}</S.Tooltip>
+                      </S.SkillInfoIconWrapper>
+                    ))}
                 </>
               ) : (
                 <>
-                  {skills?.filter(skill => skill.category === 'back-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} />)}
+                  {skills
+                    ?.filter((skill) => skill.category === "back-end")
+                    .map((skill, index) => (
+                      <S.SkillInfoIconWrapper key={index}>
+                        <S.SkillInfoIcon src={skill.link} alt={skill.name} />
+                        <S.Tooltip>{skill.name}</S.Tooltip>
+                      </S.SkillInfoIconWrapper>
+                    ))}
                 </>
               )}
             </div>
@@ -69,6 +81,6 @@ export const Skills: React.FC<Props> = ({ skills }) => {
         )}
       </S.SkillsImageContainer>
       <hr />
-    </S.Container>
+    </S.SkillsContainer>
   );
 };
