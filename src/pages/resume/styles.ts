@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Education } from "@styled-icons/zondicons";
 import { Briefcase } from "@styled-icons/ionicons-sharp";
 import { Download } from "@styled-icons/boxicons-regular";
+import * as CONSTANTS from "../../utils/constants/constants";
 
 export const Container = styled.div`
   display: flex;
@@ -163,6 +164,15 @@ export const TechContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    justify-content: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    justify-content: flex-start;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 export const TechItem = styled.div`

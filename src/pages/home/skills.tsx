@@ -5,7 +5,7 @@ import { Skill } from "../../models/skill";
 
 type Props = {
   skills: undefined | Skill[];
-}
+};
 
 export const Skills: React.FC<Props> = ({ skills }) => {
   const [hoveredSection, setHoveredSection] = useState<null | "front" | "back">(
@@ -28,7 +28,7 @@ export const Skills: React.FC<Props> = ({ skills }) => {
       : undefined;
 
   return (
-    <S.Container bgColor={bgColor}>
+    <S.SkillsContainer bgColor={bgColor}>
       <S.TitleContainer>
         <S.Title>Habilidades</S.Title>
       </S.TitleContainer>
@@ -53,15 +53,35 @@ export const Skills: React.FC<Props> = ({ skills }) => {
         </S.SkillsImageWrapper>
         {hoveredSection && (
           <S.SkillsInfo hoveredSection={hoveredSection}>
-            <h2>{hoveredSection === "front" ? "Front-end Skills" : "Back-end Skills"}</h2>
+            <h2>
+              {hoveredSection === "front"
+                ? "Front-end Skills"
+                : "Back-end Skills"}
+            </h2>
             <div>
               {hoveredSection === "front" ? (
                 <>
-                  {skills?.filter(skill => skill.category === 'front-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} /> )}
+                  {skills
+                    ?.filter((skill) => skill.category === "front-end")
+                    .map((skill, index) => (
+                      <S.SkillInfoIcon
+                        key={index}
+                        src={skill.link}
+                        alt={skill.name}
+                      />
+                    ))}
                 </>
               ) : (
                 <>
-                  {skills?.filter(skill => skill.category === 'back-end').map((skill, index) => <S.SkillInfoIcon key={index} src={skill.link} alt={skill.name} />)}
+                  {skills
+                    ?.filter((skill) => skill.category === "back-end")
+                    .map((skill, index) => (
+                      <S.SkillInfoIcon
+                        key={index}
+                        src={skill.link}
+                        alt={skill.name}
+                      />
+                    ))}
                 </>
               )}
             </div>
@@ -69,6 +89,6 @@ export const Skills: React.FC<Props> = ({ skills }) => {
         )}
       </S.SkillsImageContainer>
       <hr />
-    </S.Container>
+    </S.SkillsContainer>
   );
 };

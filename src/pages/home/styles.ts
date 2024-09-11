@@ -28,6 +28,19 @@ export const Container = styled.div<{ bgColor?: string }>`
   }
 `;
 
+export const SkillsContainer = styled.div<{ bgColor?: string }>`
+  width: 100vw;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : props.theme.colors.secundary};
+  overflow: hidden;
+  padding: 2rem 0;
+`;
+
 export const TitleContainer = styled.div`
   height: 15%;
 `;
@@ -345,7 +358,7 @@ export const ModalContent = styled.div`
   height: 100%;
   display: flex;
 
-  @media ${CONSTANTS.DEVICE.mobileS} {
+  /* @media ${CONSTANTS.DEVICE.mobileS} {
     flex-direction: column-reverse;
   }
   @media ${CONSTANTS.DEVICE.tablet} {
@@ -355,16 +368,26 @@ export const ModalContent = styled.div`
   @media ${CONSTANTS.DEVICE.desktop} {
     flex-direction: row;
     justify-content: space-between;
-  }
+  } */
 `;
 
 export const DescriptionSection = styled.div`
   width: 40%;
-  display: flex;
-  flex-direction: column;
 
   table {
     width: 80%;
+  }
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: none;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: flex;
+    flex-direction: column;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -374,13 +397,21 @@ export const TableRow = styled.td`
 `;
 
 export const CarouselSection = styled.div`
-  max-width: 60%;
-  max-height: 80%;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    max-width: 98%;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    max-width: 60%;
+    max-height: 80%;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 export const CarouselItem = styled.div`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as CONSTANTS from "../../../utils/constants/constants";
 
 export const ModalOverlay = styled.div<{ isOpen: boolean }>`
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
@@ -12,8 +13,6 @@ export const ModalOverlay = styled.div<{ isOpen: boolean }>`
 `;
 
 export const ModalContainer = styled.div`
-  width: 85%;
-  height: 70%;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -22,17 +21,36 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    width: 85%;
+    height: 50%;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    width: 85%;
+    height: 70%;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 export const ModalHeader = styled.div`
   width: 100%;
-  height: 8%;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: ${(props) => props.theme.colors.secundary};
   border-radius: 10px 10px 0 0;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    height: 60px;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    height: 8%;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 export const ModalTitle = styled.h2`
