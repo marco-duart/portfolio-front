@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import BaseLayout from "../components/base-layout";
 import AdminLayout from "../components/admin-layout";
 import { Home, Login, Profile, Portfolio, Resume } from "../pages";
@@ -9,6 +9,7 @@ const Router: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route element={<BaseLayout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/curriculum" element={<Resume />} />
