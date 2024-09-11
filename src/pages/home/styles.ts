@@ -202,7 +202,7 @@ export const SkillsImageContainer = styled.div`
 
 export const SkillsImageWrapper = styled(motion.div)<{
   side: "left" | "right";
-  hovered: boolean;
+  active: boolean;
   initialState: boolean;
 }>`
   position: absolute;
@@ -212,7 +212,7 @@ export const SkillsImageWrapper = styled(motion.div)<{
   height: 100%;
   ${(props) => (props.side === "left" ? "left: 0;" : "right: 0;")}
   clip-path: ${(props) =>
-    props.hovered
+    props.active
       ? "inset(0 0 0 0)"
       : props.initialState
       ? props.side === "left"
@@ -220,11 +220,11 @@ export const SkillsImageWrapper = styled(motion.div)<{
         : "inset(0 0 0 50%)"
       : "inset(0 100% 0 0)"};
   transform: ${(props) =>
-    props.hovered
+    props.active
       ? `translateX(${props.side === "left" ? "-30%" : "30%"}) scale(1)`
       : "translateX(0%) scale(1)"};
   transition: transform 0.3s ease, clip-path 0.3s ease;
-  z-index: ${(props) => (props.hovered ? 2 : 1)};
+  z-index: ${(props) => (props.active ? 2 : 1)};
 `;
 
 export const SkillsImage = styled.img`
@@ -233,13 +233,12 @@ export const SkillsImage = styled.img`
   object-fit: contain;
 `;
 
-export const SkillsInfo = styled.div<{ hoveredSection: "front" | "back" }>`
+export const SkillsInfo = styled.div<{ activeSection: "front" | "back" }>`
   max-width: 40%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  ${(props) =>
-    props.hoveredSection === "front" ? "right: 10%;" : "left: 10%;"}
+  ${(props) => (props.activeSection === "front" ? "right: 10%;" : "left: 10%;")}
   color: #fff;
   z-index: 3;
   background: rgba(0, 0, 0, 0.5);
@@ -357,18 +356,6 @@ export const ModalContent = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-
-  /* @media ${CONSTANTS.DEVICE.mobileS} {
-    flex-direction: column-reverse;
-  }
-  @media ${CONSTANTS.DEVICE.tablet} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  @media ${CONSTANTS.DEVICE.desktop} {
-    flex-direction: row;
-    justify-content: space-between;
-  } */
 `;
 
 export const DescriptionSection = styled.div`

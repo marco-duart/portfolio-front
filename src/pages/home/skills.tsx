@@ -8,22 +8,18 @@ type Props = {
 };
 
 export const Skills: React.FC<Props> = ({ skills }) => {
-  const [hoveredSection, setHoveredSection] = useState<null | "front" | "back">(
+  const [activeSection, setActiveSection] = useState<null | "front" | "back">(
     null
   );
 
-  const handleMouseEnter = (section: "front" | "back") => {
-    setHoveredSection(section);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredSection(null);
+  const handleImageClick = (section: "front" | "back") => {
+    setActiveSection((prev) => (prev === section ? null : section));
   };
 
   const bgColor =
-    hoveredSection === "front"
+    activeSection === "front"
       ? "#ff4d4d"
-      : hoveredSection === "back"
+      : activeSection === "back"
       ? "#007bff"
       : undefined;
 
@@ -35,31 +31,29 @@ export const Skills: React.FC<Props> = ({ skills }) => {
       <S.SkillsImageContainer>
         <S.SkillsImageWrapper
           side="left"
-          onMouseEnter={() => handleMouseEnter("front")}
-          onMouseLeave={handleMouseLeave}
-          hovered={hoveredSection === "front"}
-          initialState={hoveredSection === null}
+          onClick={() => handleImageClick("front")}
+          active={activeSection === "front"}
+          initialState={activeSection === null}
         >
           <S.SkillsImage src={CONSTANTS.IMAGES.frontEnd} alt="Front-end" />
         </S.SkillsImageWrapper>
         <S.SkillsImageWrapper
           side="right"
-          onMouseEnter={() => handleMouseEnter("back")}
-          onMouseLeave={handleMouseLeave}
-          hovered={hoveredSection === "back"}
-          initialState={hoveredSection === null}
+          onClick={() => handleImageClick("back")}
+          active={activeSection === "back"}
+          initialState={activeSection === null}
         >
           <S.SkillsImage src={CONSTANTS.IMAGES.backEnd} alt="Back-end" />
         </S.SkillsImageWrapper>
-        {hoveredSection && (
-          <S.SkillsInfo hoveredSection={hoveredSection}>
+        {activeSection && (
+          <S.SkillsInfo activeSection={activeSection}>
             <h2>
-              {hoveredSection === "front"
+              {activeSection === "front"
                 ? "Front-end Skills"
                 : "Back-end Skills"}
             </h2>
             <div>
-              {hoveredSection === "front" ? (
+              {activeSection === "front" ? (
                 <>
                   {skills
                     ?.filter((skill) => skill.category === "front-end")
