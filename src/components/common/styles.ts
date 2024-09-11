@@ -81,7 +81,7 @@ export const HeaderScrool = styled.div`
 
 // LOGO
 export const Logo = styled.div`
-  height: 7vh;
+  height: 15vh;
 
   img {
     width: 100%;
