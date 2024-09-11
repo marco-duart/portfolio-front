@@ -36,12 +36,15 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       const sections = ["about", "skills", "portfolio", "contact"];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
@@ -61,24 +64,28 @@ const Header: React.FC = () => {
       </div>
       <S.Navbar>
         <S.HeaderScrool
+          mobile={true}
           onClick={() => handleScrollTo("about")}
           className={activeSection === "about" ? "active" : ""}
         >
           Home
         </S.HeaderScrool>
         <S.HeaderScrool
+          mobile={false}
           onClick={() => handleScrollTo("skills")}
           className={activeSection === "skills" ? "active" : ""}
         >
           Habilidades
         </S.HeaderScrool>
         <S.HeaderScrool
+          mobile={true}
           onClick={() => handleScrollTo("portfolio")}
           className={activeSection === "portfolio" ? "active" : ""}
         >
           Projetos
         </S.HeaderScrool>
         <S.HeaderScrool
+          mobile={true}
           onClick={() => handleScrollTo("contact")}
           className={activeSection === "contact" ? "active" : ""}
         >

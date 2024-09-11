@@ -53,10 +53,8 @@ export const HeaderLink = styled(NavLink)`
   }
 `;
 
-export const HeaderScrool = styled.div`
+export const HeaderScrool = styled.div<{ mobile: boolean }>`
   text-decoration: none;
-  display: flex;
-  align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
@@ -77,6 +75,17 @@ export const HeaderScrool = styled.div`
       0 0 20px ${(props) => props.theme.colors.primary},
       0 0 30px ${(props) => props.theme.colors.primary};
   }
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: ${(props) => (props.mobile ? "flex" : "none")};
+    align-items: center;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: flex;
+    align-items: center;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 // LOGO
@@ -86,7 +95,7 @@ export const Logo = styled.div`
   img {
     width: 100%;
     height: 100%;
-  };
+  }
 
   @media ${CONSTANTS.DEVICE.mobileS} {
     display: none;

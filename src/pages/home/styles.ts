@@ -5,13 +5,12 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import * as CONSTANTS from "../../utils/constants/constants";
 
-export const Container = styled.div<{ bgColor?: string }>`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${(props) =>
-    props.bgColor ? props.bgColor : props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.secundary};
   overflow: hidden;
   padding: 2rem 0;
 
@@ -31,14 +30,22 @@ export const Container = styled.div<{ bgColor?: string }>`
 export const SkillsContainer = styled.div<{ bgColor?: string }>`
   width: 100vw;
   height: 92vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : props.theme.colors.secundary};
   overflow: hidden;
   padding: 2rem 0;
+
+  @media ${CONSTANTS.DEVICE.mobileS} {
+    display: none;
+  }
+  @media ${CONSTANTS.DEVICE.tablet} {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  @media ${CONSTANTS.DEVICE.desktop} {
+  }
 `;
 
 export const TitleContainer = styled.div`
