@@ -58,11 +58,10 @@ export const Skills: React.FC<Props> = ({ skills }) => {
                   {skills
                     ?.filter((skill) => skill.category === "front-end")
                     .map((skill, index) => (
-                      <S.SkillInfoIcon
-                        key={index}
-                        src={skill.link}
-                        alt={skill.name}
-                      />
+                      <S.SkillInfoIconWrapper key={index}>
+                        <S.SkillInfoIcon src={skill.link} alt={skill.name} />
+                        <S.Tooltip>{skill.name}</S.Tooltip>
+                      </S.SkillInfoIconWrapper>
                     ))}
                 </>
               ) : (
@@ -70,11 +69,10 @@ export const Skills: React.FC<Props> = ({ skills }) => {
                   {skills
                     ?.filter((skill) => skill.category === "back-end")
                     .map((skill, index) => (
-                      <S.SkillInfoIcon
-                        key={index}
-                        src={skill.link}
-                        alt={skill.name}
-                      />
+                      <S.SkillInfoIconWrapper key={index}>
+                        <S.SkillInfoIcon src={skill.link} alt={skill.name} />
+                        <S.Tooltip>{skill.name}</S.Tooltip>
+                      </S.SkillInfoIconWrapper>
                     ))}
                 </>
               )}

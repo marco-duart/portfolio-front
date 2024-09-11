@@ -266,8 +266,46 @@ export const SkillsInfo = styled.div<{ activeSection: "front" | "back" }>`
   }
 `;
 
+export const SkillInfoIconWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+
+  &:hover div {
+    visibility: visible;
+    opacity: 1;
+  }
+`;
+
 export const SkillInfoIcon = styled.img`
   width: 4rem;
+`;
+
+export const Tooltip = styled.div`
+  visibility: hidden;
+  background-color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.white};
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: ${(props) => props.theme.colors.secundary} transparent
+      transparent transparent;
+  }
 `;
 
 export const IconBlock = styled.a`
